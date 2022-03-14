@@ -1,16 +1,14 @@
 var express = require("express");
-var router = express.Router();
-const {
-  csrfProtection,
-  asyncHandler,
-  userValidator,
-  loginValidators,
-} = require("./utils");
 const bcrypt = require("bcryptjs");
-const { check, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
+
+const { csrfProtection, asyncHandler, userValidator, loginValidators, } = require("./utils");
 const db = require("../db/models");
-const { Sequelize } = require("../db/models");
-const Op = Sequelize.Op;
+const { loginUser } = require('../auth')
+// const { Sequelize } = require("../db/models");
+// const Op = Sequelize.Op;
+
+var router = express.Router();
 
 /* GET users listing. */
 router.get(
@@ -25,6 +23,7 @@ router.get(
     });
   })
 );
+
 router.post(
   "/signup",
   csrfProtection,
@@ -41,7 +40,7 @@ router.post(
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      //login
+      loginUser(req, res, user);
       res.redirect(`/users/${user.id}`);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -54,6 +53,7 @@ router.post(
     }
   })
 );
+
 router.get(
   "/login",
   csrfProtection,
@@ -90,7 +90,7 @@ router.post(
           user.hashedPassword.toString()
         );
         if (passMatch) {
-          //login
+          loginUser(req, res, user);
           return res.redirect("/");
         }
       }
