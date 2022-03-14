@@ -1,0 +1,16 @@
+extends layout 
+include utils
+block content
+  +validationErrorSummary(errors)
+  form(action="/users/login" method="post")
+    input(type="hidden" name="_csrf" value=csrfToken)
+    div 
+      label(for="email") Email:
+      input(type="email" name="email"  required)
+    div 
+      label(for="password") Password:
+      input(type="password" name="password"  required)
+    div 
+      button(type="submit") Log In
+    div
+      button( href='/users/signup') Demo Login
