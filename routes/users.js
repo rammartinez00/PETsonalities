@@ -107,9 +107,19 @@ router.post(
   })
 );
 
+// router.get('/logout', (req, res) => {
+//   logoutUser(req, res);
+
+//   req.session.save(() => {
+//     res.redirect('/')
+//   })
+// })
+
 router.post('/logout', (req, res) => {
   logoutUser(req, res)
-  res.redirect('/')
+  // req.session.save(() => {
+  //   res.redirect('/')
+  // })
 })
 
 router.get(
