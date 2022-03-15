@@ -4,6 +4,7 @@ html
       block head
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        script(src='/javascripts/demo.js' type='module')
   body
     nav(class='navbar')
       a( href='/') Petsonalities
@@ -11,7 +12,7 @@ html
           li(class='nav-item'): a(class='nav-link' href='/') Profile
         if locals.authenticated 
           span(class='navbar-text px-4') Welcome #{user.fullName}!
-          form( action='/user/logout' method='post')
+          form( action='/users/logout' method='post')
             button(class='btn btn-sm btn-warning' type='submit') Logout
         else
           span(class='navbar-text px-4')
