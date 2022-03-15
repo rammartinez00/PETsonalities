@@ -73,9 +73,23 @@ const loginValidators = [
     .withMessage("Please provide a value for Password"),
 ];
 
+const petValidators = [
+  check('name')
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for name"),
+  check('description')
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a description for your pet"),
+  check('image')
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide an image"),
+]
+
+
 module.exports = {
   csrfProtection,
   asyncHandler,
   userValidator,
   loginValidators,
+  petValidators
 };
