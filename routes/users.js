@@ -129,6 +129,8 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const user = await db.User.findByPk(id);
+    // const profileInfoBox = document.querySelector('.profileInfoBox')
+    // profileInfoBox.style.backgroundImage = `url(${user.banner})`
     res.render("user-profile", {
       title: "Profile",
       user,
@@ -136,4 +138,31 @@ router.get(
     });
   })
 );
+
+
+/* GET 'users/id/edit' for editing user profile*/
+router.get("/:id(\\d+)/edit", csrfProtection, asyncHandler(async (req, res) => {
+  console.log(req.params)
+  res.render("user-profile-edit", {
+    title: "Edit Profile",
+    csrfToken: req.csrfToken(),
+  })
+}))
+
+router.post("/:id(\\d+)/edit", csrfProtection, asyncHandler(async (req, res) => {
+  const { profilePicture, banner, websiteLink } = req.body
+  const id = req.params.id
+  const user = await db.User.findByPk(id)
+  user.profilePicture = profilePicture
+  user.banner = banner
+  user.websiteLink = websiteLink
+  await user.save()
+  res.redirect("/")
+  // res.render("user-profile-edit", {
+  //   title: "Edit Profile",
+  //   csrfToken: req.csrfToken(),
+  // })
+}))
+
+
 module.exports = router;
