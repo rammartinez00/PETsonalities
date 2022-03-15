@@ -120,6 +120,7 @@ router.post('/logout', (req, res) => {
   // req.session.save(() => {
   //   res.redirect('/')
   // })
+  res.redirect('/');
 })
 
 router.get(
