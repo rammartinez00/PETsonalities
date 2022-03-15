@@ -1,3 +1,20 @@
 h1 {
     color: #555555;
 }
+
+.petLikes {
+    display: none
+
+}
+
+.tagsTable {
+    display: none
+}
+
+.collectionsTable {
+    display: none
+}
+
+.petsTable {
+    display: none
+}
