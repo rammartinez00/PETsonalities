@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 
 const { csrfProtection, asyncHandler, userValidator, loginValidators, } = require("./utils");
 const db = require("../db/models");
-const { loginUser } = require('../auth')
+const { loginUser, logoutUser } = require('../auth')
 // const { Sequelize } = require("../db/models");
 // const Op = Sequelize.Op;
 
@@ -106,8 +106,10 @@ router.post(
     });
   })
 );
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+
+router.post('/logout', (req, res) => {
+  logoutUser(req, res)
+  res.redirect('/')
+})
 
 module.exports = router;
