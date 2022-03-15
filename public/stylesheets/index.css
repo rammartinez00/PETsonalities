@@ -18,3 +18,13 @@ h1 {
 .petsTable {
     display: none
 }
+
+.profileInfo {
+    background-color: blue;
+    display: flex;
+}
+
+.profileDetails {
+    display: block;
+    margin-left: 10px;
+}

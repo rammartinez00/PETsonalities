@@ -1,13 +1,14 @@
 extends layout
 block content
   script(src='/javascripts/profile.js' type='module')
-  div
+  div.profileInfo
     img(src="https://www.clipartmax.com/png/full/42-427582_sign-in-my-profile-icon-png.png", style="width:100px")
-    h2=user.fullName
-    h4=user.id
-    a(href=user.websiteLink)
-    a(href=`/users/${user.id}/edit`)
-      button() Edit Profile
+    div.profileDetails
+      h2()=user.fullName
+      h4=user.id
+      a(href=user.websiteLink)
+      a(href=`/users/${user.id}/edit`)
+        button() Edit Profile
   div
     a(href=`/users/${user.id}`).likes Pet Likes
     a(href=`/users/${user.id}`).tags Tags
