@@ -11,14 +11,18 @@ block content
         input(type="text" name="name" value=pet.name required)
         div 
         label(for="description") Description:
-        textarea(name="description" value=pet.description required)
+        textarea(name="description" required)= pet.description
         div 
         label(for="image") Image:
-        input(type="file" name="image" value=pet.image required)
+        input(type="file" name="image" required)
         div 
         label(for="birthday") Birthday:
         input(type="date" name="password" value=pet.birthday)
         div 
+        label(for='petTypeId') Pet Type:
+        select(name='petTypeId')
+            each petType in petTypes 
+                option(value=petType.id)= petType.type
         input(type="hidden" name="userId" value=user.id)
         div 
-        button(type="submit") Submit
+        button(type="submit") Create
