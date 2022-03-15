@@ -143,8 +143,11 @@ router.get(
 /* GET 'users/id/edit' for editing user profile*/
 router.get("/:id(\\d+)/edit", csrfProtection, asyncHandler(async (req, res) => {
   console.log(req.params)
+  const id = req.params.id
+  const user = await db.User.findByPk(id)
   res.render("user-profile-edit", {
     title: "Edit Profile",
+    user,
     csrfToken: req.csrfToken(),
   })
 }))
@@ -157,7 +160,7 @@ router.post("/:id(\\d+)/edit", csrfProtection, asyncHandler(async (req, res) => 
   user.banner = banner
   user.websiteLink = websiteLink
   await user.save()
-  res.redirect("/")
+  res.redirect(`/users/${user.id}`)
   // res.render("user-profile-edit", {
   //   title: "Edit Profile",
   //   csrfToken: req.csrfToken(),
