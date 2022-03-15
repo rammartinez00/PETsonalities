@@ -76,6 +76,7 @@ router.post(
     // } else {
     //   var userName = loginName;
     // }
+
     const validatorErrors = validationResult(req);
     let errors = [];
     if (validatorErrors.isEmpty()) {
@@ -91,7 +92,9 @@ router.post(
         );
         if (passMatch) {
           loginUser(req, res, user);
-          return res.redirect("/");
+          return req.session.save(() => {
+            res.redirect('/')
+          })
         }
       }
       errors.push("Login failed for the provided email address and password");
@@ -107,20 +110,11 @@ router.post(
   })
 );
 
-// router.get('/logout', (req, res) => {
-//   logoutUser(req, res);
-
-//   req.session.save(() => {
-//     res.redirect('/')
-//   })
-// })
-
 router.post('/logout', (req, res) => {
   logoutUser(req, res)
-  // req.session.save(() => {
-  //   res.redirect('/')
-  // })
-  res.redirect('/');
+  req.session.save(() => {
+    res.redirect('/')
+  })
 })
 
 router.get(
