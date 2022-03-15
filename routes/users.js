@@ -110,4 +110,17 @@ router.get("/", function (req, res, next) {
   res.send("respond with a resource");
 });
 
+router.get(
+  "/:id(\\d+)",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const user = await db.User.findByPk(id);
+    res.render("user-profile", {
+      title: "Profile",
+      user,
+      csrfToken: req.csrfToken(),
+    });
+  })
+);
 module.exports = router;
