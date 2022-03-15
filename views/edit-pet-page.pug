@@ -1,20 +1,18 @@
 extends layout
-
 include utils
-
-block content 
+block content
     +validationErrorSummary(errors)
-    form(action="/pets/new" method="post")
+    form(action=`/pets/${pet.id}/edit` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         div 
         label(for="name") Name:
         input(type="text" name="name" value=pet.name required)
         div 
         label(for="description") Description:
-        textarea(name="description" required)=pet.description
+        textarea(name="description" required)= pet.description
         div 
         label(for="image") Image:
-        input(type="file" name="image" accept="image/png, image/jpeg, image/jpg" value=pet.image required)
+        input(type="file" name="image" required value=pet.image)
         div 
         label(for="birthday") Birthday:
         input(type="date" name="birthday" value=pet.birthday)
@@ -25,4 +23,4 @@ block content
                 option(value=petType.id)= petType.type
         input(type="hidden" name="userId" value=user.id)
         div 
-        button(type="submit") Create
+        button(type="submit") Submit Changes

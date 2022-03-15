@@ -1,4 +1,27 @@
 extends layout 
 
 block content 
-    h1 Pet Page
+    div
+        h1=pet.name
+        image(src=`${pet.image}`)
+    div
+        p=pet.description
+    div
+        //comments
+    div 
+        //displays profiles that likes pet page
+    div
+        h2=`${pet.name}'s Hooman`
+        h2=`Pet Owner: ${pet.User.fullName}`
+    div
+        h2=`${pet.name}'s Inpawmation`
+        div
+            p=`Birthday: ${pet.birthday}`
+            p=`Pet Type: ${pet.PetType.type}`
+            //p= tags
+    div
+        a(href=`/pets/${pet.id}/edit`)
+            button() Edit
+        
+
+    
