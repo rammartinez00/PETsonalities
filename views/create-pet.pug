@@ -14,7 +14,7 @@ block content
         textarea(name="description" required)=pet.description
         div 
         label(for="image") Image:
-        input(type="file" name="image" accept="image/png, image/jpeg, image/jpg" value=pet.image required)
+        input(type="text" name="image" value=pet.image required)
         div 
         label(for="birthday") Birthday:
         input(type="date" name="birthday" value=pet.birthday)
