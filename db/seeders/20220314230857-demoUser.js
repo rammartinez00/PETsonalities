@@ -20,6 +20,15 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          fullName: "Rami",
+          userName: "RAMISOKEWL",
+          email: "Rami@Rami.com",
+          hashedPassword:
+            "$2a$10$Rpj0KptKModLClfLpIKlNuMM.n2UDUlb7ttMvPMcRCfpg1t.NUIcC",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
