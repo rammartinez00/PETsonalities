@@ -130,11 +130,16 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const user = await db.User.findByPk(id);
-    // const profileInfoBox = document.querySelector('.profileInfoBox')
-    // profileInfoBox.style.backgroundImage = `url(${user.banner})`
+    const userPets = await db.Pet.findAll({
+      where: {
+        userId: user.id
+      }
+    })
+
     res.render("user-profile", {
       title: "Profile",
       user,
+      userPets,
       csrfToken: req.csrfToken(),
     });
   })

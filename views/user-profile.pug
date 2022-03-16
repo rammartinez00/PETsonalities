@@ -30,12 +30,10 @@ block content
           th Collections
       tbody
           td displays user's collection
-    table.petsTable
-      thead
-        tr
-          th Pets
-      tbody
-          td displays user pets
+    div.petsTable
+      each pet in userPets
+          img(src=pet.image style="width:100px; border-radius:50%;")
+          div(style="font-weight:bold;")= pet.name
     table.commentsTable
       thead
         tr
