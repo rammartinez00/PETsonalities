@@ -81,8 +81,11 @@ const petValidators = [
     .exists({ checkFalsy: true })
     .withMessage("Please provide a description for your pet"),
   check('image')
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide an image"),
+    .isURL()
+    .withMessage('Please provide a valid image url'),
+  check('petTypeId')
+    .isInt()
+    .withMessage('Please select a pet type')
 ]
 
 
