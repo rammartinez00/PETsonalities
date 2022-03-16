@@ -1,19 +1,18 @@
 extends layout
 block content
   script(src='/javascripts/profile.js' type='module')
-  div.profileInfoBox
-    img(src="https://www.clipartmax.com/png/full/42-427582_sign-in-my-profile-icon-png.png", style="width:100px")
+  div(style=`background-image: url(${user.banner});`).profileInfoBox
+    img(src=user.profilePicture, style="width:20%; height:75%; border-radius: 50%;")
     div.profileDetails
-      label(for="Snarls Barkley") Name:
-      h2(name="Snarls Barkley")=user.fullName
-      h4=user.id
-      p Biography
-      a(href=user.websiteLink)
+      label(for="Snarls Barkley")
+      h2(name="Snarls Barkley" )=`Name: ${user.fullName}`
+      h4=`User ID: ${user.id}`
+      p=`Biography ${user.bio}`
+      a(href=`Website Link${user.websiteLink}`) Test
       a(href=`/users/${user.id}/edit`)
         button() Edit Profile
   div.tables
     a(href=`/users/${user.id}`).likes Pet Likes
-    a(href=`/users/${user.id}`).tags Tags
     a(href=`/users/${user.id}`).collections Collections
     a(href=`/users/${user.id}`).pets Pets
     a(href=`/users/${user.id}`).comments Comments

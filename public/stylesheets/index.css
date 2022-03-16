@@ -1,54 +1,64 @@
 h1 {
-    color: #555555;
+  color: #555555;
 }
 
 .petLikes {
-    display: none;
-
+  display: none;
 }
 
 .tagsTable {
-    display: none;
+  display: none;
 }
 
 .collectionsTable {
-    display: none;
+  display: none;
 }
 
 .petsTable {
-    display: none;
+  display: none;
 }
 
-.commentsTable{
-    display: none;
+.commentsTable {
+  display: none;
 }
 
 .profileInfoBox {
-    background-color: #4552CE ;
-    display: flex;
-    padding: 20px;
+  background-color: #4552ce;
+  display: flex;
+  padding: 20px;
+  height: 400px;
 }
 
 .profileDetails {
-    display: block;
-    margin-left: 10px;
+  display: block;
+  margin-left: 10px;
 }
 
 .dataTables {
-    flex-direction: column;
-    justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .tables {
-    display: flex;
-    justify-content: space-evenly;
-    width: 60%;
-    padding-left: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  padding-left: 20px;
 }
 
 .userTable {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-evenly;
-    width: 30%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  width: 30%;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: lavender;
+  padding: 10px;
+  text-decoration: none;
+}
+.prof {
+  list-style-type: none;
 }
