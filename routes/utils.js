@@ -98,15 +98,19 @@ const profileValidators = [
     .withMessage("Please provide a value for full name")
     .isLength({ max: 50 })
     .withMessage("Username must not be longer than 50 characters")
-    .custom((value) => {
+    .custom((value, { req }) => {
+      console.log(req.session)
       return db.User.findOne({ where: { userName: value } }).then((user) => {
+        console.log(req.session, "in profile validator ========")
         if (user) {
-          return Promise.reject(
-            "The provided Username is already in use by another account"
-          );
+          if (!(req.session.auth.userName === user.userName) && user)
+            return Promise.reject(
+              "The provided Username is already in use by another account"
+            );
         }
       });
     }),
+
   check("email")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for email address")
@@ -122,6 +126,9 @@ const profileValidators = [
       });
     }),
 ];
+// console.log(req.session.user)
+
+
 
 module.exports = {
   csrfProtection,
