@@ -27,8 +27,8 @@ collectionsBtn.addEventListener("click", (e) => {
 
 petsBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  petsTable.style.display = "none";
-  likesTable.style.display = "flex";
+  petsTable.style.display = "flex";
+  likesTable.style.display = "none";
   collectionsTable.style.display = "none";
   commentsTable.style.display = "none";
 });
