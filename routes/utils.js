@@ -80,10 +80,14 @@ const petValidators = [
   check("description")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a description for your pet"),
-  check("image")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide an image"),
-];
+  check('image')
+    .isURL()
+    .withMessage('Please provide a valid image url'),
+  check('petTypeId')
+    .isInt()
+    .withMessage('Please select a pet type')
+]
+
 
 const profileValidators = [
   check("fullName")
