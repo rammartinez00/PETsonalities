@@ -28,6 +28,7 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
+    name: "petsonalities.sid",
     secret: sessionSecret,
     store,
     saveUninitialized: false,
