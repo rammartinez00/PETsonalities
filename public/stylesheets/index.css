@@ -14,10 +14,6 @@ h1 {
   display: none;
 }
 
-.petsTable {
-  display: none;
-}
-
 .commentsTable {
   display: none;
 }
@@ -35,14 +31,16 @@ h1 {
 }
 
 .dataTables {
+  display: flex;
   flex-direction: column;
+  align-content: center;
   justify-content: center;
+  background-color: aquamarine;
 }
 
 .tables {
   display: flex;
   justify-content: space-evenly;
-  width: 60%;
   padding-left: 20px;
 }
 
@@ -52,6 +50,13 @@ h1 {
   justify-content: space-evenly;
   width: 30%;
 }
+
+.petsTable {
+display: none;
+flex-direction: column;
+
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
