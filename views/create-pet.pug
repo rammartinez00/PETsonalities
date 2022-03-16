@@ -25,6 +25,6 @@ block content
         select(id='select-pet-type' name='petTypeId') 
             option(value='' disabled selected hidden) --Select a Pet Type --
             each petType in petTypes 
-                option(value=petType.id)= petType.type
+                option(value=petType.id selected=(parseInt(petType.id) === parseInt(petTypeId)))= petType.type
         div 
         button(id='createBtn' type="submit") Create

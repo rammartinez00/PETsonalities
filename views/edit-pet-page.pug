@@ -12,15 +12,15 @@ block content
         textarea(name="description" required)= pet.description
         div 
         label(for="image") Image:
-        input(type="file" name="image" required value=pet.image)
+        input(type="text" name="image" required value=pet.image)
         div 
         label(for="birthday") Birthday:
         input(type="date" name="birthday" value=pet.birthday)
         div 
         label(for='petTypeId') Pet Type:
-        select(name='petTypeId' value=petType.type)
+        select(name='petTypeId')
             each petType in petTypes 
-                option(value=petType.id)= petType.type
+                option(value=petType.id selected=(parseInt(petType.id) === parseInt(pet.petTypeId)))= petType.type
         input(type="hidden" name="userId" value=user.id)
         div 
         button(type="submit") Submit Changes
