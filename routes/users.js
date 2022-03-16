@@ -1,10 +1,16 @@
-var express = require("express");
+const express = require("express");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
-const { csrfProtection, asyncHandler, userValidator, loginValidators, } = require("./utils");
+const {
+  csrfProtection,
+  asyncHandler,
+  userValidator,
+  loginValidators,
+  profileValidators,
+} = require("./utils");
 const db = require("../db/models");
-const { loginUser, logoutUser } = require('../auth')
+const { loginUser, logoutUser } = require("../auth");
 // const { Sequelize } = require("../db/models");
 // const Op = Sequelize.Op;
 
@@ -93,8 +99,8 @@ router.post(
         if (passMatch) {
           loginUser(req, res, user);
           return req.session.save(() => {
-            res.redirect('/')
-          })
+            res.redirect("/");
+          });
         }
       }
       errors.push("Login failed for the provided email address and password");
@@ -110,12 +116,12 @@ router.post(
   })
 );
 
-router.post('/logout', (req, res) => {
-  logoutUser(req, res)
+router.post("/logout", (req, res) => {
+  logoutUser(req, res);
   req.session.save(() => {
-    res.redirect('/')
-  })
-})
+    res.redirect("/");
+  });
+});
 
 router.get(
   "/:id(\\d+)",
@@ -133,33 +139,55 @@ router.get(
   })
 );
 
-
 /* GET 'users/id/edit' for editing user profile*/
-router.get("/:id(\\d+)/edit", csrfProtection, asyncHandler(async (req, res) => {
-  console.log(req.params)
-  const id = req.params.id
-  const user = await db.User.findByPk(id)
-  res.render("user-profile-edit", {
-    title: "Edit Profile",
-    user,
-    csrfToken: req.csrfToken(),
+router.get(
+  "/:id(\\d+)/edit",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    console.log(req.params);
+    const id = req.params.id;
+    const user = await db.User.findByPk(id);
+    res.render("user-profile-edit", {
+      title: "Edit Profile",
+      user,
+      csrfToken: req.csrfToken(),
+    });
   })
-}))
+);
 
-router.post("/:id(\\d+)/edit", csrfProtection, asyncHandler(async (req, res) => {
-  const { profilePicture, banner, websiteLink } = req.body
-  const id = req.params.id
-  const user = await db.User.findByPk(id)
-  user.profilePicture = profilePicture
-  user.banner = banner
-  user.websiteLink = websiteLink
-  await user.save()
-  res.redirect(`/users/${user.id}`)
-  // res.render("user-profile-edit", {
-  //   title: "Edit Profile",
-  //   csrfToken: req.csrfToken(),
-  // })
-}))
-
+router.post(
+  "/:id(\\d+)/edit",
+  csrfProtection,
+  profileValidators,
+  asyncHandler(async (req, res) => {
+    const { fullName, userName, email, profilePicture, banner, websiteLink } =
+      req.body;
+    const id = req.params.id;
+    const user = await db.User.findByPk(id);
+    user.profilePicture = profilePicture;
+    user.banner = banner;
+    user.websiteLink = websiteLink;
+    user.fullName = fullName;
+    user.userName = userName;
+    user.email = email;
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      await user.save();
+      res.redirect(`/users/${user.id}`);
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("user-profile-edit", {
+        title: "Edit Profile",
+        user,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+    // res.render("user-profile-edit", {
+    //   title: "Edit Profile",
+    //   csrfToken: req.csrfToken(),
+    // })
+  })
+);
 
 module.exports = router;
