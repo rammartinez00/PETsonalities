@@ -1,7 +1,18 @@
 extends layout
+include utils
 block content
+    +validationErrorSummary(errors)
     form(action=`/users/${user.id}/edit` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
+        div
+            label(for="fullName") Full Name:
+            input(type="text" name="fullName" value=user.fullName required)
+        div
+            label(for="userName") Username:
+            input(type="text" name="userName" value=user.userName required)
+        div
+            label(for="email") Email:
+            input(type="text" name="email" value=user.email required)
         div
             label(for="profilePicture") Profile Picture:
             input(type="text" name="profilePicture" value=user.profilePicture)

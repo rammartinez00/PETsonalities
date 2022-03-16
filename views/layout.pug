@@ -2,22 +2,25 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title PETsonalities
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/index.css')
         script(src='/javascripts/demo.js' type='module')
   body
     nav(class='navbar')
       a( href='/') Petsonalities
+      form(action="/" method="post")
+        input(type="text")
+        button(type="submit") Search
         ul(class='navbar-nav')
-          li(class='nav-item'): a(class='nav-link' href='/') Profile
-        if locals.authenticated
-          span(class='navbar-text px-4') Welcome #{user.fullName}!
-          div(): a(href='pets/new') Create Pet Page
-          form( action='/users/logout' method='post')
-            button(class='btn btn-sm btn-warning' type='submit') Logout
-        else
-          span(class='navbar-text px-4')
-          a( href='/users/login') Login
-          a( href='/users/signup') Register
+      if locals.authenticated
+        li.prof: a( href=`/users/${user.id}`) Profile
+        div(): a(href='pets/new') Create Pet Page
+        span() Welcome #{user.fullName}!
+        form( action='/users/logout' method='post')
+          button(class='btn btn-sm btn-warning' type='submit') Logout
+      else
+        span(class='navbar-text px-4')
+        a( href='/users/login') Login
+        a( href='/users/signup') Sign Up
     block content

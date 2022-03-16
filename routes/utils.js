@@ -74,22 +74,56 @@ const loginValidators = [
 ];
 
 const petValidators = [
-  check('name')
+  check("name")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for name"),
-  check('description')
+  check("description")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a description for your pet"),
-  check('image')
+  check("image")
     .exists({ checkFalsy: true })
     .withMessage("Please provide an image"),
-]
+];
 
+const profileValidators = [
+  check("fullName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for name"),
+  check("userName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for full name")
+    .isLength({ max: 50 })
+    .withMessage("Username must not be longer than 50 characters")
+    .custom((value) => {
+      return db.User.findOne({ where: { userName: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Username is already in use by another account"
+          );
+        }
+      });
+    }),
+  check("email")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for email address")
+    .isEmail()
+    .withMessage("Email Address is not a valid email")
+    .custom((value) => {
+      return db.User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
+        }
+      });
+    }),
+];
 
 module.exports = {
   csrfProtection,
   asyncHandler,
   userValidator,
   loginValidators,
-  petValidators
+  petValidators,
+  profileValidators,
 };
