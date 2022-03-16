@@ -116,12 +116,13 @@ const profileValidators = [
     .withMessage("Please provide a value for email address")
     .isEmail()
     .withMessage("Email Address is not a valid email")
-    .custom((value) => {
+    .custom((value, { req }) => {
       return db.User.findOne({ where: { email: value } }).then((user) => {
         if (user) {
-          return Promise.reject(
-            "The provided Email Address is already in use by another account"
-          );
+          if (!(req.session.auth.userEmail === user.email) && user)
+            return Promise.reject(
+              "The provided Email Address is already in use by another account"
+            );
         }
       });
     }),
