@@ -117,7 +117,16 @@ router.post('/:id(\\d+)/edit', requireAuth, petValidators, csrfProtection, async
 
 }))
 
-router.post('/pets/:id(\\d+)/delete', asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)/delete', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const pet = await db.Pet.findByPk(id)
+
+    checkPermissions(pet, res.locals.user);
+
+    res.render('delete-pet', { pet, csrfToken: req.csrfToken() })
+}))
+
+router.post('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id)
     const pet = await db.Pet.findByPk(id)
     checkPermissions(pet, res.locals.user);
