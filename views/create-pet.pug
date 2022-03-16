@@ -2,10 +2,12 @@ extends layout
 
 include utils
 
-block content 
+block content
+    script(src='/javascripts/create-pet.js' type='module')
     +validationErrorSummary(errors)
     form(action="/pets/new" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
+        input(type="hidden" name="userId" value=user.id)
         div 
         label(for="name") Name:
         input(type="text" name="name" value=pet.name required)
@@ -13,16 +15,16 @@ block content
         label(for="description") Description:
         textarea(name="description" required)=pet.description
         div 
-        label(for="image") Image:
+        label(for="image") Image URL:
         input(type="text" name="image" value=pet.image required)
         div 
         label(for="birthday") Birthday:
         input(type="date" name="birthday" value=pet.birthday)
         div 
         label(for='petTypeId') Pet Type:
-        select(name='petTypeId' value=petType.type)
+        select(id='select-pet-type' name='petTypeId') 
+            option(value='' disabled selected hidden) --Select a Pet Type --
             each petType in petTypes 
-                option(value=petType.id)= petType.type
-        input(type="hidden" name="userId" value=user.id)
+                option(value=petType.id selected=(parseInt(petType.id) === parseInt(petTypeId)))= petType.type
         div 
-        button(type="submit") Create
+        button(id='createBtn' type="submit") Create

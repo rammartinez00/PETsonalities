@@ -77,6 +77,7 @@ router.post(
   loginValidators,
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+
     // if (loginName.includes("@")) {
     //   var email = loginName;
     // } else {
@@ -129,17 +130,22 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const user = await db.User.findByPk(id);
-    // const profileInfoBox = document.querySelector('.profileInfoBox')
-    // profileInfoBox.style.backgroundImage = `url(${user.banner})`
+    const userPets = await db.Pet.findAll({
+      where: {
+        userId: user.id
+      }
+    })
+
     res.render("user-profile", {
       title: "Profile",
       user,
+      userPets,
       csrfToken: req.csrfToken(),
     });
   })
 );
 
-/* GET 'users/id/edit' for editing user profile*/
+/* GET 'users/id/edit' to get user profile page*/
 router.get(
   "/:id(\\d+)/edit",
   csrfProtection,
@@ -154,7 +160,12 @@ router.get(
     });
   })
 );
+router.use((req, res, next) => {
+  console.log(req.session.auth, "hhheeeeerrrreeee")
+  next()
+})
 
+/* POST 'users/id/edit' for editing user profile*/
 router.post(
   "/:id(\\d+)/edit",
   csrfProtection,

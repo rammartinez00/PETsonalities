@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+    h1= `Are you sure you want to delete ${pet.name} :'( ?`
+    div 
+        form(action=`/pets/${pet.id}/delete`, method="post") 
+            button(id = 'delete-btn') Delete 
+            a(href='/')
+             button(id = 'edit-btn') Cancel

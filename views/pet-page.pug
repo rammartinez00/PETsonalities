@@ -1,6 +1,7 @@
 extends layout 
 
 block content 
+    script(src='/javascripts/delete-pet.js' type='module')
     div
         h1=pet.name
         image(src=`${pet.image}`)
@@ -19,9 +20,12 @@ block content
             p=`Birthday: ${pet.birthday}`
             p=`Pet Type: ${pet.PetType.type}`
             //p= tags
-    div
-        a(href=`/pets/${pet.id}/edit`)
-            button() Edit
-        
-
+    if user.id === pet.userId
+        div
+            a(href=`/pets/${pet.id}/edit`)
+                button(id='edit-btn') Edit
+            a(href=`/pets/${pet.id}/delete`)
+                button(id='delete-btn') Delete
+            //- form(action=`/pets/${pet.id}/delete` method='post')
+                button() Delete
     
