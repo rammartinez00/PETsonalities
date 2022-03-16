@@ -9,4 +9,12 @@ append head
 
 block content
   h1 CHECK OUT THESE CUTE PETS
-  p Welcome to your Project Skeleton
+  div
+    ul
+      each pet in pets 
+        li
+          div
+            img(src=pet.image)
+            span= pet.name 
+            span= pet.description 
+            
