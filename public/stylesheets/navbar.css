@@ -1,0 +1,11 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: lavender;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+.prof {
+    list-style-type: none;
+}
