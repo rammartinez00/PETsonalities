@@ -9,12 +9,10 @@ append head
 
 block content
   h1 CHECK OUT THESE CUTE PETS
-  div
-    ul
-      each pet in pets 
-        li
-          div
-            img(src=pet.image)
-            span= pet.name 
-            span= pet.description 
-            
+  ul
+    each pet in pets 
+      li
+        img(id='image' src=pet.image)
+        h2(id='name')= pet.name 
+        span(id='description')= pet.description 
+          

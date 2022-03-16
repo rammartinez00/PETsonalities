@@ -1,6 +1,10 @@
 extends layout
-block content
+
+append head
+  link(rel="stylesheet" href="/stylesheets/profile.css")
   script(src='/javascripts/profile.js' type='module')
+
+block content
   div(style=`background-image: url(${user.banner});`).profileInfoBox
     img(src=user.profilePicture, style="width:20%; height:75%; border-radius: 50%;")
     div.profileDetails

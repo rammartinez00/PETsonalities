@@ -1,0 +1,69 @@
+h1 {
+  color: #555555;
+}
+
+.petLikes {
+  display: none;
+}
+
+.tagsTable {
+  display: none;
+}
+
+.collectionsTable {
+  display: none;
+}
+
+.commentsTable {
+  display: none;
+}
+
+.profileInfoBox {
+  background-color: #4552ce;
+  display: flex;
+  padding: 20px;
+  height: 400px;
+}
+
+.profileDetails {
+  display: block;
+  margin-left: 10px;
+}
+
+.dataTables {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  background-color: aquamarine;
+}
+
+.tables {
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 20px;
+}
+
+.userTable {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  width: 30%;
+}
+
+.petsTable {
+display: none;
+flex-direction: column;
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: lavender;
+  padding: 10px;
+  text-decoration: none;
+}
+.prof {
+  list-style-type: none;
+}

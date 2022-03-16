@@ -6,7 +6,7 @@ const db = require('../db/models');
 /* GET home page. */
 router.get('/', asyncHandler(async (req, res, next) => {
   const pets = await db.Pet.findAll({
-    order: ['createdAt'],
+    order: [['createdAt', 'DESC']],
     limit: 10
   })
 
