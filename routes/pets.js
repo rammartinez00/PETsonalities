@@ -117,14 +117,16 @@ router.post('/:id(\\d+)/edit', requireAuth, petValidators, csrfProtection, async
 
 }))
 
-// router.get('/pets/:id(\\d+)/delete', requireAuth, csrfProtection, asyncHandler(async(req, res) => {
-//         const id = parseInt(req.params.id);
-//         const pet =  await db.Pet.findByPk(id)
+router.get('/:id(\\d+)/delete', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const pet = await db.Pet.findByPk(id)
 
-//         res.render('delete-pet', )
-//     }))
+    checkPermissions(pet, res.locals.user);
 
-router.post('/:id(\\d+)/delete', asyncHandler(async (req, res) => {
+    res.render('delete-pet', { pet, csrfToken: req.csrfToken() })
+}))
+
+router.post('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id)
     const pet = await db.Pet.findByPk(id)
     checkPermissions(pet, res.locals.user);
