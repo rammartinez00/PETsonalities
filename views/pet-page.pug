@@ -19,9 +19,10 @@ block content
             p=`Birthday: ${pet.birthday}`
             p=`Pet Type: ${pet.PetType.type}`
             //p= tags
-    div
-        a(href=`/pets/${pet.id}/edit`)
-            button() Edit
-        
-
+    if user.id === pet.userId
+        div
+            a(href=`/pets/${pet.id}/edit`)
+                button() Edit
+            form(action=`/pets/${pet.id}/delete` method='post')
+                button() Delete
     
