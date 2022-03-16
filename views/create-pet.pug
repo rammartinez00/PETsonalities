@@ -10,13 +10,13 @@ block content
         input(type="hidden" name="userId" value=user.id)
         div 
         label(for="name") Name:
-        input(type="text" name="name" value=pet.name )
+        input(type="text" name="name" value=pet.name required)
         div 
         label(for="description") Description:
-        textarea(name="description" )=pet.description
+        textarea(name="description" required)=pet.description
         div 
         label(for="image") Image URL:
-        input(type="text" name="image" value=pet.image )
+        input(type="text" name="image" value=pet.image required)
         div 
         label(for="birthday") Birthday:
         input(type="date" name="birthday" value=pet.birthday)
