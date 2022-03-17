@@ -13,18 +13,21 @@ html
         link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
 
   body
+
     nav(class='navbar')
-      a(href='/') PETsonalities
+      a(href='/')
+       img(class='logo-image' src='https://user-images.githubusercontent.com/92604480/158726636-163e746a-c06a-44e7-8305-b9083f60e2f0.jpg')
       form(action="/" method="post").searchbar
         input(type="text" placeholder='Search').search
         ul()
-
       if locals.authenticated
         li.prof: a( href=`/users/${user.id}`) Profile
         div(): a(href='/pets/new') Create Pet Page
         span() Welcome #{user.fullName}!
-        form( action='/users/logout' method='post')
+        form(action='/users/logout' method='post')
           button(type='submit') Logout
+        //- a(href='/')
+        //-   img(class='loginAvatar' src=user.profilePicture)
       else
         span()
         a( href='/users/login') Login
