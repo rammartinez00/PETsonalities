@@ -12,7 +12,8 @@ block content
   ul
     each pet in pets 
       li
-        img(id='image' src=pet.image)
+        a(href=`/pets/${pet.id}`)
+          img(id='image' src=pet.image)
         a(href=`/pets/${pet.id}`)= pet.name
         span(id='description')= pet.description 
           

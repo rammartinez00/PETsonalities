@@ -13,8 +13,10 @@ block content
       h4=`User ID: ${user.id}`
       p=`Biography: ${user.bio}`
       a(href=`Website Link${user.websiteLink}`) Test
-      a(href=`/users/${user.id}/edit`)
-        button() Edit Profile
+      if (user)
+        if (user.id === id)
+          a(href=`/users/${user.id}/edit`)
+            button() Edit Profile
   div.tables
     a(href=`/users/${user.id}`).likes Pet Likes
     a(href=`/users/${user.id}`).collections Collections
@@ -37,7 +39,8 @@ block content
     div(style="margin-top:20px; width:50%;").petsTable
       each pet in userPets
         div(style="display:flex; margin:25px; box-sizing:content-box; border: 2px solid green; border-radius:25px; background-color:lavender;")
-          img(src=pet.image style="width:100px; border-radius:50%;")
+          a(href=`/pets/${pet.id}`)
+            img(src=pet.image style="width:100px; border-radius:50%;")
           div(style="font-weight:bold; padding:10px;")= pet.name
     table.commentsTable
       thead

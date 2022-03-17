@@ -1,6 +1,15 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
+const { requireAuth } = require('../auth');
+
+const checkPermissions = (userId, currentUser) => {
+  if (userId !== currentUser.id) {
+    const err = new Error('Illegal operation');
+    err.status = 403;
+    throw err;
+  }
+}
 
 const {
   csrfProtection,
@@ -128,7 +137,7 @@ router.get(
   "/:id(\\d+)",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const user = await db.User.findByPk(id);
     const userPets = await db.Pet.findAll({
       where: {
@@ -149,25 +158,26 @@ router.get(
 router.get(
   "/:id(\\d+)/edit",
   csrfProtection,
+  requireAuth,
   asyncHandler(async (req, res) => {
-    console.log(req.params);
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const user = await db.User.findByPk(id);
+    checkPermissions(id, user.id)
+
     res.render("user-profile-edit", {
       title: "Edit Profile",
       user,
+      id,
       csrfToken: req.csrfToken(),
     });
   })
 );
-router.use((req, res, next) => {
-  console.log(req.session.auth, "hhheeeeerrrreeee");
-  next();
-});
+
 
 /* POST 'users/id/edit' for editing user profile*/
 router.post(
   "/:id(\\d+)/edit",
+  requireAuth,
   csrfProtection,
   profileValidators,
   asyncHandler(async (req, res) => {
@@ -182,6 +192,8 @@ router.post(
     } = req.body;
     const id = req.params.id;
     const user = await db.User.findByPk(id);
+    checkPermissions(id, user.id)
+
     user.profilePicture = profilePicture;
     user.banner = banner;
     user.websiteLink = websiteLink;
@@ -198,6 +210,7 @@ router.post(
       res.render("user-profile-edit", {
         title: "Edit Profile",
         user,
+        id,
         errors,
         csrfToken: req.csrfToken(),
       });
