@@ -1,3 +1,12 @@
-window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!")
+
+window.addEventListener("DOMcontentload", (event)=>{
+    //likesButton = 
+
+
 })
+
+
+
+
+
+

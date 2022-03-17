@@ -9,12 +9,13 @@ append head
 
 block content
   h1 CHECK OUT THESE CUTE PETS
-  ul
-    each pet in pets 
-      li
-        div(style="display:flex; margin:25px; box-sizing:content-box; border: 2px solid red; border-radius:25px; background-color:lavender;")
-          img(id='image' src=pet.image style="width:400px; border-radius:50%")
-          div(id= "name" style="font-weight:bold; padding:10px;")= pet.name 
-          span(id='description')= pet.description 
+  each pet in pets 
+    div(id= "outside-box" style="display:flex; margin:25px; border: 2px solid red; border-radius:25px; background-color:lavender;")
+      img(id='image' src=pet.image style="width:300px; border-radius:50%")
+      span(id= "name" style="font-weight:bold; padding:10px")= pet.name
+        span(id='description' style="font-weight:normal; box-sizing:content-box")= pet.description
+          div(id="comments-box" style="margin:30px; box-sizing:content-box; border: 2px solid black; border-radius:15px")
+            label(id= 'comments-label' for="comments") Comments:
+     
 
           

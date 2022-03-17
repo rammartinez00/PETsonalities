@@ -17,3 +17,22 @@ h1 {
     justify-content: center;
 }
 
+
+#comments-box{
+    width: 200px;
+    height: 50px;
+    position: relative;
+    top: 70px;
+    right: 15px;
+}
+
+#comments-label{
+    font-size: 10px;
+
+}
+
+#outside-box{
+    width: 600px;
+}
+
+
