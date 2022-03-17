@@ -1,7 +1,9 @@
 extends layout
 include utils
+append head 
+  script(src='/javascripts/pet-page.js' type='module')
 block content
-    script(src='/javascripts/delete-pet.js' type='module')
+    
     div
         h1=pet.name
         image(src=`${pet.image}`)
@@ -25,8 +27,7 @@ block content
                     button(id='edit-btn') Edit
                 a(href=`/pets/${pet.id}/delete`)
                     button(id='delete-btn') Delete
-                //- form(action=`/pets/${pet.id}/delete` method='post')
-                    button() Delete
+                
     div
         //comments
         +validationErrorSummary(errors)
@@ -37,8 +38,12 @@ block content
             input(type="text" name="title" placeholder="add a title")
             textarea(name="content" placeholder="add a comment")
             button(type="submit") Submit
-    //- div.comment
-    //-     each comment in comments
-    //-         div= comment.title
-    //-         div= comment.content
-            //- form(action=`/comments/${comment.id}` method="")
+    div
+        each comment in comments
+          div(id=`commentbox-${comment.id}`)
+            div= comment.title
+            div= comment.content
+            button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
+            
+
+

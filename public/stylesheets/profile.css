@@ -56,7 +56,13 @@ h1 {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
+>>>>>>> ae89878c595843d64f9587b41ad837f780996e5f
 form {
   display: flex;
   flex-direction: column;
@@ -92,11 +98,12 @@ button {
   font-weight: bold;
   width: 100px;
 }
+<<<<<<< HEAD
 
-/* .loginAvatar {
-
-  vertical-align: right;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-} */
+.comment {
+  border: 2px solid black;
+  margin: 5px;
+  width: 400px;
+}
+=======
+>>>>>>> ae89878c595843d64f9587b41ad837f780996e5f
