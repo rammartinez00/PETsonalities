@@ -12,25 +12,19 @@ block content
 
   div(id="firstContainer" class="element")
     div(id="petsContainer" class="element")
-      each pet in pets 
+      each pet in pets
         div(id= "outside-box" style="display:flex; margin:25px; border: 2px solid red; border-radius:25px; background-color:lavender;")
            a(href=`/pets/${pet.id}`)
             img(id='image' src=pet.image style="width:200px; border-radius:50%")
-          span(id= "name" style="font-weight:bold; padding:10px")= pet.name
+            span(id= "name" style="font-weight:bold; padding:10px")= pet.name
             span(id='description' style="font-weight:normal; box-sizing:content-box")= pet.description
               div(id="comments-box" style="margin:30px; box-sizing:content-box; border: 2px solid black; border-radius:15px")
                 label(id= 'comments-label' for="comments") Comments:
                 button(id= "submit-comment" type="submit") Submit
-          button(id="like-button" type="submit") Like
-            div(id="likes") Like: 
+            button(id="like-button" type="submit") Like
+            div(id="likes") Like:
             span(id="likes-value")
     div(id="addContainer" class= "element")
       div(id="add")
         label(for='add') Hire one get two free!
-        a(href= "https://github.com/huyennguuyen") About Huyen 
-
-  
-     
-
-
-          
+        a(href= "https://github.com/huyennguuyen") About Huyen

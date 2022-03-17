@@ -1,6 +1,6 @@
-extends layout 
-
-block content 
+extends layout
+include utils
+block content
     script(src='/javascripts/delete-pet.js' type='module')
     div
         h1=pet.name
@@ -8,8 +8,6 @@ block content
     div
         p=pet.description
     div
-        //comments
-    div 
         //displays profiles that likes pet page
     div
         h2=`${pet.name}'s Hooman`
@@ -29,4 +27,14 @@ block content
                     button(id='delete-btn') Delete
                 //- form(action=`/pets/${pet.id}/delete` method='post')
                     button() Delete
-    
+    div
+        //comments
+        +validationErrorSummary(errors)
+        form(action="/comments" method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            input(type="hidden" name="userId" value=user.id)
+            input(type="hidden" name="petId" value=pet.id)
+            input(type="text" name="title" placeholder="add a title")
+            textarea(name="content" placeholder="add a comment")
+            button(type="submit") Submit
+    div
