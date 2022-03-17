@@ -11,7 +11,7 @@ block content
       label(for="Snarls Barkley")
       h2(name="Snarls Barkley" )=`Name: ${user.fullName}`
       h4=`User ID: ${user.id}`
-      p=`Biography ${user.bio}`
+      p=`Biography: ${user.bio}`
       a(href=`Website Link${user.websiteLink}`) Test
       a(href=`/users/${user.id}/edit`)
         button() Edit Profile
@@ -36,7 +36,7 @@ block content
           td displays user's collection
     div(style="margin-top:20px; width:50%;").petsTable
       each pet in userPets
-        div(style="display:flex; margin:25px; box-sizing:content-box; border: 2px solid red; border-radius:25px; background-color:lavender;")
+        div(style="display:flex; margin:25px; box-sizing:content-box; border: 2px solid green; border-radius:25px; background-color:lavender;")
           img(src=pet.image style="width:100px; border-radius:50%;")
           div(style="font-weight:bold; padding:10px;")= pet.name
     table.commentsTable

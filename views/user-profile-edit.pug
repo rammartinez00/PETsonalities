@@ -4,23 +4,18 @@ block content
     +validationErrorSummary(errors)
     form(action=`/users/${user.id}/edit` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
-        div
-            label(for="fullName") Full Name:
-            input(type="text" name="fullName" value=user.fullName required)
-        div
-            label(for="userName") Username:
-            input(type="text" name="userName" value=user.userName required)
-        div
-            label(for="email") Email:
-            input(type="text" name="email" value=user.email required)
-        div
-            label(for="profilePicture") Profile Picture:
-            input(type="text" name="profilePicture" value=user.profilePicture)
-        div
-            label(for="banner") Banner:
-            input(type="text" name="banner" value=user.banner)
-        div
-            label(for="websiteLink") Website Link:
-            input(type="text" name="websiteLink" value=user.websiteLink)
-        div
-            button(type="submit") Submit
+        label(for="fullName") Full Name:
+        input(type="text" name="fullName" value=user.fullName required)
+        label(for="userName") Username:
+        input(type="text" name="userName" value=user.userName required)
+        label(for="email") Email:
+        input(type="text" name="email" value=user.email required)
+        label(for="profilePicture") Profile Picture:
+        input(type="text" name="profilePicture" value=user.profilePicture)
+        label(for="banner") Banner:
+        input(type="text" name="banner" value=user.banner)
+        label(for="websiteLink") Website Link:
+        input(type="text" name="websiteLink" value=user.websiteLink)
+        label(for="bio") Bio:
+        textarea(name="bio" value=user.bio) 
+        button(type="submit") Submit
