@@ -56,7 +56,6 @@ h1 {
   flex-direction: column;
 }
 
-
 form {
   display: flex;
   flex-direction: column;
@@ -93,10 +92,8 @@ button {
   width: 100px;
 }
 
-/* .loginAvatar {
-
-  vertical-align: right;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-} */
+.comment {
+  border: 2px solid black;
+  margin: 5px;
+  width: 400px;
+}
