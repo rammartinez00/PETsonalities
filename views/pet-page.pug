@@ -1,9 +1,9 @@
 extends layout
 include utils
-append head 
+append head
   script(src='/javascripts/pet-page.js' type='module')
 block content
-    
+
     div
         h1=pet.name
         image(src=`${pet.image}`)
@@ -27,7 +27,7 @@ block content
                     button(id='edit-btn') Edit
                 a(href=`/pets/${pet.id}/delete`)
                     button(id='delete-btn') Delete
-                
+
     div
         //comments
         +validationErrorSummary(errors)
@@ -42,8 +42,10 @@ block content
         each comment in comments
           div(id=`commentbox-${comment.id}`)
             div= comment.title
-            div= comment.content
+            div(id=`post-content-${comment.id}`)= comment.content
             button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
-            
-
-
+            button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
+            form(class="hidden" id=`edit-form-${comment.id}`)
+                label(for="content") Content:
+                textarea(name="content" id=`content-field-${comment.id}` value=comment.content)
+                button(class="edit-submit-btn" id=`edit-btn-${comment.id}`) Submit
