@@ -137,7 +137,6 @@ router.post("/logout", (req, res) => {
 router.get(
   "/:id(\\d+)",
   csrfProtection,
-  requireAuth,
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const user = await db.User.findByPk(id);
