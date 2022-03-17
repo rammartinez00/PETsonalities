@@ -3,25 +3,27 @@ html
   head
       block head
         title #{title}
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@500&family=Wire+One&display=swap" rel="stylesheet")
         link(rel='stylesheet' href='/stylesheets/reset.css')
-        //- link(rel='stylesheet' href='/stylesheets/index.css')
+        link(rel='stylesheet' href='/stylesheets/profile.css')
         link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
 
   body
     nav(class='navbar')
-      a( href='/') Petsonalities
-      form(action="/" method="post")
-        input(type="text")
-        button(type="submit") Search
-        ul(class='navbar-nav')
+      a(href='/') PETsonalities
+      form(action="/" method="post").searchbar
+        input(type="text").search
+        ul()
       if locals.authenticated
         li.prof: a( href=`/users/${user.id}`) Profile
         div(): a(href='/pets/new') Create Pet Page
         span() Welcome #{user.fullName}!
         form( action='/users/logout' method='post')
-          button(class='btn btn-sm btn-warning' type='submit') Logout
+          button(type='submit') Logout
       else
-        span(class='navbar-text px-4')
+        span()
         a( href='/users/login') Login
         a( href='/users/signup') Sign Up
     block content

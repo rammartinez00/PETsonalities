@@ -132,9 +132,9 @@ router.get(
     const user = await db.User.findByPk(id);
     const userPets = await db.Pet.findAll({
       where: {
-        userId: user.id
-      }
-    })
+        userId: user.id,
+      },
+    });
 
     res.render("user-profile", {
       title: "Profile",
@@ -161,9 +161,9 @@ router.get(
   })
 );
 router.use((req, res, next) => {
-  console.log(req.session.auth, "hhheeeeerrrreeee")
-  next()
-})
+  console.log(req.session.auth, "hhheeeeerrrreeee");
+  next();
+});
 
 /* POST 'users/id/edit' for editing user profile*/
 router.post(
@@ -171,8 +171,15 @@ router.post(
   csrfProtection,
   profileValidators,
   asyncHandler(async (req, res) => {
-    const { fullName, userName, email, profilePicture, banner, websiteLink } =
-      req.body;
+    const {
+      fullName,
+      userName,
+      email,
+      profilePicture,
+      banner,
+      websiteLink,
+      bio,
+    } = req.body;
     const id = req.params.id;
     const user = await db.User.findByPk(id);
     user.profilePicture = profilePicture;
@@ -181,6 +188,7 @@ router.post(
     user.fullName = fullName;
     user.userName = userName;
     user.email = email;
+    user.bio = bio;
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
       await user.save();
