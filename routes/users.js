@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
+const { requireAuth } = require('../auth');
 
 const {
   csrfProtection,
@@ -127,6 +128,7 @@ router.post("/logout", (req, res) => {
 router.get(
   "/:id(\\d+)",
   csrfProtection,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const user = await db.User.findByPk(id);
@@ -149,6 +151,7 @@ router.get(
 router.get(
   "/:id(\\d+)/edit",
   csrfProtection,
+  requireAuth,
   asyncHandler(async (req, res) => {
     console.log(req.params);
     const id = req.params.id;
@@ -168,6 +171,7 @@ router.use((req, res, next) => {
 /* POST 'users/id/edit' for editing user profile*/
 router.post(
   "/:id(\\d+)/edit",
+  requireAuth,
   csrfProtection,
   profileValidators,
   asyncHandler(async (req, res) => {

@@ -4,6 +4,7 @@ block content
     +validationErrorSummary(errors)
     form(action=`/pets/${pet.id}/edit` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
+        input(type="hidden" name="userId" value=user.id)
         div 
         label(for="name") Name:
         input(type="text" name="name" value=pet.name required)
@@ -15,12 +16,13 @@ block content
         input(type="text" name="image" required value=pet.image)
         div 
         label(for="birthday") Birthday:
-        input(type="date" name="birthday" value=pet.birthday)
+        input(type="date" name="birthday" value=pet.birthday required)
         div 
         label(for='petTypeId') Pet Type:
         select(name='petTypeId')
             each petType in petTypes 
                 option(value=petType.id selected=(parseInt(petType.id) === parseInt(pet.petTypeId)))= petType.type
-        input(type="hidden" name="userId" value=user.id)
         div 
         button(type="submit") Submit Changes
+        a(href=`/pets/${pet.id}`)
+            button(type='submit') Cancel
