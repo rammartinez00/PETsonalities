@@ -5,23 +5,23 @@ append head
   script(src='/javascripts/profile.js' type='module')
 
 block content
-  div(style=`background-image: url(${user.banner});`).profileInfoBox
-    img(src=user.profilePicture, style="width:20%; height:75%; border-radius: 50%;")
+  div(style=`background-image: url(${userProfile.banner});`).profileInfoBox
+    img(src=userProfile.profilePicture, style="width:20%; height:75%; border-radius: 50%;")
     div.profileDetails
       label(for="Snarls Barkley")
-      h2(name="Snarls Barkley" )=`Name: ${user.fullName}`
-      h4=`User ID: ${user.id}`
-      p=`Biography: ${user.bio}`
-      a(href=`Website Link${user.websiteLink}`) Test
+      h2(name="Snarls Barkley" )=`Name: ${userProfile.fullName}`
+      h4=`User ID: ${userProfile.id}`
+      p=`Biography: ${userProfile.bio}`
+      a(href=`Website Link${userProfile.websiteLink}`) Test
       if (user)
-        if (user.id === id)
-          a(href=`/users/${user.id}/edit`)
+        if(user.id === id)
+          a(href=`/users/${userProfile.id}/edit`)
             button() Edit Profile
   div.tables
-    a(href=`/users/${user.id}`).likes Pet Likes
-    a(href=`/users/${user.id}`).collections Collections
-    a(href=`/users/${user.id}`).pets Pets
-    a(href=`/users/${user.id}`).comments Comments
+    a(href=`/users/${userProfile.id}`).likes Pet Likes
+    a(href=`/users/${userProfile.id}`).collections Collections
+    a(href=`/users/${userProfile.id}`).pets Pets
+    a(href=`/users/${userProfile.id}`).comments Comments
 
   div.dataTables
     table.petLikes
@@ -29,13 +29,13 @@ block content
         tr
           th Pet Likes
       tbody
-          td displays user likes
+          td displays userProfile likes
     table.collectionsTable
       thead
         tr
           th Collections
       tbody
-          td displays user's collection
+          td displays userProfile's collection
     div(style="margin-top:20px; width:50%;").petsTable
       each pet in userPets
         div(style="display:flex; margin:25px; box-sizing:content-box; border: 2px solid green; border-radius:25px; background-color:lavender;")
@@ -47,4 +47,4 @@ block content
         tr
           th Comments
       tbody
-          td displays user comments
+          td displays userProfile comments
