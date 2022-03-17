@@ -55,19 +55,7 @@ h1 {
   display: none;
   flex-direction: column;
 }
-.navbar a {
-  text-decoration: none;
-}
-.navbar {
-  text-decoration: none;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  background-color: #a6938f;
-  padding: 10px;
-}
-.prof {
-  list-style-type: none;
+
 }
 form {
   display: flex;
@@ -104,3 +92,4 @@ button {
   font-weight: bold;
   width: 100px;
 }
+
