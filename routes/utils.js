@@ -90,7 +90,7 @@ const profileValidators = [
   check("userName")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for user name")
-    .isLength({ max: 20 })
+    .isLength({ max: 50 })
     .withMessage("Username must not be longer than 20 characters")
     .custom((value, { req }) => {
       return db.User.findOne({ where: { userName: value } }).then((user) => {

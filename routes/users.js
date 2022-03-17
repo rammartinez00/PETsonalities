@@ -3,6 +3,15 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const { requireAuth } = require('../auth');
 
+const checkPermissions = (req, currentUser) => {
+  const urlUserId = parseInt(req.url.split('/')[1])
+  if (urlUserId !== currentUser.id) {
+    const err = new Error('Illegal operation');
+    err.status = 403;
+    throw err;
+  }
+}
+
 const {
   csrfProtection,
   asyncHandler,
@@ -153,9 +162,10 @@ router.get(
   csrfProtection,
   requireAuth,
   asyncHandler(async (req, res) => {
-    console.log(req.params);
     const id = req.params.id;
     const user = await db.User.findByPk(id);
+    checkPermissions(req, user.id)
+
     res.render("user-profile-edit", {
       title: "Edit Profile",
       user,
@@ -163,10 +173,7 @@ router.get(
     });
   })
 );
-router.use((req, res, next) => {
-  console.log(req.session.auth, "hhheeeeerrrreeee");
-  next();
-});
+
 
 /* POST 'users/id/edit' for editing user profile*/
 router.post(
@@ -186,6 +193,8 @@ router.post(
     } = req.body;
     const id = req.params.id;
     const user = await db.User.findByPk(id);
+    checkPermissions(req, user.id)
+
     user.profilePicture = profilePicture;
     user.banner = banner;
     user.websiteLink = websiteLink;
