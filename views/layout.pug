@@ -16,7 +16,7 @@ html
     nav(class='navbar')
       a(href='/') PETsonalities
       form(action="/" method="post").searchbar
-        input(type="text").search
+        input(type="text" placeholder='Search').search
         ul()
 
       if locals.authenticated
