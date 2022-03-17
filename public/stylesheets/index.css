@@ -45,11 +45,11 @@ h1 {
     top: 45px;
 }
 
-#firstContainer {
-    width: 650px;
+/* #petsContainer {
+    width: 800px;
     display: flex; 
     flex-direction: column;
-}
+} */
 
 #name {
     display: flex; 
@@ -61,6 +61,28 @@ h1 {
     top: 20px;
 }
 
+#firstContainer {
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+#addContainer {
+    border: 2px solid black;
+
+}
+
+#add {
+    width: 330px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    position: sticky;
+    top: 40px;
+    left: 50px;
+    
+}
 
 
 

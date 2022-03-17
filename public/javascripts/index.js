@@ -1,5 +1,5 @@
 
-window.addEventListener("DOMContentLoaded", (event)=>{
+window.addEventListener("DOMContentLoaded", ()=>{
     let likesValue = 0;
 
     const likes = document.getElementById("likes-value")
