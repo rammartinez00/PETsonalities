@@ -56,7 +56,6 @@ h1 {
   flex-direction: column;
 }
 
-}
 form {
   display: flex;
   flex-direction: column;
@@ -92,4 +91,3 @@ button {
   font-weight: bold;
   width: 100px;
 }
-
