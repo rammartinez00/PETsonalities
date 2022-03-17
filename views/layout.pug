@@ -8,19 +8,16 @@ html
         link(href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@500&family=Wire+One&display=swap" rel="stylesheet")
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/reset.css')
-        link(rel="icon" type="image/png" href="https://icons-for-free.com/iconfiles/png/512/paw-1326548861677045856.png")
         link(rel='stylesheet' href='/stylesheets/profile.css')
-        link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+        link(rel="icon" type="image/png" href="https://icons-for-free.com/iconfiles/png/512/paw-1326548861677045856.png")
 
   body
     nav(class='navbar')
       a(href='/') PETsonalities
       form(action="/" method="post").searchbar
         input(type="text" placeholder='Search').search
-        ul()
-
       if locals.authenticated
-        li.prof: a( href=`/users/${user.id}`) Profile
+        a.prof( href=`/users/${user.id}`) Profile
         div(): a(href='/pets/new') Create Pet Page
         span() Welcome #{user.fullName}!
         form( action='/users/logout' method='post')
