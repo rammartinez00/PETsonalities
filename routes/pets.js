@@ -64,11 +64,17 @@ router.post('/new', petValidators, requireAuth, csrfProtection, asyncHandler(asy
 
 }))
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+    // const user = res.local.user
     const id = parseInt(req.params.id)
     const pet = await db.Pet.findByPk(id, { include: [db.PetType, db.User] })
 
-    res.render('pet-page', { pet })
+
+    res.render('pet-page', {
+        // user,
+        pet,
+        csrfToken: req.csrfToken()
+    })
 }))
 
 router.get("/:id(\\d+)/edit", requireAuth, csrfProtection, asyncHandler(async (req, res) => {
@@ -134,5 +140,6 @@ router.post('/:id(\\d+)/delete', requireAuth, asyncHandler(async (req, res) => {
     await pet.destroy();
     res.redirect('/');
 }))
+
 
 module.exports = router

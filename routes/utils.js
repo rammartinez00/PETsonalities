@@ -119,6 +119,16 @@ const profileValidators = [
       });
     }),
 ];
+
+const commentValidator = [
+  check("title")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for title"),
+  check("content")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide content in the comment box before submitting")
+]
+
 // console.log(req.session.user)
 
 module.exports = {
@@ -128,4 +138,5 @@ module.exports = {
   loginValidators,
   petValidators,
   profileValidators,
+  commentValidator
 };
