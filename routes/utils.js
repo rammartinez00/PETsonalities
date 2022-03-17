@@ -13,8 +13,8 @@ const userValidator = [
   check("userName")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for user name")
-    .isLength({ max: 50 })
-    .withMessage("Username must not be longer than 50 characters")
+    .isLength({ max: 20 })
+    .withMessage("Username must not be longer than 20 characters")
     .custom((value) => {
       return db.User.findOne({ where: { userName: value } }).then((user) => {
         if (user) {
@@ -48,20 +48,12 @@ const userValidator = [
       'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
     ),
   check("confirmPassword")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for confirm password")
-    .isLength({ max: 50 })
-    .withMessage("confirm password must not be more than 50 characters long")
     .custom((value, { req }) => {
       if (value !== req.body.password) {
         throw new Error("Confirm Password does not match Password");
       }
       return true;
     })
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
-    .withMessage(
-      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
-    ),
 ];
 
 const loginValidators = [
