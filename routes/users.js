@@ -148,6 +148,7 @@ router.get(
     res.render("user-profile", {
       title: "Profile",
       user,
+      id,
       userPets,
       csrfToken: req.csrfToken(),
     });
@@ -167,7 +168,6 @@ router.get(
     res.render("user-profile-edit", {
       title: "Edit Profile",
       user,
-      id,
       csrfToken: req.csrfToken(),
     });
   })
@@ -190,7 +190,7 @@ router.post(
       websiteLink,
       bio,
     } = req.body;
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const user = await db.User.findByPk(id);
     checkPermissions(id, user)
 
@@ -210,7 +210,6 @@ router.post(
       res.render("user-profile-edit", {
         title: "Edit Profile",
         user,
-        id,
         errors,
         csrfToken: req.csrfToken(),
       });

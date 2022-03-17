@@ -14,7 +14,7 @@ block content
       p=`Biography: ${user.bio}`
       a(href=`Website Link${user.websiteLink}`) Test
       if (user)
-        if (user.id === id)
+        if(user.id === id)
           a(href=`/users/${user.id}/edit`)
             button() Edit Profile
   div.tables
