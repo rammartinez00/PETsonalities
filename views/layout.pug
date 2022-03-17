@@ -4,16 +4,16 @@ html
       block head
         title #{title}
         link(rel='stylesheet' href='/stylesheets/reset.css')
-        //- link(rel='stylesheet' href='/stylesheets/index.css')
-        link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+        link(rel='stylesheet' href='/stylesheets/navbar.css')
+        link(rel="icon" type="image/png" href="https://icons-for-free.com/iconfiles/png/512/paw-1326548861677045856.png")
 
   body
     nav(class='navbar')
       a( href='/') Petsonalities
       form(action="/" method="post")
-        input(type="text")
-        button(type="submit") Search
-        ul(class='navbar-nav')
+        input(type="text" placeholder= 'Search')
+        //- button(type="submit") Search
+      ul(class='navbar-nav')
       if locals.authenticated
         li.prof: a( href=`/users/${user.id}`) Profile
         div(): a(href='/pets/new') Create Pet Page
