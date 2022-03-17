@@ -22,7 +22,7 @@ h1 {
     width: 200px;
     height: 50px;
     position: relative;
-    top: 70px;
+    top: 35px;
     right: 15px;
 }
 
@@ -33,6 +33,19 @@ h1 {
 
 #outside-box{
     width: 600px;
+}
+
+#submit-comment {
+    width: 50px;
+    font-size: 10px;
+    height: 15px;
+}
+
+#like-button{
+    width: 70px;
+    height: 20px;
+    position: relative;
+    top: 45px;
 }
 
 
