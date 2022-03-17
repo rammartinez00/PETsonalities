@@ -137,18 +137,22 @@ router.get(
   "/:id(\\d+)",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const id = parseInt(req.params.id);
-    const user = await db.User.findByPk(id);
+    // const id = res.locals.user.id
+    const id = parseInt(req.params.id)
+    const user = res.locals.user
+    const userProfile = await db.User.findByPk(id)
     const userPets = await db.Pet.findAll({
       where: {
         userId: user.id,
       },
     });
-
+    console.log(req.session)
+    console.log(user.id)
     res.render("user-profile", {
       title: "Profile",
       user,
       id,
+      userProfile,
       userPets,
       csrfToken: req.csrfToken(),
     });
