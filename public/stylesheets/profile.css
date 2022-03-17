@@ -26,7 +26,8 @@ h1 {
 }
 
 .profileDetails {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-left: 10px;
 }
 
@@ -35,7 +36,6 @@ h1 {
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  background-color: aquamarine;
 }
 
 .tables {
@@ -52,18 +52,51 @@ h1 {
 }
 
 .petsTable {
-display: none;
-flex-direction: column;
-
+  display: none;
+  flex-direction: column;
 }
 
-.navbar {
+
+form {
   display: flex;
-  justify-content: space-between;
-  background-color: lavender;
-  padding: 10px;
-  text-decoration: none;
+  flex-direction: column;
 }
-.prof {
-  list-style-type: none;
+input {
+  width: 200px;
 }
+textarea {
+  width: 200px;
+}
+select {
+  width: 200px;
+  margin: 10px;
+}
+.searchbar {
+  width: 20%;
+}
+.search {
+  width: 60%;
+  transition: width 0.4s ease-in-out;
+}
+.search:focus {
+  width: 100%;
+}
+button {
+  /* margin: 5px; */
+  border: none;
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
+  background-color: #bf6415;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  width: 100px;
+}
+
+/* .loginAvatar {
+
+  vertical-align: right;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+} */

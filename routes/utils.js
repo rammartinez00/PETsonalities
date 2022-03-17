@@ -12,9 +12,9 @@ const userValidator = [
     .withMessage("Please provide a value for full name"),
   check("userName")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for full name")
-    .isLength({ max: 50 })
-    .withMessage("Username must not be longer than 50 characters")
+    .withMessage("Please provide a value for user name")
+    .isLength({ max: 20 })
+    .withMessage("Username must not be longer than 20 characters")
     .custom((value) => {
       return db.User.findOne({ where: { userName: value } }).then((user) => {
         if (user) {
@@ -48,20 +48,12 @@ const userValidator = [
       'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
     ),
   check("confirmPassword")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for confirm password")
-    .isLength({ max: 50 })
-    .withMessage("confirm password must not be more than 50 characters long")
     .custom((value, { req }) => {
       if (value !== req.body.password) {
         throw new Error("Confirm Password does not match Password");
       }
       return true;
     })
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
-    .withMessage(
-      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
-    ),
 ];
 
 const loginValidators = [
@@ -80,14 +72,16 @@ const petValidators = [
   check("description")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a description for your pet"),
-  check('image')
+  check("image")
     .isURL()
-    .withMessage('Please provide a valid image url'),
-  check('petTypeId')
+    .withMessage("Please provide a valid image url"),
+  check("petTypeId")
     .isInt()
-    .withMessage('Please select a pet type')
-]
-
+    .withMessage("Please select a pet type"),
+  check('birthday')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a birthday')
+];
 
 const profileValidators = [
   check("fullName")
@@ -95,13 +89,11 @@ const profileValidators = [
     .withMessage("Please provide a value for name"),
   check("userName")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for full name")
-    .isLength({ max: 50 })
-    .withMessage("Username must not be longer than 50 characters")
+    .withMessage("Please provide a value for user name")
+    .isLength({ max: 20 })
+    .withMessage("Username must not be longer than 20 characters")
     .custom((value, { req }) => {
-      console.log(req.session)
       return db.User.findOne({ where: { userName: value } }).then((user) => {
-        console.log(req.session, "in profile validator ========")
         if (user) {
           if (!(req.session.auth.userName === user.userName) && user)
             return Promise.reject(
@@ -128,8 +120,6 @@ const profileValidators = [
     }),
 ];
 // console.log(req.session.user)
-
-
 
 module.exports = {
   csrfProtection,

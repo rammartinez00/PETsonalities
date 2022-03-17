@@ -1,3 +1,4 @@
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -84,8 +85,6 @@ h1 {
     
 }
 
-
-
-
-
-
+a {
+    text-decoration: none;
+}

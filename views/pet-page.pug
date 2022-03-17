@@ -20,12 +20,13 @@ block content
             p=`Birthday: ${pet.birthday}`
             p=`Pet Type: ${pet.PetType.type}`
             //p= tags
-    if user.id === pet.userId
-        div
-            a(href=`/pets/${pet.id}/edit`)
-                button(id='edit-btn') Edit
-            a(href=`/pets/${pet.id}/delete`)
-                button(id='delete-btn') Delete
-            //- form(action=`/pets/${pet.id}/delete` method='post')
-                button() Delete
+    if (user)
+        if (user.id === pet.userId)
+            div
+                a(href=`/pets/${pet.id}/edit`)
+                    button(id='edit-btn') Edit
+                a(href=`/pets/${pet.id}/delete`)
+                    button(id='delete-btn') Delete
+                //- form(action=`/pets/${pet.id}/delete` method='post')
+                    button() Delete
     
