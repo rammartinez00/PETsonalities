@@ -166,12 +166,14 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
-    const user = await db.User.findByPk(id);
+    const userProfile = await db.User.findByPk(id);
+    const user = res.locals.user
     checkPermissions(id, user)
 
     res.render("user-profile-edit", {
       title: "Edit Profile",
       user,
+      userProfile,
       csrfToken: req.csrfToken(),
     });
   })
@@ -195,25 +197,27 @@ router.post(
       bio,
     } = req.body;
     const id = parseInt(req.params.id);
-    const user = await db.User.findByPk(id);
+    const userProfile = await db.User.findByPk(id);
+    const user = res.locals.user
     checkPermissions(id, user)
 
-    user.profilePicture = profilePicture;
-    user.banner = banner;
-    user.websiteLink = websiteLink;
-    user.fullName = fullName;
-    user.userName = userName;
-    user.email = email;
-    user.bio = bio;
+    userProfile.profilePicture = profilePicture;
+    userProfile.banner = banner;
+    userProfile.websiteLink = websiteLink;
+    userProfile.fullName = fullName;
+    userProfile.userName = userName;
+    userProfile.email = email;
+    userProfile.bio = bio;
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
-      await user.save();
-      res.redirect(`/users/${user.id}`);
+      await userProfile.save();
+      res.redirect(`/users/${userProfile.id}`);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("user-profile-edit", {
         title: "Edit Profile",
         user,
+        userProfile,
         errors,
         csrfToken: req.csrfToken(),
       });
