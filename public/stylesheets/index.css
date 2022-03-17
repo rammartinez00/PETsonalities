@@ -22,7 +22,7 @@ h1 {
     width: 200px;
     height: 50px;
     position: relative;
-    top: 35px;
+    top: 15px;
     right: 15px;
 }
 
@@ -31,9 +31,6 @@ h1 {
 
 }
 
-#outside-box{
-    width: 600px;
-}
 
 #submit-comment {
     width: 50px;
@@ -47,5 +44,26 @@ h1 {
     position: relative;
     top: 45px;
 }
+
+#firstContainer {
+    width: 650px;
+    display: flex; 
+    flex-direction: column;
+}
+
+#name {
+    display: flex; 
+    flex-direction: column;
+}
+
+#description {
+    position: relative; 
+    top: 20px;
+}
+
+
+
+
+
 
 
