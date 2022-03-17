@@ -12,7 +12,7 @@ const userValidator = [
     .withMessage("Please provide a value for full name"),
   check("userName")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for full name")
+    .withMessage("Please provide a value for user name")
     .isLength({ max: 50 })
     .withMessage("Username must not be longer than 50 characters")
     .custom((value) => {
