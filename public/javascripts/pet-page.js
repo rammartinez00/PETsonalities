@@ -34,21 +34,20 @@ for (let i = 0; i < editBtns.length; i++) {
     submitBtn.addEventListener("click", async (e) => {
       e.preventDefault()
       const contentData = document.getElementById(`content-field-${commentId}`).value
+
+      const res = await fetch(`/comments/${commentId}`, {
+        method: "PATCH",
+        body: JSON.stringify({ content: contentData }),
+        headers: { "Content-Type": "application/json" }
+      })
+
+      const data = await res.json();
+      if (data.message === "Success") {
+        const comment = document.getElementById(`post-content-${commentId}`)
+        comment.innerHTML = data.comment.content
+        form.classList.add("hidden")
+      }
     })
-
-    const res = await fetch(`/comments/${commentId}`, {
-      method: "PATCH",
-      body: JSON.stringify({ content: contentData }),
-      headers: { "Content-Type": "application/json" }
-    })
-
-    const data = await res.json();
-    if (data.message === "Success") {
-      const comment = document.getElementById(`post-content-${commentId}`)
-      comment.innerHTML = data.comment.content
-      form.classList.add("hidden")
-    }
-
 
   });
 }
