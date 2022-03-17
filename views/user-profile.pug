@@ -13,8 +13,10 @@ block content
       h4=`User ID: ${user.id}`
       p=`Biography: ${user.bio}`
       a(href=`Website Link${user.websiteLink}`) Test
-      a(href=`/users/${user.id}/edit`)
-        button() Edit Profile
+      if (user)
+        if (user.id === id)
+          a(href=`/users/${user.id}/edit`)
+            button() Edit Profile
   div.tables
     a(href=`/users/${user.id}`).likes Pet Likes
     a(href=`/users/${user.id}`).collections Collections

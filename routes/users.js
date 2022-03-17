@@ -3,9 +3,8 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const { requireAuth } = require('../auth');
 
-const checkPermissions = (req, currentUser) => {
-  const urlUserId = parseInt(req.url.split('/')[1])
-  if (urlUserId !== currentUser.id) {
+const checkPermissions = (userId, currentUser) => {
+  if (userId !== currentUser.id) {
     const err = new Error('Illegal operation');
     err.status = 403;
     throw err;
@@ -138,7 +137,7 @@ router.get(
   "/:id(\\d+)",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const user = await db.User.findByPk(id);
     const userPets = await db.Pet.findAll({
       where: {
@@ -161,13 +160,14 @@ router.get(
   csrfProtection,
   requireAuth,
   asyncHandler(async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const user = await db.User.findByPk(id);
-    checkPermissions(req, user.id)
+    checkPermissions(id, user.id)
 
     res.render("user-profile-edit", {
       title: "Edit Profile",
       user,
+      id,
       csrfToken: req.csrfToken(),
     });
   })
@@ -192,7 +192,7 @@ router.post(
     } = req.body;
     const id = req.params.id;
     const user = await db.User.findByPk(id);
-    checkPermissions(req, user.id)
+    checkPermissions(id, user.id)
 
     user.profilePicture = profilePicture;
     user.banner = banner;
@@ -210,6 +210,7 @@ router.post(
       res.render("user-profile-edit", {
         title: "Edit Profile",
         user,
+        id,
         errors,
         csrfToken: req.csrfToken(),
       });
