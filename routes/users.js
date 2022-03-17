@@ -162,7 +162,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const user = await db.User.findByPk(id);
-    checkPermissions(id, user.id)
+    checkPermissions(id, user)
 
     res.render("user-profile-edit", {
       title: "Edit Profile",
@@ -192,7 +192,7 @@ router.post(
     } = req.body;
     const id = req.params.id;
     const user = await db.User.findByPk(id);
-    checkPermissions(id, user.id)
+    checkPermissions(id, user)
 
     user.profilePicture = profilePicture;
     user.banner = banner;
