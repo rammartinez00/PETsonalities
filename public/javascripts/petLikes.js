@@ -1,27 +1,33 @@
 
 const likeButton = document.getElementById("like-button")
-// const petId = document.getElementById("petId").value
+const petId = document.getElementById("petId").value
 const likesValue = document.getElementById("likes-value")
 
-
+let counter = 0;
 
 likeButton.addEventListener("click", async (e) =>{
-    let petId = document.getElementById("petId").value
-
+    //let petId = document.getElementById("petId").value
+    e.preventDefault()
   //console.log(petId)
-    const res = await fetch("/api/petLikes", {
-        method: "POST",
-        body: JSON.stringify(petId),
-        headers: {
-            "Content-Type" : "application/json",
-        },
+    const res = await fetch("/api/petLikes")
+    // {
+    //     method: "POST",
+    //     body: JSON.stringify(petId),
+    //     headers: {
+    //         "Content-Type" : "application/json",
+    //     },
 
-    })
+    // })
 
-    const {petId: petIdServer, userId} = await res.json();
+    
+
+    const {petId} = await res.json();
+    counter++
     likeButton.style.color = "red"
-    likesValue.innerHTML = petIdServer
-    likesValue.innerHTML += userId
+    likesValue.innerHTML = counter
+    //likesValue.innerHTML += userId
+
+   
 
 
 })
