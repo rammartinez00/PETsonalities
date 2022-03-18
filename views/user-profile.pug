@@ -12,33 +12,34 @@ block content
       h2(name="userName")=`Name: ${userProfile.fullName}`
       h4=`User ID: ${userProfile.id}`
       p=`Biography: ${userProfile.bio}`
-      a(href=`Website Link${userProfile.websiteLink}`) Test
+      a(href=userProfile.websiteLink)=userProfile.websiteLink
       if (user)
         if(user.id === id)
           a(href=`/users/${userProfile.id}/edit`)
             button() Edit Profile
   div.tables
     a(href=`/users/${userProfile.id}`).likes Pet Likes
-    a(href=`/users/${userProfile.id}`).collections Collections
     a(href=`/users/${userProfile.id}`).pets Pets
     a(href=`/users/${userProfile.id}`).comments Comments
 
   div.dataTables
-    table.petLikes
-      thead
-        tr
-          th Pet Likes
-      tbody
-          td displays userProfile likes
-    div(style="margin-top:20px; width:50%;").petsTable
+    div.petLikes
+      div displays userProfile likes
+    div(style="margin-top:20px; width:100%;").petsTable
       each pet in userPets
-        div(style="display:flex; margin:25px; box-sizing:content-box; border: 2px solid green; border-radius:25px; background-color:lavender;")
-          a(href=`/pets/${pet.id}`)
+        div.commentDiv
+          a(href=`/pets/${pet.id}`).pic
             img(src=pet.image style="width:100px; border-radius:50%;")
-          div(style="font-weight:bold; padding:10px;")= pet.name
-    table.commentsTable
-      thead
-        tr
-          th Comments
-      tbody
-          td displays userProfile comments
+          div.inner
+            div(style="font-weight:bold; padding:10px;")= pet.name
+            div().content=`Description: ${pet.description}`
+    div.commentsTable
+      div.allComments
+        each comment in comments
+          div.commentDiv
+            a(href=`/pets/${comment.petId}`).pic
+              img(src=comment.Pet.image style="width:100px; border-radius:50%;")
+            div.inner
+              p(style="font-weight: bold;")=comment.Pet.name
+              p.content=`Comment: ${comment.content}`
+            

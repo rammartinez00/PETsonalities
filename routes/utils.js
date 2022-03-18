@@ -47,13 +47,12 @@ const userValidator = [
     .withMessage(
       'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
     ),
-  check("confirmPassword")
-    .custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error("Confirm Password does not match Password");
-      }
-      return true;
-    })
+  check("confirmPassword").custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error("Confirm Password does not match Password");
+    }
+    return true;
+  }),
 ];
 
 const loginValidators = [
@@ -72,15 +71,11 @@ const petValidators = [
   check("description")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a description for your pet"),
-  check("image")
-    .isURL()
-    .withMessage("Please provide a valid image url"),
-  check("petTypeId")
-    .isInt()
-    .withMessage("Please select a pet type"),
-  check('birthday')
+  check("image").isURL().withMessage("Please provide a valid image url"),
+  check("petTypeId").isInt().withMessage("Please select a pet type"),
+  check("birthday")
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a birthday')
+    .withMessage("Please provide a birthday"),
 ];
 
 const profileValidators = [
@@ -102,6 +97,9 @@ const profileValidators = [
         }
       });
     }),
+  check("websiteLink")
+    .isURL({ require_protocol: true })
+    .withMessage("Website Link must be a valid url with http:// or https://"),
 
   check("email")
     .exists({ checkFalsy: true })
@@ -126,8 +124,8 @@ const commentValidator = [
     .withMessage("Please provide a value for title"),
   check("content")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide content in the comment box before submitting")
-]
+    .withMessage("Please provide content in the comment box before submitting"),
+];
 
 // console.log(req.session.user)
 
@@ -138,5 +136,5 @@ module.exports = {
   loginValidators,
   petValidators,
   profileValidators,
-  commentValidator
+  commentValidator,
 };
