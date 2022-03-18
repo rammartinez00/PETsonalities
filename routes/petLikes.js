@@ -4,18 +4,39 @@ const { asyncHandler } = require("./utils")
 
 const db = require("../db/models")
 
-let counter = 0;
-
 router.post("/", asyncHandler(async (req, res) => {
-    const userId = res.locals.user.id
+    const user = res.locals.user
     const { petId } = req.body
-    console.log(petId)
-    const petLike = await db.PetLike.create({ userId, petId })
+    const petLikes = await db.PetLike.findAll()
+    const userPetLike = await db.PetLike.findOne({
+        where: {
+            userId: user.id,
+            petId
+        }
+    });
 
-    counter++
+    if (userPetLike) {
+        res.json({
+            liked: true,
+            likes: petLikes.length
+        })
+    } else {
+        const petLike = await db.PetLike.create({ userId: user.id, petId })
+        res.json({ likes: petLikes.length })
+    }
 
+}))
 
-    res.json({ likes: counter })
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id)
+    const petLike = await db.PetLike.findByPk(id);
+
+    if (petLike) {
+        await petLike.destroy();
+        res.json({ message: 'success' })
+    } else {
+        res.json({ message: 'fail' })
+    }
 }))
 
 module.exports = router;
