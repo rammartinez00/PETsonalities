@@ -6,24 +6,23 @@ const db = require ("../db/models")
 
 
 
-router.get("/", asyncHandler(async(req, res) => {
-   // const userId = res.locals.user.id
-     const {petId} = req.body
+router.post("/", asyncHandler(async(req, res) => {
+    const now = res.locals.user
+    const {petId, userId} = req.body
     
-    //const petLike = await db.PetLike.build({userId, petId})
-    //  const pet = await db.PetLike.findByPk(petId)
-   
-    // if(petLike){
-    
-    //     res.json({message: "success", likes: counter})
-    // }else {
-    //     res.json({message: "failed", likes: counter})
-    // }
-    
-    //res.json({likes: counter})
-    res.json({petId})
+    const petLike = await db.PetLike.findByPk(now.id)
+    //const newLike = await db. 
 
-   // res.render("index", {petLike})
+    // if((now.id !== petLike)){
+    //     const newPetLike = await db.PetLike.create({petId, userId})
+    // }
+    //const  = await db.PetLike.findByPk(petId)
+   
+   
+    
+    // res.json({petLike})
+
+   //res.render("index", {petLike})
 
 }))
 
