@@ -48,17 +48,17 @@ h1 {
 
 /* #petsContainer {
     width: 800px;
-    display: flex; 
+    display: flex;
     flex-direction: column;
 } */
 
 #name {
-    display: flex; 
+    display: flex;
     flex-direction: column;
 }
 
 #description {
-    position: relative; 
+    position: relative;
     top: 20px;
 }
 
@@ -73,18 +73,36 @@ h1 {
 }
 
 #add {
-    width: 330px;
+    color: #EDF5E1;
+    border-radius: 15px 50px;
+    background: #05386B;
+    padding: 40px;
+    margin-bottom: 20px;
+    width: 340px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #05386B;
+    position: sticky;
+    top: 100px;
+    left: 100px;
+    /* width: 330px;
     height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 2px solid black;
+    border-radius: 50px 15px;
     position: sticky;
     top: 40px;
-    left: 50px;
-    
+    left: 50px; */
+
 }
 
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Nerko One', cursive;
 }
