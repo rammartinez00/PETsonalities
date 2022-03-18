@@ -33,9 +33,10 @@ router.get("/", async (req, res) => {
                 { name: search },
                 { description: search }
             ]
-        }
+        },
+        include: db.PetType
     })
-
+    console.log(results)
     res.render('search', { results })
 })
 
