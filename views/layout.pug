@@ -10,6 +10,7 @@ html
         link(href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet")
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        //- link(rel='stylesheet' href='/stylesheets/user-login.css')
         link(rel='stylesheet' href='/stylesheets/profile.css')
         link(rel='stylesheet' href='/stylesheets/user-profile-edit.css')
         link(rel="icon" type="image/png" href="https://icons-for-free.com/iconfiles/png/512/paw-1326548861677045856.png")
@@ -22,6 +23,9 @@ html
        img(class='logo-image' src='https://user-images.githubusercontent.com/92604480/158726636-163e746a-c06a-44e7-8305-b9083f60e2f0.jpg')
       form(action="/" method="post").searchbar
         input(type="text" placeholder='Search').search
+        select(name= "searchDropDown" id="filter")
+          option(value="users") Users
+          option(value="pets") Pets
         ul()
       if locals.authenticated
         a.prof( href=`/users/${user.id}`) Profile
