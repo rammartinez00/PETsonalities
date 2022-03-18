@@ -3,17 +3,18 @@ extends layout
 include utils
 
 append head
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy")
     link(rel="stylesheet" href="/stylesheets/create-pet.css")
     script(src='/javascripts/create-pet.js' type='module')
 
 block content
     +validationErrorSummary(errors)
     div(id="firstContainer")
-        form(action="/pets/new" method="post")
+        form(action="/pets/new" method="post" id="form")
             input(type="hidden" name="_csrf" value=csrfToken)
             input(type="hidden" name="userId" value=user.id)
             div 
-            label(for="name") Name:
+            label(for="name" class="font") Name:
             input(type="text" name="name" value=pet.name required)
             div 
             label(for="description") Description:
