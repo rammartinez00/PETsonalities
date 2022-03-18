@@ -8,8 +8,8 @@ block content
   div(style=`background-image: url(${userProfile.banner});`).profileInfoBox
     img(src=userProfile.profilePicture, style="width:20%; height:75%; border-radius: 50%;")
     div.profileDetails
-      label(for="Snarls Barkley")
-      h2(name="Snarls Barkley" )=`Name: ${userProfile.fullName}`
+      label(for="userName")
+      h2(name="userName")=`Name: ${userProfile.fullName}`
       h4=`User ID: ${userProfile.id}`
       p=`Biography: ${userProfile.bio}`
       a(href=`Website Link${userProfile.websiteLink}`) Test
@@ -30,12 +30,6 @@ block content
           th Pet Likes
       tbody
           td displays userProfile likes
-    table.collectionsTable
-      thead
-        tr
-          th Collections
-      tbody
-          td displays userProfile's collection
     div(style="margin-top:20px; width:50%;").petsTable
       each pet in userPets
         div(style="display:flex; margin:25px; box-sizing:content-box; border: 2px solid green; border-radius:25px; background-color:lavender;")

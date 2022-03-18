@@ -6,14 +6,6 @@ h1 {
   display: none;
 }
 
-.tagsTable {
-  display: none;
-}
-
-.collectionsTable {
-  display: none;
-}
-
 .commentsTable {
   display: none;
 }
@@ -56,13 +48,6 @@ h1 {
   flex-direction: column;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> main
->>>>>>> ae89878c595843d64f9587b41ad837f780996e5f
 form {
   display: flex;
   flex-direction: column;
@@ -98,12 +83,12 @@ button {
   font-weight: bold;
   width: 100px;
 }
-<<<<<<< HEAD
-
 .comment {
   border: 2px solid black;
   margin: 5px;
   width: 400px;
 }
-=======
->>>>>>> ae89878c595843d64f9587b41ad837f780996e5f
+
+.hidden{
+  display: none;
+}
