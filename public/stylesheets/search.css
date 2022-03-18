@@ -1,0 +1,36 @@
+.content {
+  margin-top: 50px;
+  display: flex;
+  /* justify-items: center; */
+  align-items: center;
+  flex-direction: column;
+}
+.petResult {
+  padding: 10px;
+  display: flex;
+  background-color: lavender;
+  margin-bottom: 10px;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px black;
+}
+img {
+  width: 100px;
+  border-radius: 50%;
+}
+.resultContent {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-left: 10px;
+}
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.valid {
+  padding: 10px;
+  font-weight: bold;
+}
