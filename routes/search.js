@@ -40,9 +40,13 @@ router.get("/", async (req, res) => {
       include: db.User,
     },
   });
-  const pets = results[0].Pets;
-  console.log(pets);
-  res.render("search", { pets });
+  if (results.length) {
+    const pets = results[0].Pets;
+    console.log(pets);
+    res.render("search", { pets });
+  } else {
+    res.render("no-results");
+  }
 });
 
 module.exports = router;

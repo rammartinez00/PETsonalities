@@ -89,6 +89,9 @@ button {
   width: 400px;
 }
 
-.hidden{
+.hidden {
   display: none;
+}
+.tabledata {
+  border: solid black;
 }

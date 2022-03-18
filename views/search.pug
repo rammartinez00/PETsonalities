@@ -1,19 +1,16 @@
 extends layout
-
+append head 
+  link(rel='stylesheet' href='/stylesheets/search.css')
 block content
-    table
-        thead
-            tr
-                th Pets
-        tbody
-            each result in pets
-                tr
-                    td: a(href=`/pets/${result.id}`)
-                      img(style="width:100px" src=result.image)
-                    div
-                      td= `Name: ${result.name}`
-                      td: a(href=`/users/${result.userId}`)=`Visit My Owner ${result.User.userName}`
+  if pets
+    div.content
+      each result in pets
+        div.petResult
+          div
+           a(href=`/pets/${result.id}`)
+             img.petImage( src=result.image)
+          div.resultContent
+            div= `Name: ${result.name}`
+            div: a(href=`/users/${result.userId}`)=`Visit My Owner ${result.User.userName}!`
                     
-                    //- td()= ` Pet Type: ${result.PetType.type}`
-                    //- td: a(href=`/users/${result..userId}`) Visit my Owner!
-                    //- td: a(href=`/pets/${result.id}`) Visit my page!
+    
