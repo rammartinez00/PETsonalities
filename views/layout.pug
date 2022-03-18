@@ -4,12 +4,16 @@ html
       block head
         title #{title}
         link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fontawesome.com/icons")
         link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
         link(href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@500&family=Wire+One&display=swap" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet")
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/profile.css')
+        link(rel='stylesheet' href='/stylesheets/user-profile-edit.css')
         link(rel="icon" type="image/png" href="https://icons-for-free.com/iconfiles/png/512/paw-1326548861677045856.png")
+
 
   body
 
@@ -21,7 +25,9 @@ html
         ul()
       if locals.authenticated
         a.prof( href=`/users/${user.id}`) Profile
-        div(): a(href='/pets/new') Create Pet Page
+        //- div(): a(href='/pets/new') Create Pet Page
+        a(href='/pets/new')
+          img(class='addPet' src='https://user-images.githubusercontent.com/92604480/158930649-ee59abc0-b1f7-4ad5-a15f-9bd86c18a373.png')
         span() Welcome #{user.fullName}!
         form(action='/users/logout' method='post')
           button(type='submit') Logout

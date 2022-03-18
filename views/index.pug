@@ -13,9 +13,9 @@ block content
   div(id="firstContainer" class="element")
     div(id="petsContainer" class="element")
       each pet in pets
-        div(id= "outside-box" style="display:flex; margin:25px; border: 2px solid red; border-radius:25px; background-color:lavender;")
+        div(id= "outside-box" style="display:flex; margin:25px; border:2px solid #05386B; border-radius:15px 50px; background-color:#5cdb95;color:#EDF5E1 ")
           a(href=`/pets/${pet.id}`)
-            img(id='image' src=pet.image style="width:200px; border-radius:50%")
+            img(id='image' src=pet.image style="width:150px; border-radius:50%")
           span(id= "name" style="font-weight:bold; padding:10px")= pet.name
           input(id= "petId" hidden value=pet.id)
           span(id='description' style="font-weight:normal; box-sizing:content-box")= pet.description
@@ -24,5 +24,18 @@ block content
             span(id="likes-value")
     div(id="addContainer" class= "element")
       div(id="add")
-        label(for='add') Hire one get three free!
-        a(href= "https://github.com/huyennguuyen") About Huyen
+        label(for='add')
+        a(href= "https://github.com/huyennguuyen") Huyen
+          img(i class="fa-brands fa-github-alt")
+      div(id="add")
+        label(for='add')
+        a(href= "https://github.com/bandrewi") Andrew
+          img(i class="fa-brands fa-github-alt")
+      div(id="add")
+        label(for='add')
+        a(href= "https://github.com/rammartinez00") Rami
+          img(i class="fa-brands fa-github-alt")
+      div(id="add")
+        label(for='add')
+        a(href= "https://github.com/vee-alianza") Vee
+          img(i class="fa-brands fa-github-alt")
