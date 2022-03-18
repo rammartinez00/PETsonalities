@@ -24,7 +24,7 @@ router.post("/", asyncHandler(async (req, res) => {
         res.json({
             confirmed: true,
             sentPetLike: petLike,
-            likes: petLikes.length
+            likes: petLikes.length + 1
         })
     }
 

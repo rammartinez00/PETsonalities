@@ -18,8 +18,8 @@ block content
             img(id='image' src=pet.image style="width:150px; border-radius:50%")
           span(id= "name" style="font-weight:bold; padding:10px")= pet.name
           span(id='description' style="font-weight:normal; box-sizing:content-box")= pet.description
-          div(id="likes")= `Like:${pet.PetLikes.length}`
-            span(id="likes-value")
+          div(id="likes") Like:
+            span(id="likes-value")= pet.PetLikes.length
           //- if (!user)
           button(class="like-button" type="submit" petid=pet.id style='color:white') Like
           //- each like in pet.PetLikes

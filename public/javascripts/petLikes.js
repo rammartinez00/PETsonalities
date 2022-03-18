@@ -7,6 +7,7 @@ likeButton.forEach(button => {
         const petId = parseInt(petLikeButton.getAttribute('petid'))
         const petLikeId = parseInt(petLikeButton.getAttribute('petlikeid'))
         const petLikePetId = parseInt(petLikeButton.getAttribute('petlikepetid'))
+        const likeValue = document.getElementById('likes-value')
         let liked = petLikeButton.getAttribute('liked')
 
         if (!liked) {
@@ -19,13 +20,13 @@ likeButton.forEach(button => {
                 },
             })
 
-            const { sentPetLike, confirmed } = await res.json();
+            const { sentPetLike, confirmed, likes } = await res.json();
             if (confirmed) {
                 button.style.color = 'red'
                 petLikeButton.setAttribute('liked', true)
                 petLikeButton.setAttribute('petlikepetid', sentPetLike.petId)
                 petLikeButton.setAttribute('petlikeid', sentPetLike.id)
-                //petLike = sentPetLike
+                // likeValue.innerHTML = likes
             }
         }
 
