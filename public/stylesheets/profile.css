@@ -7,6 +7,7 @@ h1 {
 }
 
 .commentsTable {
+  width: 100%;
   display: none;
 }
 
@@ -26,8 +27,8 @@ h1 {
 .dataTables {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 .tables {
@@ -46,6 +47,8 @@ h1 {
 .petsTable {
   display: none;
   flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
 form {
@@ -85,7 +88,7 @@ button {
 }
 .comment {
   border: 2px solid black;
-  margin: 5px;
+
   width: 400px;
 }
 
@@ -94,4 +97,42 @@ button {
 }
 .tabledata {
   border: solid black;
+}
+.allComments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.commentDiv {
+  width: 60%;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  border: solid green;
+  border-radius: 25px;
+  margin: 10px;
+  background-color: lavender;
+}
+.content {
+  inline-size: 60%;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: left;
+}
+.inner {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+}
+/* .pet {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+} */
+.pic {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }

@@ -1,15 +1,15 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
-const { requireAuth } = require('../auth');
+const { requireAuth } = require("../auth");
 
 const checkPermissions = (userId, currentUser) => {
   if (userId !== currentUser.id) {
-    const err = new Error('Illegal operation');
+    const err = new Error("Illegal operation");
     err.status = 403;
     throw err;
   }
-}
+};
 
 const {
   csrfProtection,
@@ -138,24 +138,34 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     // const id = res.locals.user.id
-    const id = parseInt(req.params.id)
-    const user = res.locals.user
-    const userProfile = await db.User.findByPk(id)
-    const userPets = await db.Pet.findAll({
-      where: {
-        userId: user.id,
-      },
-    });
-    console.log(req.session)
-    console.log(user.id)
-    res.render("user-profile", {
-      title: "Profile",
-      user,
-      id,
-      userProfile,
-      userPets,
-      csrfToken: req.csrfToken(),
-    });
+    const id = parseInt(req.params.id);
+    const user = res.locals.user;
+    const userProfile = await db.User.findByPk(id);
+    if (user) {
+      const comments = await db.Comment.findAll({
+        where: {
+          userId: userProfile.id,
+        },
+        include: db.Pet,
+      });
+      const userPets = await db.Pet.findAll({
+        where: {
+          userId: userProfile.id,
+        },
+      });
+      console.log(comments);
+      res.render("user-profile", {
+        title: "Profile",
+        user,
+        id,
+        userProfile,
+        userPets,
+        comments,
+        csrfToken: req.csrfToken(),
+      });
+    } else {
+      res.render("log-in");
+    }
   })
 );
 
@@ -167,8 +177,8 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const userProfile = await db.User.findByPk(id);
-    const user = res.locals.user
-    checkPermissions(id, user)
+    const user = res.locals.user;
+    checkPermissions(id, user);
 
     res.render("user-profile-edit", {
       title: "Edit Profile",
@@ -178,7 +188,6 @@ router.get(
     });
   })
 );
-
 
 /* POST 'users/id/edit' for editing user profile*/
 router.post(
@@ -198,8 +207,8 @@ router.post(
     } = req.body;
     const id = parseInt(req.params.id);
     const userProfile = await db.User.findByPk(id);
-    const user = res.locals.user
-    checkPermissions(id, user)
+    const user = res.locals.user;
+    checkPermissions(id, user);
 
     userProfile.profilePicture = profilePicture;
     userProfile.banner = banner;
