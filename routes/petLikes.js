@@ -5,24 +5,29 @@ const { asyncHandler } = require("./utils")
 const db = require("../db/models")
 
 router.post("/", asyncHandler(async (req, res) => {
-    const user = res.locals.user
+    const currentUser = res.locals.user
     const { petId } = req.body
-    const petLikes = await db.PetLike.findAll()
+    const petLikes = await db.PetLike.findAll({
+        where: { petId }
+    })
     const userPetLike = await db.PetLike.findOne({
         where: {
-            userId: user.id,
+            userId: currentUser.id,
             petId
         }
     });
-
+    // console.log(petLikes)
+    // console.log(petLikes.length)
     if (userPetLike) {
         res.json({
             liked: true,
-            likes: petLikes.length
         })
     } else {
-        const petLike = await db.PetLike.create({ userId: user.id, petId })
-        res.json({ likes: petLikes.length })
+        const petLike = await db.PetLike.create({ userId: currentUser.id, petId })
+        res.json({
+            petLikeId: petLike.id,
+            likes: petLikes.length
+        })
     }
 
 }))
