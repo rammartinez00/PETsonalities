@@ -2,7 +2,6 @@ extends layout
 include utils
 block content
     +validationErrorSummary(errors)
-    h1 Edit Profile
     form(action=`/users/${user.id}/edit` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         label(for="fullName") Full Name:

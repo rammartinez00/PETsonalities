@@ -1,17 +1,17 @@
-extends layout 
+extends layout
 include utils
 block content
   script(src='/javascripts/demo.js' type='module')
   +validationErrorSummary(errors)
   form(id='loginForm' action="/users/login" method="post")
     input(type="hidden" name="_csrf" value=csrfToken)
-    div 
+    div
       label(for="email") Email:
       input(type="email" id='emailInput' name="email")
-    div 
+    div
       label(for="password") Password:
       input(type="password" id='passwordInput' name="password")
-    div 
+    div
       button(type="submit") Log In
     div
       button(id='demo-btn') Demo Login

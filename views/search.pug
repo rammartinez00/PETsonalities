@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    table
+        thead
+            tr
+                th Pets
+        tbody
+            each result in results
+                tr
+                    td: img(style="width:100px" src=result.image)
+                    td= result.name
+                    td: a(href=`/pets/${result.id}`) Visit my page!
