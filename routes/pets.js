@@ -19,7 +19,7 @@ router.get('/new', requireAuth, csrfProtection, async (req, res) => {
     const pet = db.Pet.build();
     const petType = db.PetType.build()
     const user = res.locals.user
-    const petTypes = await db.PetType.findAll({ include: db.Pet })
+    const petTypes = await db.PetType.findAll()
 
     res.render('create-pet', {
         user,
