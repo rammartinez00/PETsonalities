@@ -6,8 +6,14 @@ block content
             tr
                 th Pets
         tbody
-            each result in results
+            each result in pets
                 tr
-                    td: img(style="width:100px" src=result.image)
-                    td= result.name
-                    td: a(href=`/pets/${result.id}`) Visit my page!
+                    td: a(href=`/pets/${result.id}`)
+                      img(style="width:100px" src=result.image)
+                    div
+                      td= `Name: ${result.name}`
+                      td: a(href=`/users/${result.userId}`)=`Visit My Owner ${result.User.userName}`
+                    
+                    //- td()= ` Pet Type: ${result.PetType.type}`
+                    //- td: a(href=`/users/${result..userId}`) Visit my Owner!
+                    //- td: a(href=`/pets/${result.id}`) Visit my page!
