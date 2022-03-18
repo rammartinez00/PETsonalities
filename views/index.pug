@@ -18,16 +18,17 @@ block content
             img(id='image' src=pet.image style="width:150px; border-radius:50%")
           span(id= "name" style="font-weight:bold; padding:10px")= pet.name
           span(id='description' style="font-weight:normal; box-sizing:content-box")= pet.description
-          div(id="likes") Like:
+          div(id="likes")= `Like:${pet.PetLikes.length}`
             span(id="likes-value")
-          input(class="pet-id" value=pet.id hidden)
-          button(class="like-button" liked=false petid=pet.id type="submit") Like
+          //- if (!user)
+          button(class="like-button" type="submit" petid=pet.id style='color:white') Like
           //- each like in pet.PetLikes
-            //- if (user && like.userId === user.id)
-            //-   button(class="like-button" type="submit" color='red') Like
-            //- else 
-            //-   button(class="like-button" type="submit") Like
-            //-   input(id='pet-like-id' value=like.id hidden)
+          //-   if (user && like.userId === user.id)
+          //-     - let liked= true
+          //-   if liked && user
+          //-     button(class="like-button" type="submit" petid=pet.id style='color:red') Like
+          //-   else if !liked && user
+          //-     button(class="like-button" type="submit" petid=pet.id style='color:black') Like
     div(id="addContainer" class= "element")
       div(id="add")
         label(for='add')

@@ -16,8 +16,7 @@ router.post("/", asyncHandler(async (req, res) => {
             petId
         }
     });
-    console.log(petLikes)
-    console.log(petLikes.length)
+
     if (userPetLike) {
         res.json({ liked: false })
     } else {
