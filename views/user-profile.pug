@@ -12,7 +12,7 @@ block content
       h2(name="userName")=`Name: ${userProfile.fullName}`
       h4=`User ID: ${userProfile.id}`
       p=`Biography: ${userProfile.bio}`
-      a(href=`Website Link${userProfile.websiteLink}`) Test
+      a(href=userProfile.websiteLink)=userProfile.websiteLink
       if (user)
         if(user.id === id)
           a(href=`/users/${userProfile.id}/edit`)
