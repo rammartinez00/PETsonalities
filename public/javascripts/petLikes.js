@@ -1,34 +1,45 @@
+const likeButton = document.querySelectorAll(".like-button")
+const petIds = document.querySelectorAll(".pet-id")
 
-const likeButton = document.getElementById("like-button")
-const petId = document.getElementById("pet-id").value
-const likesValue = document.getElementById("likes-value")
-const petLike = document.getElementById('pet-like-id')
+likeButton.forEach(button => {
+    button.addEventListener("click", async (e) => {
+        const petLikeButton = e.target
+        const petId = parseInt(petLikeButton.getAttribute('petid'))
+        const petLikeId = parseInt(petLikeButton.getAttribute('petlikeid'))
+        const petLikePetId = parseInt(petLikeButton.getAttribute('petlikepetid'))
+        const likeValue = document.getElementById('likes-value')
+        let liked = petLikeButton.getAttribute('liked')
 
+        if (!liked) {
+            console.log('post')
+            const res = await fetch("/api/petLikes", {
+                method: "post",
+                body: JSON.stringify({ petId }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
 
-likeButton.addEventListener("click", async (e) => {
-    const res = await fetch("/api/petLikes", {
-        method: "post",
-        body: JSON.stringify({ petId }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-
-    })
-
-    const { petLikeId, liked, likes } = await res.json();
-    if (liked) {
-        const res = await fetch(`/api/petLikes/${petLike.value}`, {
-            method: 'delete'
-        })
-        const { message } = await res.json()
-        if (message === 'success') {
-            likeButton.style.color = "white"
+            const { sentPetLike, confirmed, likes } = await res.json();
+            if (confirmed) {
+                button.style.color = 'red'
+                petLikeButton.setAttribute('liked', true)
+                petLikeButton.setAttribute('petlikepetid', sentPetLike.petId)
+                petLikeButton.setAttribute('petlikeid', sentPetLike.id)
+                // likeValue.innerHTML = likes
+            }
         }
-    } else {
-        petLike.value = petLikeId
-        likeButton.style.color = 'red'
-        likesValue.innerHTML = likes
-    }
 
-
+        if (liked && petLikePetId === petId) {
+            console.log('delete')
+            const res = await fetch(`/api/petLikes/${petLikeId}`, {
+                method: 'delete'
+            })
+            const { message } = await res.json()
+            if (message === 'success') {
+                button.style.color = "white"
+                petLikeButton.setAttribute('liked', false)
+            }
+        }
+    })
 })
