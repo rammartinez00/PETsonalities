@@ -21,11 +21,11 @@ html
     nav(class='navbar')
       a(href='/')
        img(class='logo-image' src='https://user-images.githubusercontent.com/92604480/158726636-163e746a-c06a-44e7-8305-b9083f60e2f0.jpg')
-      form(action="/" method="post").searchbar
-        input(type="text" placeholder='Search').search
-        select(name= "searchDropDown" id="filter")
-          option(value="users") Users
-          option(value="pets") Pets
+      form(action="/search" method="get").searchbar
+        input(name= "search" type="text" placeholder='Search').search
+        //- select(name= "dropdown" id="filter")
+        //-   option(value="users") Users
+        //-   option(value="pets") Pets
         ul()
       if locals.authenticated
         a.prof( href=`/users/${user.id}`) Profile
