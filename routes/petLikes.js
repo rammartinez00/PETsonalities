@@ -1,29 +1,47 @@
 const express = require("express");
 const router = express.Router();
-const {asyncHandler} = require ("./utils")
+const { asyncHandler } = require("./utils")
 
-const db = require ("../db/models")
+const db = require("../db/models")
 
+router.post("/", asyncHandler(async (req, res) => {
+    const currentUser = res.locals.user
+    const { petId } = req.body
+    const petLikes = await db.PetLike.findAll({
+        where: { petId }
+    })
+    const userPetLike = await db.PetLike.findOne({
+        where: {
+            userId: currentUser.id,
+            petId
+        }
+    });
+    // console.log(petLikes)
+    // console.log(petLikes.length)
+    if (userPetLike) {
+        res.json({
+            liked: true,
+        })
+    } else {
+        const petLike = await db.PetLike.create({ userId: currentUser.id, petId })
+        res.json({
+            petLikeId: petLike.id,
+            likes: petLikes.length
+        })
+    }
 
+}))
 
-router.post("/", asyncHandler(async(req, res) => {
-    const now = res.locals.user
-    const {petId, userId} = req.body
-    
-    const petLike = await db.PetLike.findByPk(now.id)
-    //const newLike = await db. 
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id)
+    const petLike = await db.PetLike.findByPk(id);
 
-    // if((now.id !== petLike)){
-    //     const newPetLike = await db.PetLike.create({petId, userId})
-    // }
-    //const  = await db.PetLike.findByPk(petId)
-   
-   
-    
-    // res.json({petLike})
-
-   //res.render("index", {petLike})
-
+    if (petLike) {
+        await petLike.destroy();
+        res.json({ message: 'success' })
+    } else {
+        res.json({ message: 'fail' })
+    }
 }))
 
 module.exports = router;

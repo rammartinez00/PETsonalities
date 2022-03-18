@@ -7,8 +7,8 @@ const { requireAuth } = require("../auth");
 
 const router = express.Router();
 
-const checkPermissions = (pet, currentUser) => {
-    if (pet.userId !== currentUser.id) {
+const checkPermissions = (comment, currentUser) => {
+    if (comment.userId !== currentUser.id) {
         const err = new Error("Illegal operation");
         err.status = 403;
         throw err;
