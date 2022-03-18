@@ -2,6 +2,7 @@ extends layout
 include utils
 block content
     +validationErrorSummary(errors)
+    h1 Edit Profile
     form(action=`/users/${user.id}/edit` method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         label(for="fullName") Full Name:
@@ -17,5 +18,5 @@ block content
         label(for="websiteLink") Website Link:
         input(type="text" name="websiteLink" value=user.websiteLink)
         label(for="bio") Bio:
-        textarea(name="bio" value=user.bio) 
+        textarea(name="bio" value=user.bio)
         button(type="submit") Submit

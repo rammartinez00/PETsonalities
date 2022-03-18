@@ -30,22 +30,24 @@ block content
 
     div
         //comments
-        +validationErrorSummary(errors)
-        form(action="/comments" method="post")
-            input(type="hidden" name="_csrf" value=csrfToken)
-            input(type="hidden" name="userId" value=user.id)
-            input(type="hidden" name="petId" value=pet.id)
-            input(type="text" name="title" placeholder="add a title")
-            textarea(name="content" placeholder="add a comment")
-            button(type="submit") Submit
+        if user
+            +validationErrorSummary(errors)
+            form(action="/comments" method="post")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(type="hidden" name="userId" value=user.id)
+                input(type="hidden" name="petId" value=pet.id)
+                input(type="text" name="title" placeholder="add a title")
+                textarea(name="content" placeholder="add a comment")
+                button(type="submit") Submit
     div
         each comment in comments
           div(id=`commentbox-${comment.id}`)
             div= comment.title
             div(id=`post-content-${comment.id}`)= comment.content
-            button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
-            button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
-            form(class="hidden" id=`edit-form-${comment.id}`)
-                label(for="content") Content:
-                textarea(name="content" id=`content-field-${comment.id}` value=comment.content)
-                button(class="edit-submit-btn" id=`edit-btn-${comment.id}`) Submit
+            if user
+                button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
+                button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
+                form(class="hidden" id=`edit-form-${comment.id}`)
+                    label(for="content") Content:
+                    textarea(name="content" id=`content-field-${comment.id}` value=comment.content)
+                    button(class="edit-submit-btn" id=`edit-btn-${comment.id}`) Submit
