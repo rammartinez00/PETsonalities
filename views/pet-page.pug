@@ -13,7 +13,8 @@ block content
         //displays profiles that likes pet page
     div
         h2=`${pet.name}'s Hooman`
-        h2=`Pet Owner: ${pet.User.fullName}`
+        a(href=`/users/${pet.User.id}`)
+         h2=`Pet Owner: ${pet.User.fullName}`
     div
         h2=`${pet.name}'s Inpawmation`
         div
