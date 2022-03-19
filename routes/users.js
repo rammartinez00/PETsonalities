@@ -141,6 +141,12 @@ router.get(
     const id = parseInt(req.params.id);
     const user = res.locals.user;
     const userProfile = await db.User.findByPk(id);
+    const pets = await db.Pet.findAll();
+    const likes = await db.PetLike.findAll({
+      where: { userId: id },
+      order: [["createdAt", "DESC"]],
+      include: db.Pet,
+    });
     if (userProfile) {
       const comments = await db.Comment.findAll({
         where: {
@@ -153,11 +159,13 @@ router.get(
           userId: userProfile.id,
         },
       });
-      console.log(comments);
+      console.log(likes);
       res.render("user-profile", {
         title: "Profile",
         user,
         id,
+        likes,
+        pets,
         userProfile,
         userPets,
         comments,

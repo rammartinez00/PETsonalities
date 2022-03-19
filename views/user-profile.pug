@@ -23,8 +23,14 @@ block content
     a(href=`/users/${userProfile.id}`).comments Comments
 
   div.dataTables
-    div.petLikes
-      div displays userProfile likes
+    div(style="margin-top:20px; width:100%;").petLikes
+      each like in likes
+        div.commentDiv
+          a(href=`/pets/${like.Pet.id}`).pic
+            img(src=like.Pet.image style="width:100px; border-radius:50%;")
+          div.inner
+            div(style="font-weight:bold; padding:10px;")= like.Pet.name
+            div().content=`Description: ${like.Pet.description}`
     div(style="margin-top:20px; width:100%;").petsTable
       each pet in userPets
         div.commentDiv
