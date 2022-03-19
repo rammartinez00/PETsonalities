@@ -20,10 +20,8 @@ const {
 } = require("./utils");
 const db = require("../db/models");
 const { loginUser, logoutUser } = require("../auth");
-// const { Sequelize } = require("../db/models");
-// const Op = Sequelize.Op;
 
-var router = express.Router();
+const router = express.Router();
 
 /* GET users listing. */
 router.get(
@@ -87,12 +85,6 @@ router.post(
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
-    // if (loginName.includes("@")) {
-    //   var email = loginName;
-    // } else {
-    //   var userName = loginName;
-    // }
-
     const validatorErrors = validationResult(req);
     let errors = [];
     if (validatorErrors.isEmpty()) {
@@ -135,12 +127,16 @@ router.post("/logout", (req, res) => {
 
 router.get(
   "/:id(\\d+)",
-  csrfProtection,
   asyncHandler(async (req, res) => {
-    // const id = res.locals.user.id
     const id = parseInt(req.params.id);
     const user = res.locals.user;
     const userProfile = await db.User.findByPk(id);
+    const pets = await db.Pet.findAll();
+    const likes = await db.PetLike.findAll({
+      where: { userId: id },
+      order: [["createdAt", "DESC"]],
+      include: db.Pet,
+    });
     if (userProfile) {
       const comments = await db.Comment.findAll({
         where: {
@@ -153,15 +149,16 @@ router.get(
           userId: userProfile.id,
         },
       });
-      console.log(comments);
+      console.log(likes);
       res.render("user-profile", {
         title: "Profile",
         user,
         id,
+        likes,
+        pets,
         userProfile,
         userPets,
         comments,
-        csrfToken: req.csrfToken(),
       });
     } else {
       res.render("log-in");
@@ -231,10 +228,6 @@ router.post(
         csrfToken: req.csrfToken(),
       });
     }
-    // res.render("user-profile-edit", {
-    //   title: "Edit Profile",
-    //   csrfToken: req.csrfToken(),
-    // })
   })
 );
 

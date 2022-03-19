@@ -1,24 +1,24 @@
 const express = require("express");
+const { validationResult } = require("express-validator");
 
 const db = require("../db/models");
+const { requireAuth } = require('../auth');
 const { asyncHandler, csrfProtection, commentValidator } = require("./utils");
-const { validationResult } = require("express-validator");
-const { requireAuth } = require("../auth");
 
 const router = express.Router();
 
 const checkPermissions = (comment, currentUser) => {
   if (comment.userId !== currentUser.id) {
-    const err = new Error("Illegal operation");
+    const err = new Error('Illegal Operation')
     err.status = 403;
     throw err;
   }
-};
+}
 
 router.post(
   "/",
-  requireAuth,
   csrfProtection,
+  requireAuth,
   commentValidator,
   asyncHandler(async (req, res) => {
     const { title, content, userId, petId } = req.body;
@@ -26,7 +26,10 @@ router.post(
       include: [db.PetType, db.User],
     });
     const user = await db.User.findByPk(userId);
-    const comments = await db.Comment.findAll({ where: { petId } });
+    const comments = await db.Comment.findAll({
+      where: { petId },
+      order: [["createdAt", "DESC"]],
+    });
 
     const comment = db.Comment.build({
       title,
@@ -52,9 +55,12 @@ router.post(
   })
 );
 
-router.patch("/:id(\\d+)", async (req, res) => {
-  const id = req.params.id;
+router.patch("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id);
+  const currentUser = res.locals.user
   const comment = await db.Comment.findByPk(id);
+
+  checkPermissions(comment, currentUser)
 
   if (!(req.body.content.length > 1)) {
     res.json({ message: "Failure" });
@@ -67,17 +73,21 @@ router.patch("/:id(\\d+)", async (req, res) => {
   } else {
     res.json({ message: "Could not find comment" });
   }
-});
+}));
 
-router.delete("/:id(\\d+)", async (req, res) => {
-  const id = req.params.id;
+router.delete("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id);
+  const currentUser = res.locals.user
   const comment = await db.Comment.findByPk(id);
+
+  checkPermissions(comment, currentUser)
+
   if (comment) {
     await comment.destroy();
     res.json({ message: "Success" });
   } else {
     res.json({ message: "Failure" });
   }
-});
+}));
 
 module.exports = router;

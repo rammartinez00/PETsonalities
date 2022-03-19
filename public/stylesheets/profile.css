@@ -10,6 +10,9 @@ h2 {
 
 .petLikes {
   display: none;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
 .commentsTable {
