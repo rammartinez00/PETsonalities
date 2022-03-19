@@ -5,7 +5,7 @@ append head
   link(rel="stylesheet" href="/stylesheets/index.css")
   //- link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
   //- add page specific js
-
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
   link(rel="preconnect" href="https://fontawesome.com/v6/icons/github-alt?s=brands")
   script(src="/javascripts/petLikes.js" type="module")
 
@@ -24,7 +24,7 @@ block content
             if (user)
               if (petArr[index].exists)
                 button(id=index class=`like-button` type="submit" petid=pet.id petlikeid=petArr[index].exists style='color:red') Like
-              else   
+              else
                 button(id=index class=`like-button` type="submit" petid=pet.id style='color:white') Like
               span(id="likes-value")= pet.PetLikes.length
             if (!user)

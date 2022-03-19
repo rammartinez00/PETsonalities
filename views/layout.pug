@@ -29,7 +29,7 @@ html
         //-   option(value="pets") Pets
         ul()
       if locals.authenticated
-        a.prof( href=`/users/${user.id}` style="font-family:'Luckiest Guy'") Profile
+        a.prof( href=`/users/${user.id}` style="font-family:'Luckiest Guy'; font-size: 20px" ) Profile
         //- div(): a(href='/pets/new') Create Pet Page
         a(href='/pets/new')
           img(class='addPet' src='https://user-images.githubusercontent.com/92604480/158930649-ee59abc0-b1f7-4ad5-a15f-9bd86c18a373.png')
