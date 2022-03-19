@@ -166,7 +166,22 @@ router.post(
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const pet = await db.Pet.findByPk(id);
+    const petLikes = await db.PetLike.findAll({
+      where: { petId: id }
+    })
+    const comments = await db.Comment.findAll({
+      where: { petId: id }
+    })
+
     checkPermissions(pet, res.locals.user);
+
+    petLikes.forEach(async (petLike) => {
+      await petLike.destroy()
+    })
+
+    comments.forEach(async (comment) => {
+      await comment.destroy()
+    })
 
     await pet.destroy();
     res.redirect("/");
