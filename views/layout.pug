@@ -7,8 +7,8 @@ html
         link(rel="preconnect" href="https://fontawesome.com/icons")
         link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
         link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-        //- link(href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@500&family=Wire+One&display=swap" rel="stylesheet")
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy")
+        link(href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet")
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/reset.css')
         //- link(rel='stylesheet' href='/stylesheets/user-login.css')
@@ -29,11 +29,11 @@ html
         //-   option(value="pets") Pets
         ul()
       if locals.authenticated
-        a.prof( href=`/users/${user.id}`) Profile
+        a.prof( href=`/users/${user.id}` style="font-family:'Luckiest Guy'") Profile
         //- div(): a(href='/pets/new') Create Pet Page
         a(href='/pets/new')
           img(class='addPet' src='https://user-images.githubusercontent.com/92604480/158930649-ee59abc0-b1f7-4ad5-a15f-9bd86c18a373.png')
-        span(class="navbarWelcome") Welcome #{user.fullName}!
+        span(class="navbarWelcome" style="font-family:'Luckiest Guy'") Welcome #{user.fullName}!
         form(action='/users/logout' method='post')
           button(id='logoutBtn' type='submit') Logout
       else
