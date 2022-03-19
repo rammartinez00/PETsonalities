@@ -135,4 +135,29 @@ a {
 
 }
 
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#description {
+    font-family: 'Playfair Display', serif;
+}
+
+
+h1{
+    margin: 20px; 
+}
+
+.petImage {
+    margin: 8px;
+}
+
+.column {
+    display: flex; 
+    flex-direction: column; 
+}
+
+
 
