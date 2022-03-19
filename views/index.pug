@@ -19,6 +19,7 @@ block content
             img(id='image' src=pet.image style="width:150px; height: 150px; border-radius:50%")
           div(class="column")
             span(id="name" style="font-weight:bold; margin-top: 20px;")= pet.name
+            span(id="description-label") Bio:
             span(id='description' style="font-weight:normal")= pet.description
             div(id="likes")
               if (user)

@@ -143,6 +143,10 @@ a {
 
 #description {
     font-family: 'Playfair Display', serif;
+    position: relative; 
+    top: 20px;
+    margin-right: 20px;
+    font-size: 14px;
 }
 
 
@@ -157,7 +161,31 @@ h1{
 .column {
     display: flex; 
     flex-direction: column; 
+    inline-size: 150px;
+    overflow-wrap: break-word;
+    hyphens: manual;
+    box-sizing: content-box; 
 }
 
+#description-label{
+    margin-top: 10px;
+}
+
+#likes {
+    display: flex;
+    flex-direction: row;
+}
+
+#likes-value {
+    position: relative;
+    top: 20px; 
+
+}
+
+#contributors {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+
+}
 
 
