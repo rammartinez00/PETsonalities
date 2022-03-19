@@ -10,23 +10,23 @@ block content
         form(action=`/pets/${pet.id}/edit` method="post" id="form")
             input(type="hidden" name="_csrf" value=csrfToken)
             input(type="hidden" name="userId" value=user.id)
-            div 
+            div
             label(for="name" class="font") Name:
             input(type="text" name="name" value=pet.name required)
-            div 
+            div
             label(for="description" class="font") Description:
             textarea(name="description" required)= pet.description
-            div 
+            div
             label(for="image" class="font") Image:
             input(type="text" name="image" required value=pet.image)
-            div 
+            div
             label(for="birthday" class="font") Birthday:
             input(type="date" name="birthday" value=pet.birthday required)
-            div 
+            div
             label(for='petTypeId' class="font") Pet Type:
             select(name='petTypeId')
-                each petType in petTypes 
+                each petType in petTypes
                     option(value=petType.id selected=(parseInt(petType.id) === parseInt(pet.petTypeId)))= petType.type
-            button(type="submit") Submit Changes 
+            button(id='submitBtn' type="submit") Submit Changes
             a(href=`/pets/${pet.id}`)
-                button(id='edit-btn') Cancel
+                button(id='cancel-btn') Cancel

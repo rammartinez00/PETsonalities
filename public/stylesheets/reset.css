@@ -1,6 +1,7 @@
 body {
   /* background-image: url("https://i.redd.it/xcwwr2e9ji171.jpg"); */
   padding: 50px;
+<<<<<<< HEAD
   font: 14px "Wire";
   position: absolute;
   bottom: 0px;
@@ -40,14 +41,18 @@ z-index: -1;
 .gradient:hover::before {
   opacity: 1;
 } */
+=======
+  font: 20px 'Playfair Display', serif;
+}
+>>>>>>> main
 
-a {
+/* a {
   color: #00b7ff;
 }
 
 * {
   box-sizing: border-box;
-}
+} */
 
 h1,
 h2,
@@ -64,13 +69,14 @@ span,
 body,
 header,
 nav {
-  font-size: 1rem;
+  font-size: 20px;
   color: inherit;
   background-color: transparent;
   margin: 0;
   padding: 0;
   outline: 0;
   font-weight: normal;
+  font-family: 'Luckiest Guy';
 }
 
 h1 {
