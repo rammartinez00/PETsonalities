@@ -69,12 +69,12 @@ h1 {
     justify-content: center;
 }
 
-#name {
+/* #name {
     display: flex;
     flex-direction: column;
     font-family: 'Luckiest Guy';
     font-size: 20px;
-}
+} */
 
 #description {
     position: relative;
@@ -134,3 +134,5 @@ a {
     text-decoration: none;
 
 }
+
+
