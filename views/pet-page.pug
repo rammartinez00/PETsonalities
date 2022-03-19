@@ -36,7 +36,7 @@ block content
         //comments
         if user
             +validationErrorSummary(errors)
-            form(action="/comments" method="post")
+            form(action="/api/comments" method="post")
                 input(type="hidden" name="_csrf" value=csrfToken)
                 input(type="hidden" name="userId" value=user.id)
                 input(type="hidden" name="petId" value=pet.id)

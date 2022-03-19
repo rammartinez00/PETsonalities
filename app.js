@@ -15,7 +15,6 @@ const commentsRouter = require("./routes/comments");
 const petLikesRouter = require("./routes/petLikes");
 const searchRouter = require("./routes/search");
 
-
 const app = express();
 
 // view engine setup
@@ -47,10 +46,9 @@ app.use(restoreUser);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/pets", petsRouter);
-app.use("/comments", commentsRouter);
+app.use("/api/comments", commentsRouter);
 app.use("/api/petLikes", petLikesRouter);
 app.use("/search", searchRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -67,6 +65,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
 
 module.exports = app;
