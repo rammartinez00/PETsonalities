@@ -141,7 +141,7 @@ router.get(
     const id = parseInt(req.params.id);
     const user = res.locals.user;
     const userProfile = await db.User.findByPk(id);
-    if (user) {
+    if (userProfile) {
       const comments = await db.Comment.findAll({
         where: {
           userId: userProfile.id,
