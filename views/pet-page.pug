@@ -45,9 +45,8 @@ block content
     div
         each comment in comments
           div(id=`commentbox-${comment.id}`)
-            div= comment.title
             div(id=`post-content-${comment.id}`)= comment.content
-            if user
+            if user && comment.id === user.id
                 button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
                 button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
                 form(class="hidden" id=`edit-form-${comment.id}`)
