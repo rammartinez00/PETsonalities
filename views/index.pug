@@ -11,7 +11,6 @@ append head
 
 block content
   h1 CHECK OUT THESE CUTE PETS
-  div(class="gradient" )
   div(id="firstContainer" class="element")
     div(id="petsContainer" class="element")
       each pet, index in pets
@@ -29,8 +28,8 @@ block content
               span(id="likes-value")= pet.PetLikes.length
             if (!user)
               span(id="likes-value")= `Like: ${pet.PetLikes.length}`
-    div(class="footer")
-      a: i(href= "https://github.com/huyennguuyen" class= "fa-brands fa-github-alt" style= "yellow-color")
+    //- div(class="footer")
+    //-   a: i(href= "https://github.com/huyennguuyen" class= "fa-brands fa-github-alt" style= "yellow-color")
       //- div(id="add")
       //-   label(for='add')
       //-   a(href= "https://github.com/bandrewi") Andrew

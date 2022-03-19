@@ -12,6 +12,21 @@
   }
 
 
+/* .scrollbar {
+    background-color: lightblue;
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+} */
+
+/* .scrollbar {
+    background-color: lightblue;
+    width: 110px;
+    height: 110px;
+    overflow: auto;
+} */
+
+
 h1 {
     color: black;
     display: flex;
@@ -46,11 +61,13 @@ h1 {
     top: 45px;
 }
 
-/* #petsContainer {
+#petsContainer {
     width: 800px;
     display: flex;
     flex-direction: column;
-} */
+    align-items: center;
+    justify-content: center;
+}
 
 #name {
     display: flex;
@@ -70,21 +87,23 @@ h1 {
 
 } */
 #firstContainer {
-    display: grid;
-    grid-template-columns: 75% 25%;
+    display: flex;
+    /* grid-template-columns: 75% 25%; */
+    align-items: center;
+    justify-content: center;
 }
 
-#addContainer {
+/* #addContainer {
     border: 2px solid black;
 
-}
+} */
 
 .element{
     border: 50px;
 }
 
-#add {
-    color: #EDF5E1;
+/* #add { */
+    /* color: #EDF5E1;
     border-radius: 15px 50px;
     background: #05386B;
     padding: 40px;
@@ -97,7 +116,7 @@ h1 {
     border: 2px solid #05386B;
     position: sticky;
     top: 100px;
-    left: 100px;
+    left: 100px; */
     /* width: 330px;
     height: 200px;
     display: flex;
@@ -109,7 +128,7 @@ h1 {
     top: 40px;
     left: 50px; */
 
-}
+/* } */
 
 a {
     text-decoration: none;
