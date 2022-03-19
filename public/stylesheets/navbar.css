@@ -2,24 +2,30 @@
   display: flex;
   justify-content: space-around;
   background-color: transparent;
-  padding: 10px;
+  padding: 15px;
   text-decoration: none;
   text-align: center;
 }
 
 .navbar a {
   text-decoration: none;
+  position: relative;
+  bottom: 5px;
 }
 
 .logo-image {
   vertical-align: left;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
+  position: relative;
+  bottom: 12px;
 }
 
 .addPet {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
+  position: relative;
+  bottom: 12px;
 }
