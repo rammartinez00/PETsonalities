@@ -17,17 +17,17 @@ block content
             label(for="name" class="font") Name:
             input(type="text" name="name" value=pet.name required)
             div 
-            label(for="description") Description:
+            label(for="description" class="font") Description:
             textarea(name="description" required)=pet.description
             div 
-            label(for="image") Image URL:
+            label(for="image" class="font") Image URL:
             input(type="text" name="image" value=pet.image required)
             div 
-            label(for="birthday") Birthday:
+            label(for="birthday" class="font") Birthday:
             input(type="date" name="birthday" value=pet.birthday required)
             div 
-            label(for='petTypeId') Pet Type:
-            select(id='select-pet-type' name='petTypeId') 
+            label(for='petTypeId' class="font") Pet Type:
+            select(id='select-pet-type' name='petTypeId' ) 
                 option(value='' disabled selected hidden) --Select a Pet Type --
                 each petType in petTypes 
                     option(value=petType.id selected=(parseInt(petType.id) === parseInt(petTypeId)))= petType.type

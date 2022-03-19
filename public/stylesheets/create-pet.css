@@ -6,14 +6,8 @@
     padding: 50px;
 }
 
-/* #firstContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-} */
-
 .font{
-    font-family: "Luckiest Guy"
+    font-family: "Luckiest Guy";
+    margin: 10px;
 }
 
