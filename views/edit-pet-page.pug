@@ -11,19 +11,19 @@ block content
             input(type="hidden" name="_csrf" value=csrfToken)
             input(type="hidden" name="userId" value=user.id)
             div 
-            label(for="name" class="name") Name:
+            label(for="name" class="font") Name:
             input(type="text" name="name" value=pet.name required)
             div 
-            label(for="description" class="name") Description:
+            label(for="description" class="font") Description:
             textarea(name="description" required)= pet.description
             div 
-            label(for="image" class="name") Image:
+            label(for="image" class="font") Image:
             input(type="text" name="image" required value=pet.image)
             div 
-            label(for="birthday" class="name") Birthday:
+            label(for="birthday" class="font") Birthday:
             input(type="date" name="birthday" value=pet.birthday required)
             div 
-            label(for='petTypeId' class="name") Pet Type:
+            label(for='petTypeId' class="font") Pet Type:
             select(name='petTypeId')
                 each petType in petTypes 
                     option(value=petType.id selected=(parseInt(petType.id) === parseInt(pet.petTypeId)))= petType.type
