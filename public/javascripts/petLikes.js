@@ -6,12 +6,10 @@ likeButton.forEach(button => {
         const petLikeButton = e.target
         const petId = parseInt(petLikeButton.getAttribute('petid'))
         const petLikeId = parseInt(petLikeButton.getAttribute('petlikeid'))
-        //const petLikePetId = parseInt(petLikeButton.getAttribute('petlikepetid'))
-        //const likeValue = document.getElementById('likes-value')
-        //let liked = petLikeButton.getAttribute('liked')
+        const likesValues = document.querySelectorAll('#likes-value')
 
-        console.log('===========', petLikeId)
-        console.log(!petLikeId)
+
+        //likesValues.forEach(l => console.log('===============', 'works'))
         if (!petLikeId) {
             console.log('post')
             const res = await fetch("/api/petLikes", {
@@ -22,13 +20,17 @@ likeButton.forEach(button => {
                 },
             })
 
-            const { sentPetLike, confirmed, likes } = await res.json();
-            if (confirmed) {
+            const { sentPetLike, liked, likes } = await res.json();
+            if (liked) {
                 button.style.color = 'red'
-                //petLikeButton.setAttribute('liked', true)
-                //petLikeButton.setAttribute('petlikepetid', sentPetLike.petId)
-                //petLikeButton.setAttribute('petlikeid', sentPetLike.id)
-                // likeValue.innerHTML = likes
+                petLikeButton.setAttribute('petlikeid', sentPetLike.id)
+                likesValues.forEach((likesValue, idx) => {
+                    const petLikeButtonId = parseInt(petLikeButton.getAttribute('id'))
+
+                    if (idx === petLikeButtonId) {
+                        likesValue.innerHTML = likes
+                    }
+                })
             }
         }
 
@@ -39,9 +41,8 @@ likeButton.forEach(button => {
             })
             const { message } = await res.json()
             if (message === 'success') {
-                //petLikeButton.setAttribute('petLikeId', false)
+                petLikeButton.setAttribute('petlikeid', false)
                 button.style.color = "white"
-                //petLikeButton.setAttribute('liked', false)
             }
         }
     })

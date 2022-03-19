@@ -22,44 +22,11 @@ block content
           span(id='description' style="font-weight:normal")= pet.description
           div(id="likes") Like:
             span(id="likes-value")= pet.PetLikes.length
-          //- if (!user)
-<<<<<<< HEAD
-            button(class="like-button" type="submit" petid=pet.id style='color:white') Like
-          //- each like in pet.PetLikes
-          //-   if (user && like.userId === user.id)
           if (user)
-            if (!petArr[index].exists) 
-                button(class="like-button" type="submit" petid=pet.id petlikeid=petArr[index].exists style='color: white') Like
-            else 
-                button(class="like-button" petlikeId=petArr[index].exists type="submit" petid=pet.id style='color:red') Like
-    div(id="addContainer" class= "element")
-      div(id="add")
-        label(for='add')
-        a(href= "https://github.com/huyennguuyen") Huyen
-          img(i class="fa-brands fa-github-alt")
-      div(id="add")
-        label(for='add')
-        a(href= "https://github.com/bandrewi") Andrew
-          img(i class="fa-brands fa-github-alt")
-      div(id="add")
-        label(for='add')
-        a(href= "https://github.com/rammartinez00") Rami
-          img(i class="fa-brands fa-github-alt")
-      div(id="add")
-        label(for='add')
-        a(href= "https://github.com/vee-alianza") Vee
-          img(i class="fa-brands fa-github-alt")
-=======
-          button(class="like-button" type="submit" petid=pet.id style='color:white') Like
-
-          //- each like in pet.PetLikes
-          //-   if (user && like.userId === user.id)
-          //-     - let liked= true
-          //-   if liked && user
-          //-     button(class="like-button" type="submit" petid=pet.id style='color:red') Like
-          //-   else if !liked && user
-          //-     button(class="like-button" type="submit" petid=pet.id style='color:black') Like
-    //- div(id="addContainer" class= "element")
+            if (petArr[index].exists)
+              button(id=index class=`like-button` type="submit" petid=pet.id petlikeid=petArr[index].exists style='color:red') Like
+            else   
+              button(id=index class=`like-button` type="submit" petid=pet.id style='color:white') Like
 
     div(class="footer")
       a: i(href= "https://github.com/huyennguuyen" class= "fa-brands fa-github-alt" style= "yellow-color")
@@ -75,4 +42,3 @@ block content
       //-   label(for='add')
       //-   a(href= "https://github.com/vee-alianza") Vee
       //-     img(i class="fa-brands fa-github-alt")
->>>>>>> main
