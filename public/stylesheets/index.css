@@ -55,13 +55,20 @@ h1 {
 #name {
     display: flex;
     flex-direction: column;
+    font-family: 'Luckiest Guy';
+    font-size: 20px;
 }
 
 #description {
     position: relative;
     top: 20px;
+    text-align: center;
 }
+/* #outside-box{
 
+    width:50px;
+
+} */
 #firstContainer {
     display: grid;
     grid-template-columns: 75% 25%;
@@ -70,6 +77,10 @@ h1 {
 #addContainer {
     border: 2px solid black;
 
+}
+
+.element{
+    border: 50px;
 }
 
 #add {
@@ -101,13 +112,6 @@ h1 {
 }
 
 a {
-    /* text-decoration: none; */
-    font-weight: bold;
-    font-size: 25px;
-    font-family: 'Mulish', Arial, Helvetica, sans-serif;;
-}
-
-.yellow-color{
-    color:yellow;
+    text-decoration: none;
 
 }

@@ -6,7 +6,7 @@ append head
 
 block content
   div(style=`background-image: url(${userProfile.banner});`).profileInfoBox
-    img(src=userProfile.profilePicture, style="width:20%; height:75%; border-radius: 50%;")
+    img(src=userProfile.profilePicture, style="width:250px; height:250px; border-radius: 50%;")
     div.profileDetails
       label(for="userName")
       h2(name="userName")=`Name: ${userProfile.fullName}`
@@ -16,7 +16,7 @@ block content
       if (user)
         if(user.id === id)
           a(href=`/users/${userProfile.id}/edit`)
-            button() Edit Profile
+            button(id="editProfileBtn") Edit Profile
   div.tables
     a(href=`/users/${userProfile.id}`).likes Pet Likes
     a(href=`/users/${userProfile.id}`).pets Pets
@@ -42,4 +42,3 @@ block content
             div.inner
               p(style="font-weight: bold;")=comment.Pet.name
               p.content=`Comment: ${comment.content}`
-            
