@@ -43,6 +43,8 @@
   transition-duration: 0.4s;
   background-color: #a8a4a4;
   color: black;
+  position: relative;
+  top: 5px;
 }
 
 #logoutBtn:hover {
