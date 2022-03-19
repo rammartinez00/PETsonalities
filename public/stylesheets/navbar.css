@@ -13,6 +13,15 @@
   bottom: 5px;
 }
 
+.searchbar{
+  position: relative;
+  top: 7px;
+}
+
+.navbarWelcome{
+  position: relative;
+  top: 8px;
+}
 .logo-image {
   vertical-align: left;
   width: 40px;

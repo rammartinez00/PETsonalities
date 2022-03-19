@@ -33,7 +33,7 @@ html
         //- div(): a(href='/pets/new') Create Pet Page
         a(href='/pets/new')
           img(class='addPet' src='https://user-images.githubusercontent.com/92604480/158930649-ee59abc0-b1f7-4ad5-a15f-9bd86c18a373.png')
-        span() Welcome #{user.fullName}!
+        span(class="navbarWelcome") Welcome #{user.fullName}!
         form(action='/users/logout' method='post')
           button(id='logoutBtn' type='submit') Logout
       else
