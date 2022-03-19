@@ -10,46 +10,60 @@ router.get('/', asyncHandler(async (req, res, next) => {
     order: [['createdAt', 'DESC']],
     limit: 10,
     include: [db.PetLike]
-  }
-  )
+  })
 
   //console.log('=============like test', pets[0].PetLikes[0].userId)
 
-  let petArr = [];
+  //let petArr = [];
+  // console.log(pets[0])
+  // console.log('==============petlikes', pets[0].PetLikes)
+  // if (user) {
+  //   petArr = pets.map(pet => {
+  //     if (pet.PetLikes) {
+  //       for (let i = 0; i < pet.PetLikes.length; i++) {
+  //         if (pet.PetLikes[i].userId === user.id) {
+  //           return { exists: pet.PetLikes[i].id }
+  //         } else {
+  //           return { exists: false }
+  //         }
+  //       }
+  //     } 
+  //     else if (pet.PetLike) {
+  //       if (pet.PetLike.userId === user.Id) {
+  //         return { exists: pet.PetLike.id }
+  //       }
+  //       else {
+  //         return { exists: false }
+  //       }
+  //     } else return { exists: false }
+  //   })
+  // } else {
+  //   petArr = [{ exists: false }]
+  //   // pets.map(pet => {
+  //   //   return { exists: false }
+  //   // })
+  // }
+
+  // console.log(pets[0])
+  // console.log('==============petlikes', pets[0].PetLikes)
+  // console.log('==============petlikes[0]', pets[0].PetLikes[0].userId)
+  // console.log('============userId', user.id)
+  // console.log('===========statement', pets[0].PetLikes[0].userId === user.id)
 
   if (user) {
     petArr = pets.map(pet => {
-      if (pet.PetLikes) {
+      if (pet.PetLikes.length) {
         for (let i = 0; i < pet.PetLikes.length; i++) {
           if (pet.PetLikes[i].userId === user.id) {
-            return {
-              true: pet.PetLikes[i].id
-            }
-          } else {
-            return {
-              true: 'false'
-            }
-          }
+            return { exists: pet.PetLikes[i].id }
+          } else return { exists: false }
         }
-      } else if (pet.petLike) {
-        if (pet.petLike.userId === user.Id) {
-          return {
-            true: pet.PetLikes.id
-          }
-        } else {
-          return {
-            true: 'false'
-          }
-        }
-      } else return {
-        true: 'false'
+      } else {
+        return { exists: false }
       }
-    }
-    )
-  } else {
-    petArr = pets.map(pet => {
-      return { true: 'false' }
     })
+  } else {
+    petArr = [{ exists: false }]
   }
 
   console.log('================pet arr', petArr)

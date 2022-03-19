@@ -6,9 +6,9 @@ likeButton.forEach(button => {
         const petLikeButton = e.target
         const petId = parseInt(petLikeButton.getAttribute('petid'))
         const petLikeId = parseInt(petLikeButton.getAttribute('petlikeid'))
-        const petLikePetId = parseInt(petLikeButton.getAttribute('petlikepetid'))
-        const likeValue = document.getElementById('likes-value')
-        let liked = petLikeButton.getAttribute('liked')
+        //const petLikePetId = parseInt(petLikeButton.getAttribute('petlikepetid'))
+        //const likeValue = document.getElementById('likes-value')
+        //let liked = petLikeButton.getAttribute('liked')
 
         console.log('===========', petLikeId)
         console.log(!petLikeId)
@@ -25,9 +25,9 @@ likeButton.forEach(button => {
             const { sentPetLike, confirmed, likes } = await res.json();
             if (confirmed) {
                 button.style.color = 'red'
-                petLikeButton.setAttribute('liked', true)
-                petLikeButton.setAttribute('petlikepetid', sentPetLike.petId)
-                petLikeButton.setAttribute('petlikeid', sentPetLike.id)
+                //petLikeButton.setAttribute('liked', true)
+                //petLikeButton.setAttribute('petlikepetid', sentPetLike.petId)
+                //petLikeButton.setAttribute('petlikeid', sentPetLike.id)
                 // likeValue.innerHTML = likes
             }
         }
@@ -39,10 +39,10 @@ likeButton.forEach(button => {
             })
             const { message } = await res.json()
             if (message === 'success') {
-                petLikeButton.setAttribute('petLikeId', false)
+                //petLikeButton.setAttribute('petLikeId', false)
                 button.style.color = "white"
-                petLikeButton.setAttribute('liked', false)
+                //petLikeButton.setAttribute('liked', false)
             }
         }
     })
-
+})
