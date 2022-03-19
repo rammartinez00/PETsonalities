@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   Pet.associate = function (models) {
     Pet.hasMany(models.Comment, { foreignKey: 'petId' })
     Pet.hasMany(models.PetLike, { foreignKey: 'petId' })
+    // Pet.hasMany(models.PetLike, { as: 'petsLikedByUser', foreignKey: 'petId' })
     Pet.belongsTo(models.User, { foreignKey: 'userId' })
     Pet.belongsTo(models.PetType, { foreignKey: 'petTypeId' })
     Pet.belongsToMany(models.User, {

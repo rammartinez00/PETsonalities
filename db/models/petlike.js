@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {});
   PetLike.associate = function (models) {
-    // associations can be defined here
+    PetLike.belongsTo(models.Pet, { foreignKey: 'petId' })
+    // PetLike.belongsTo(models.Pet, { as: 'petsLikedByUser', foreignKey: 'petId' })
   };
   return PetLike;
 };

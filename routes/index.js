@@ -12,12 +12,28 @@ router.get('/', asyncHandler(async (req, res, next) => {
     include: [db.PetLike]
   })
 
-  // console.log(pets[0].PetLikes.length)
+  if (user) {
+    petArr = pets.map(pet => {
+      if (pet.PetLikes.length) {
+        for (let i = 0; i < pet.PetLikes.length; i++) {
+          if (pet.PetLikes[i].userId === user.id) {
+            return { exists: pet.PetLikes[i].id }
+          } else return { exists: false }
+        }
+      } else {
+        return { exists: false }
+      }
+    })
+  } else {
+    petArr = [{ exists: false }]
+  }
+
 
   res.render('index', {
     title: 'PETsonalities',
     pets,
     user,
+    petArr
   });
 
 }));
