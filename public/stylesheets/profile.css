@@ -1,6 +1,12 @@
 h1 {
   color: #555555;
 }
+h2{
+  font-weight: bold;
+}
+/* h4{
+
+} */
 
 .petLikes {
   display: none;
@@ -22,6 +28,7 @@ h1 {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  padding-left: 10px;
 }
 
 .dataTables {
@@ -75,15 +82,16 @@ select {
 .search:focus {
   width: 100%;
 }
+
 button {
   /* margin: 5px; */
   border: none;
   border-radius: 5px;
   padding: 4px;
   color: white;
-  background-color: #bf6415;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  background-color: #00AB66;
+  font-family: "Luckiest Guy";
+  font-weight: normal;
   width: 100px;
 }
 .comment {
@@ -135,4 +143,35 @@ button {
   display: flex;
   align-items: center;
   justify-items: center;
+}
+a {
+  text-decoration: none;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+#editProfileBtn{
+  transition-duration: 0.4s;
+  background-color: #797575;
+  color: black;
+}
+#editProfileBtn:hover{
+  background-color: #008CBA;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+a.pets,
+a.likes,
+a.comments{
+  color: black;
+}
+a.pets:hover,
+a.likes:hover,
+a.comments:hover{
+  background-color:#ff9800;
+  color: white;
 }
