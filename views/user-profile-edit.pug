@@ -1,21 +1,24 @@
 extends layout
 include utils
+append head
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy")
+    link(rel="stylesheet" href="/stylesheets/user-profile-edit.css")
 block content
     +validationErrorSummary(errors)
-    form(action=`/users/${user.id}/edit` method="post")
+    form(action=`/users/${user.id}/edit` method="post" id="form")
         input(type="hidden" name="_csrf" value=csrfToken)
-        label(for="fullName") Full Name:
-        input(type="text" name="fullName" value=user.fullName )
-        label(for="userName") Username:
-        input(type="text" name="userName" value=user.userName )
-        label(for="email") Email:
-        input(type="text" name="email" value=user.email )
-        label(for="profilePicture") Profile Picture:
+        label(for="fullName" class="font") Full Name:
+        input(type="text" name="fullName" value=user.fullName required)
+        label(for="userName" class="font") Username:
+        input(type="text" name="userName" value=user.userName required)
+        label(for="email" class="font") Email:
+        input(type="text" name="email" value=user.email required)
+        label(for="profilePicture" class="font") Profile Picture:
         input(type="text" name="profilePicture" value=user.profilePicture)
-        label(for="banner") Banner:
+        label(for="banner" class="font") Banner:
         input(type="text" name="banner" value=user.banner)
-        label(for="websiteLink") Website Link:
+        label(for="websiteLink" class="font") Website Link:
         input(type="text" name="websiteLink" value=user.websiteLink placeholder="example: google.com")
-        label(for="bio") Bio:
+        label(for="bio" class="font") Bio:
         textarea(name="bio" value=user.bio)
         button(type="submit") Submit

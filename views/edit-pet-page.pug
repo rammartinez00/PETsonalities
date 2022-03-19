@@ -1,29 +1,32 @@
 extends layout
 include utils
 append head
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy")
+    link(rel="stylesheet" href="/stylesheets/edit-pet.css")
     script(src='/javascripts/edit-pet.js' type='module')
 block content
     +validationErrorSummary(errors)
-    form(action=`/pets/${pet.id}/edit` method="post")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        input(type="hidden" name="userId" value=user.id)
-        div 
-        label(for="name") Name:
-        input(type="text" name="name" value=pet.name required)
-        div 
-        label(for="description") Description:
-        textarea(name="description" required)= pet.description
-        div 
-        label(for="image") Image:
-        input(type="text" name="image" required value=pet.image)
-        div 
-        label(for="birthday") Birthday:
-        input(type="date" name="birthday" value=pet.birthday required)
-        div 
-        label(for='petTypeId') Pet Type:
-        select(name='petTypeId')
-            each petType in petTypes 
-                option(value=petType.id selected=(parseInt(petType.id) === parseInt(pet.petTypeId)))= petType.type
-        button(type="submit") Submit Changes 
-    a(href=`/pets/${pet.id}`)
-        button(id='edit-btn') Cancel
+    div(id="firstContainer")
+        form(action=`/pets/${pet.id}/edit` method="post" id="form")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            input(type="hidden" name="userId" value=user.id)
+            div 
+            label(for="name" class="font") Name:
+            input(type="text" name="name" value=pet.name required)
+            div 
+            label(for="description" class="font") Description:
+            textarea(name="description" required)= pet.description
+            div 
+            label(for="image" class="font") Image:
+            input(type="text" name="image" required value=pet.image)
+            div 
+            label(for="birthday" class="font") Birthday:
+            input(type="date" name="birthday" value=pet.birthday required)
+            div 
+            label(for='petTypeId' class="font") Pet Type:
+            select(name='petTypeId')
+                each petType in petTypes 
+                    option(value=petType.id selected=(parseInt(petType.id) === parseInt(pet.petTypeId)))= petType.type
+            button(type="submit") Submit Changes 
+            a(href=`/pets/${pet.id}`)
+                button(id='edit-btn') Cancel
