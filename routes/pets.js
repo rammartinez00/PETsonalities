@@ -73,6 +73,7 @@ router.get(
   "/:id(\\d+)",
   csrfProtection,
   asyncHandler(async (req, res) => {
+    const user = res.locals.user
     const id = parseInt(req.params.id);
     const pet = await db.Pet.findByPk(id, { include: [db.PetType, db.User] });
     const comments = await db.Comment.findAll({
@@ -81,6 +82,7 @@ router.get(
     });
 
     res.render("pet-page", {
+      user,
       comments,
       pet,
       csrfToken: req.csrfToken(),

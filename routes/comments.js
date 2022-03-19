@@ -25,7 +25,7 @@ router.post(
     const pet = await db.Pet.findByPk(petId, {
       include: [db.PetType, db.User],
     });
-    const user = await db.User.findByPk(userId);
+    const user = res.locals.user;
     const comments = await db.Comment.findAll({
       where: { petId },
       order: [["createdAt", "DESC"]],
