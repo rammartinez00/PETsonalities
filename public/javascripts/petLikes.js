@@ -30,6 +30,12 @@ likeButton.forEach(button => {
             }
         }
 
+
+   
+
+
+})
+
         if (liked && petLikePetId === petId) {
             console.log('delete')
             const res = await fetch(`/api/petLikes/${petLikeId}`, {
@@ -43,3 +49,4 @@ likeButton.forEach(button => {
         }
     })
 })
+
