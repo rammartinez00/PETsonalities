@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     "turtle",
     "snake",
     "lizard",
-    "birds",
+    "bird",
     "rabbit",
     "guinea pig",
     "ferret",
