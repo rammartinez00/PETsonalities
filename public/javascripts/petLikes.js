@@ -39,10 +39,17 @@ likeButton.forEach(button => {
             const res = await fetch(`/api/petLikes/${petLikeId}`, {
                 method: 'delete'
             })
-            const { message } = await res.json()
+            const { message, likes } = await res.json()
             if (message === 'success') {
                 petLikeButton.setAttribute('petlikeid', false)
                 button.style.color = "white"
+                likesValues.forEach((likesValue, idx) => {
+                    const petLikeButtonId = parseInt(petLikeButton.getAttribute('id'))
+
+                    if (idx === petLikeButtonId) {
+                        likesValue.innerHTML = likes
+                    }
+                })
             }
         }
     })

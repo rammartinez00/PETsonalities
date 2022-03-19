@@ -33,16 +33,15 @@ router.post("/", asyncHandler(async (req, res) => {
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id)
     const petLike = await db.PetLike.findByPk(id);
-    //const comment = await db.Comment.findByPk(id)
-
+    //console.log(`====================comment`, comment)
     if (petLike) {
-        // const petLikes = await db.PetLike.findAll({
-        //     where: { petId: comment.petId }
-        // })
         await petLike.destroy();
+        const petLikes = await db.PetLike.findAll({
+            where: { petId: petLike.petId }
+        })
         res.json({
             message: 'success',
-            //likes: petLikes.length
+            likes: petLikes.length
         })
     } else {
         res.json({ message: 'fail' })
