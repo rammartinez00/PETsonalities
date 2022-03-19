@@ -48,5 +48,4 @@ likeButton.forEach(button => {
             }
         }
     })
-})
 

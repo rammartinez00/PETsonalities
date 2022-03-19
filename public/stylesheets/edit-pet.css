@@ -1,0 +1,12 @@
+
+#form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.font{
+    font-family: "Luckiest Guy";
+    margin: 10px;
+}
