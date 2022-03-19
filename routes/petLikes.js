@@ -16,17 +16,15 @@ router.post("/", asyncHandler(async (req, res) => {
             petId
         }
     });
-    // console.log(petLikes)
-    // console.log(petLikes.length)
+
     if (userPetLike) {
-        res.json({
-            liked: true,
-        })
+        res.json({ liked: false })
     } else {
         const petLike = await db.PetLike.create({ userId: currentUser.id, petId })
         res.json({
-            petLikeId: petLike.id,
-            likes: petLikes.length
+            confirmed: true,
+            sentPetLike: petLike,
+            likes: petLikes.length + 1
         })
     }
 
