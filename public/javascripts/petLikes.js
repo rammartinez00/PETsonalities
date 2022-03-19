@@ -10,7 +10,9 @@ likeButton.forEach(button => {
         const likeValue = document.getElementById('likes-value')
         let liked = petLikeButton.getAttribute('liked')
 
-        if (!liked) {
+        console.log('===========', petLikeId)
+        console.log(!petLikeId)
+        if (!petLikeId) {
             console.log('post')
             const res = await fetch("/api/petLikes", {
                 method: "post",
@@ -30,13 +32,14 @@ likeButton.forEach(button => {
             }
         }
 
-        if (liked && petLikePetId === petId) {
+        if (petLikeId) {
             console.log('delete')
             const res = await fetch(`/api/petLikes/${petLikeId}`, {
                 method: 'delete'
             })
             const { message } = await res.json()
             if (message === 'success') {
+                petLikeButton.setAttribute('petLikeId', false)
                 button.style.color = "white"
                 petLikeButton.setAttribute('liked', false)
             }

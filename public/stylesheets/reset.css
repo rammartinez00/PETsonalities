@@ -8,7 +8,7 @@ body {
   left: 0px;
   right: 0px;
 }
-.gradient{
+/* .gradient{
   position: absolute;
   bottom: 0px;
   top: 0px;
@@ -39,7 +39,7 @@ z-index: -1;
 }
 .gradient:hover::before {
   opacity: 1;
-}
+} */
 
 a {
   color: #00b7ff;
