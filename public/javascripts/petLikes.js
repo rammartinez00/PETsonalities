@@ -9,7 +9,7 @@ likeButton.forEach((button) => {
         const likesValues = document.querySelectorAll("#likes-value");
 
         if (!petLikeId) {
-            console.log('post')
+            //console.log('post')
             const res = await fetch("/api/petLikes", {
                 method: "post",
                 body: JSON.stringify({ petId }),
@@ -35,7 +35,7 @@ likeButton.forEach((button) => {
         }
 
         if (petLikeId) {
-            console.log('delete')
+            //console.log('delete')
             const res = await fetch(`/api/petLikes/${petLikeId}`, {
                 method: "delete",
             });
