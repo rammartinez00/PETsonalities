@@ -28,13 +28,17 @@ h1 {
 }
 
 .picture {
-    border: 2px solid black;
+    border: 2px solid rgb(199, 195, 195);
     width: 700px;
     height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.words {
+    
 }
 
 

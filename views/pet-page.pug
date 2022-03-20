@@ -11,6 +11,7 @@ block content
                 div
                     h1=pet.name
                     image(src=`${pet.image}` style="height:300px; width:300px")
+            div(class="words")
             div
                 p(class= "description")=`Description: ${pet.description}`
             div
@@ -18,7 +19,7 @@ block content
             div.ownerInfoBox()
                 h2=`${pet.name}'s Hooman`
                 a(href=`/users/${pet.User.id}`)
-                h2=`Pet Owner: ${pet.User.fullName}`
+                    h2=`Pet Owner: ${pet.User.fullName}`
 
             div.petInfoBox()
                 h2=`${pet.name}'s Inpawmation`
