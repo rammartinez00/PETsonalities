@@ -37,23 +37,35 @@ router.get('/', asyncHandler(async (req, res, next) => {
   if (user) {
     petArr = pets.map(pet => {
       if (pet.PetLikes.length) {
+        //console.log('=====================pet', pet)
+        //console.log('====================petLikes', pet.PetLikes)
+        //console.log('petId', pet.id)
+        //console.log('petLikesLength', pet.PetLikes.length)
         const petLike = pet.PetLikes.find(petLike => {
-          return petLike.userId === user.id
           // console.log('petLikdId', petLike.id)
           // console.log('petLikeUserId', petLike.userId)
           // console.log('userId', user.id)
-          // console.log('------------------------------------------------')
+          //console.log('------------------------------------------------')
+          return petLike.userId === user.id
         })
+        console.log('found pet like', petLike)
+        console.log('----------------')
         if (petLike) {
+          //console.log('HERRRRRRRRRRRRRRRRRRE')
           return { exists: petLike.id }
         } else {
+          //console.log('THEREEEEEEEEEEEEEEEEEEEEEEEEEE')
           return { exists: false }
         }
+      } else {
+        return { exists: false }
       }
     })
   } else {
+    //console.log('SOMEEEEEWHEREEEEEEEE')
     petArr = [{ exists: false }]
   }
+
   console.log('=============petArr', petArr)
 
   res.render('index', {
