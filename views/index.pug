@@ -14,21 +14,21 @@ block content
   div(id="firstContainer" class="element")
     div(id="petsContainer" class="element")
       each pet, index in pets
-        div(id= `outside-box-${index}` style="display:flex; margin:20px; width:500px; background-color:#fff8dc; color: black; border-radius:25px; border:2px solid #05386B; box-shadow: 5px 10px 8px #888888")
+        div(id= `outside-box-${index}` style="display:flex; margin:20px; width:500px; background-color:#DDCCBB66; color: black; border-radius:25px; border:2px solid #05386B; box-shadow: 5px 10px 8px #888888")
           a(href=`/pets/${pet.id}` class="petImage")
             img(id='image' src=pet.image style="width:150px; height: 150px; border-radius:50%")
           div(class="column")
             span(id="name" style="font-weight:bold; margin-top: 20px;")= pet.name
             span(id='description' style="font-weight:normal")= pet.description
-            //- div(id="likes")
-            //-   if (user)
-            //-     if (petArr[index].exists)
-            //-       button(id=index class=`like-button` type="submit" petid=pet.id petlikeid=petArr[index].exists style='color:red') Like
-            //-     else
-            //-       button(id=index class=`like-button` type="submit" petid=pet.id style='color:white') Like
-            //-     span(id="likes-value")= pet.PetLikes.length
-            //-   if (!user)
-            //-     span(id="likes-value")= `Like: ${pet.PetLikes.length}`
+            div(id="likes")
+              if (user)
+                if (petArr[index].exists)
+                  button(id=index class=`like-button` type="submit" petid=pet.id petlikeid=petArr[index].exists style='color:red') Like
+                else
+                  button(id=index class=`like-button` type="submit" petid=pet.id style='color:white') Like
+                span(id="likes-value")= pet.PetLikes.length
+              if (!user)
+                span(id="likes-value")= `Like: ${pet.PetLikes.length}`
   footer
     div(id="add")
       span(id="contributors") Connect with the developers:
