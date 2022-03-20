@@ -1,6 +1,5 @@
-body{
+body {
   background-color: white;
-
 }
 h1 {
   color: #555555;
@@ -47,7 +46,6 @@ h2 {
   justify-content: space-evenly;
   padding-left: 20px;
   background-color: #dabcb2;
-
 }
 
 .userTable {
@@ -99,7 +97,7 @@ button {
   font-family: "Luckiest Guy";
   font-weight: normal;
   width: 100px;
-  height: 30px
+  height: 30px;
 }
 
 button:hover {
@@ -138,12 +136,12 @@ button:hover {
   border: 1px solid black;
   border-radius: 25px;
   margin: 10px;
-  background-color: #DCB6;
+  background-color: #dcb6;
   box-shadow: 5px 10px 8px rgb(216, 209, 209);
 }
 
 .content {
-  inline-size: 60%;
+  inline-size: 100%;
   overflow-wrap: break-word;
   hyphens: auto;
   text-align: left;
@@ -202,7 +200,7 @@ a.comments {
 a.pets:hover,
 a.likes:hover,
 a.comments:hover {
-  background-color: #B16B5E;
+  background-color: #b16b5e;
   color: white;
 }
 

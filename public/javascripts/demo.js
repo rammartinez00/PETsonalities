@@ -1,4 +1,4 @@
-console.log('demo')
+
 
 const demoButton = document.getElementById('demo-btn')
 

@@ -36,39 +36,38 @@ router.get(
     // }
 
 
-  if (user) {
-    petArr = pets.map(pet => {
-      if (pet.PetLikes.length) {
-        //console.log('=====================pet', pet)
-        //console.log('====================petLikes', pet.PetLikes)
-        //console.log('petId', pet.id)
-        //console.log('petLikesLength', pet.PetLikes.length)
-        const petLike = pet.PetLikes.find(petLike => {
-          // console.log('petLikdId', petLike.id)
-          // console.log('petLikeUserId', petLike.userId)
-          // console.log('userId', user.id)
-          //console.log('------------------------------------------------')
-          return petLike.userId === user.id
-        })
-        console.log('found pet like', petLike)
-        console.log('----------------')
-        if (petLike) {
-          //console.log('HERRRRRRRRRRRRRRRRRRE')
-          return { exists: petLike.id }
+    if (user) {
+      petArr = pets.map(pet => {
+        if (pet.PetLikes.length) {
+          //console.log('=====================pet', pet)
+          //console.log('====================petLikes', pet.PetLikes)
+          //console.log('petId', pet.id)
+          //console.log('petLikesLength', pet.PetLikes.length)
+          const petLike = pet.PetLikes.find(petLike => {
+            // console.log('petLikdId', petLike.id)
+            // console.log('petLikeUserId', petLike.userId)
+            // console.log('userId', user.id)
+            //console.log('------------------------------------------------')
+            return petLike.userId === user.id
+          })
+          console.log('found pet like', petLike)
+          console.log('----------------')
+          if (petLike) {
+            //console.log('HERRRRRRRRRRRRRRRRRRE')
+            return { exists: petLike.id }
+          } else {
+            //console.log('THEREEEEEEEEEEEEEEEEEEEEEEEEEE')
+            return { exists: false }
+          }
         } else {
-          //console.log('THEREEEEEEEEEEEEEEEEEEEEEEEEEE')
           return { exists: false }
         }
-      } else {
-        return { exists: false }
-      }
-    })
-  } else {
-    //console.log('SOMEEEEEWHEREEEEEEEE')
-    petArr = [{ exists: false }]
-  }
+      })
+    } else {
+      petArr = [{ exists: false }]
+    }
 
-  console.log('=============petArr', petArr)
+    console.log('=============petArr', petArr)
 
 
     res.render("index", {

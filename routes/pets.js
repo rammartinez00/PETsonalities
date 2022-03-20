@@ -26,7 +26,7 @@ router.get("/new", requireAuth, csrfProtection, async (req, res) => {
     pet,
     petType,
     petTypes,
-    // title: 'Create Pet Page',
+    title: 'Create Pet Page',
     csrfToken: req.csrfToken(),
   });
 });
@@ -84,7 +84,7 @@ router.get(
       order: [["createdAt", "DESC"]],
     });
 
-    console.log(petLikes)
+    //console.log(petLikes)
     let petLike
     if (user) {
       petLike = petLikes.find(petLike => petLike.userId === user.id)
@@ -96,6 +96,7 @@ router.get(
       comments,
       pet,
       petLike,
+      title: `${pet.name}'s Pet Page`,
       csrfToken: req.csrfToken(),
     });
   })
@@ -117,6 +118,7 @@ router.get(
       pet,
       petTypes,
       user,
+      title: 'Edit Pet Page',
       csrfToken: req.csrfToken(),
     });
   })
