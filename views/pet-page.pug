@@ -30,7 +30,7 @@ block content
                     p=`Pet Type: ${pet.PetType.type}`
     if (user)
         if (user.id === pet.userId)
-            div
+            div.comments-section
                 a(href=`/pets/${pet.id}/edit`)
                     button(id='edit-btn') Edit
                 a(href=`/pets/${pet.id}/delete`)
@@ -40,20 +40,22 @@ block content
         //comments
         if user
             +validationErrorSummary(errors)
-            form(action="/api/comments" method="post")
+            form(action="/api/comments" method="post" class= "comments-section")
                 input(type="hidden" name="_csrf" value=csrfToken)
                 input(type="hidden" name="userId" value=user.id)
                 input(type="hidden" name="petId" value=pet.id)
                 textarea(name="content" placeholder="add a comment")
-                button(type="submit") Submit
+                button(type="submit" class="lowered") Submit
     div
         each comment in comments
           div(id=`commentbox-${comment.id}`)
-            div(id=`post-content-${comment.id}`)= comment.content
+            div(id=`post-content-${comment.id}` class="comments-section")= comment.content
             if user && comment.userId === user.id
-                button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
-                button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
-                form(class="hidden" id=`edit-form-${comment.id}`)
-                    label(for="content") Content:
-                    textarea(name="content" id=`content-field-${comment.id}` value=comment.content)
-                    button(class="edit-submit-btn" id=`edit-btn-${comment.id}` style="background-color: 00AB66;") Submit
+                div.comments-section.lowered
+                    button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
+                    button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
+                div.comments-section
+                    form(class="hidden" id=`edit-form-${comment.id}`)
+                        label(for="content") Content:
+                        textarea(name="content" id=`content-field-${comment.id}` value=comment.content)
+                        button(class="edit-submit-btn" id=`edit-btn-${comment.id}` style="background-color: 00AB66;") Submit
