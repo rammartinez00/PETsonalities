@@ -1,5 +1,5 @@
 body{
-  background-color: #DCB6;
+  background-color: #cc6984;
 
 }
 h1 {
@@ -25,7 +25,7 @@ h2 {
 }
 
 .profileInfoBox {
-  background-color: #DCB6;
+  background-color: #cc6984;
   display: flex;
   padding: 20px;
   height: 400px;
@@ -138,7 +138,7 @@ button:hover {
   border: 1px solid black;
   border-radius: 25px;
   margin: 10px;
-  background-color: #B9C5;
+  background-color: #DCB6;
   box-shadow: 5px 10px 8px rgb(216, 209, 209);
 }
 .content {
@@ -174,12 +174,13 @@ a {
   display: inline-block;
 }
 #editProfileBtn {
+  font-size: 16px;
   transition-duration: 0.4s;
   background-color: #797575;
   color: black;
 }
 #editProfileBtn:hover {
-  background-color: #008cba;
+  background-color: #1579ac;
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
