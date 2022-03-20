@@ -37,6 +37,7 @@ module.exports = {
         {
           fullName: "Susan",
           userName: "ILOVECATS",
+          bio: "I AM A CRAZY CAT LADY AND A HORSE GIRL",
           email: "meow@meow.com",
           profilePicture:
             "https://www.thewrap.com/wp-content/uploads/2018/06/Robert-De-Niro-Cat-Lady-SNL.jpg",
