@@ -135,7 +135,7 @@ a {
 
 }
 
-.footer {
+footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
