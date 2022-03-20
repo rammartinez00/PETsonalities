@@ -14,7 +14,7 @@ block content
   div(id="firstContainer" class="element")
     div(id="petsContainer" class="element")
       each pet, index in pets
-        div(id= `outside-box-${index}` style="display:flex; margin:20px; width:500px; border:2px solid #05386B; border-radius:25px; background-color:#fff8dc; color: black;")
+        div(id= `outside-box-${index}` style="display:flex; margin:20px; width:500px; border:2px solid #05386B; border-radius:25px; background-color:#fff8dc; color: black; box-shadow: 5px 10px 8px #888888")
           a(href=`/pets/${pet.id}` class="petImage")
             img(id='image' src=pet.image style="width:150px; height: 150px; border-radius:50%")
           div(class="column")
