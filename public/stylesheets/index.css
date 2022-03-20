@@ -76,11 +76,11 @@ h1 {
     font-size: 20px;
 } */
 
-#description {
+/* #description {
     position: relative;
     top: 20px;
     text-align: center;
-}
+} */
 /* #outside-box{
 
     width:50px;
@@ -139,6 +139,7 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    background-color: #DABCB2;
 }
 
 #description {
@@ -163,22 +164,25 @@ h1{
     flex-direction: column; 
     inline-size: 150px;
     overflow-wrap: break-word;
-    hyphens: manual;
     box-sizing: content-box; 
 }
 
 #description-label{
     margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 #likes {
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top: 2px;
 }
 
 #likes-value {
     position: relative;
-    top: 20px; 
+    top: 45px; 
 
 }
 
@@ -187,5 +191,9 @@ h1{
     font-size: 16px;
 
 }
+
+
+
+
 
 
