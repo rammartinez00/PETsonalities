@@ -17,7 +17,7 @@ block content
                 div
                     if petLike
                         button(class='like-button' petid=pet.id petlikeid= petLike.id style='color:red' type="submit" ) Like
-                    else 
+                    else
                         button(class='like-button' petid=pet.id style='color:white' type="submit" ) Like
                 div
                 p(class= "description")=`Description: ${pet.description}`
@@ -25,14 +25,13 @@ block content
                 //displays profiles that likes pet page
             div.ownerInfoBox()
                 h2=`${pet.name}'s Hooman`
-                a(href=`/users/${pet.User.id}`)
+                a(href=`/users/${pet.User.id}` style="font: 'Playfair Display', serif;")
                     h2=`Pet Owner: ${pet.User.fullName}`
 
             div.petInfoBox()
-                h2=`${pet.name}'s Inpawmation`
-                div
-                    p=`Birthday: ${pet.birthday}`
-                    p=`Pet Type: ${pet.PetType.type}`
+                p=`${pet.name}'s Inpawmation`
+                p=`Birthday: ${pet.birthday}`
+                p=`Pet Type: ${pet.PetType.type}`
     if (user)
         if (user.id === pet.userId)
             div.comments-section
@@ -45,7 +44,7 @@ block content
         //comments
         if user
             +validationErrorSummary(errors)
-            form(action="/api/comments" method="post" class= "comments-section")
+            form(id="commentBox" action="/api/comments" method="post" class= "comments-section")
                 input(type="hidden" name="_csrf" value=csrfToken)
                 input(type="hidden" name="userId" value=user.id)
                 input(type="hidden" name="petId" value=pet.id)
@@ -63,6 +62,7 @@ block content
                     +validationErrorSummary(errors1)
                     form(class="hidden" id=`edit-form-${comment.id}`)
                         //- input(type="hidden" name="_csrf" value=csrfToken)
+                    form(class="hidden" id=`edit-form-${comment.id}`)
                         label(for="content") Content:
                         textarea(name="content" id=`content-field-${comment.id}` value=comment.content)
                         button(class="edit-submit-btn" id=`edit-btn-${comment.id}` style="background-color: 00AB66;") Submit
