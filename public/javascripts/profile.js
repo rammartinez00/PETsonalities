@@ -1,4 +1,4 @@
-console.log("public.js script file running");
+
 const likesBtn = document.querySelector(".likes");
 const petsBtn = document.querySelector(".pets");
 const commentsBtn = document.querySelector(".comments");
