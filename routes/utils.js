@@ -118,7 +118,9 @@ const profileValidators = [
 const commentValidator = [
   check("content")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide content in the comment box before submitting"),
+    .withMessage(
+      "The following error(s) occurred: \n Please provide content in the comment box before submitting"
+    ),
 ];
 
 // console.log(req.session.user)

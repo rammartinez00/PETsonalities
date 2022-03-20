@@ -40,10 +40,10 @@ router.get(
         if (pet.PetLikes.length) {
           const petLike = pet.PetLikes.find((petLike) => {
             return petLike.userId === user.id;
-            // console.log('petLikdId', petLike.id)
-            // console.log('petLikeUserId', petLike.userId)
-            // console.log('userId', user.id)
-            // console.log('------------------------------------------------')
+            console.log("petLikdId", petLike.id);
+            console.log("petLikeUserId", petLike.userId);
+            console.log("userId", user.id);
+            console.log("------------------------------------------------");
           });
           if (petLike) {
             return { exists: petLike.id };
@@ -55,7 +55,7 @@ router.get(
     } else {
       petArr = [{ exists: false }];
     }
-    // console.log('=============petArr', petArr)
+    console.log("=============petArr", petArr);
 
     res.render("index", {
       title: "PETsonalities",

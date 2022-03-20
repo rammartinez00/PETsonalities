@@ -44,13 +44,20 @@ for (let i = 0; i < editBtns.length; i++) {
       const data = await res.json();
       if (data.message === "Success") {
         const comment = document.getElementById(`post-content-${commentId}`);
+        const err1 = document.getElementById("errmsg");
         comment.innerHTML = data.comment.content;
         form.classList.add("hidden");
+        err1.remove();
       } else {
-        const section = document.getElementById(`section-${commentId}`);
-        const errormsg = document.createElement("p");
-        errormsg.innerHTML = err;
-        section.appendChild(errormsg);
+        for (let i = 0; i < data.errs.length; i++) {
+          let err = data.errs[i];
+          const section = document.getElementById(`section-${commentId}`);
+          const errormsg = document.createElement("p");
+          errormsg.setAttribute("id", "errmsg");
+          errormsg.innerHTML = err;
+          errormsg.style.color = "red";
+          section.appendChild(errormsg);
+        }
       }
     });
   });
