@@ -2,6 +2,7 @@ h1 {
   margin: 10px;
   display: flex;
   justify-content: center;
+  font-family: 'Luckiest Guy';
 }
 
 .firstContainer {
@@ -21,8 +22,8 @@ h1 {
 
 .outside {
   display: flex;
-  justify-content: center;
   align-items: center;
+    justify-content: center;
 }
 
 .picture {
@@ -39,12 +40,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* flex-direction: column-reverse; */
 }
+
 .edit {
   display: flex;
   flex-direction: column-reverse;
 }
+
 .words {
   margin-top: 20px;
 }
