@@ -48,13 +48,13 @@ block content
                 button(type="submit" class="lowered") Submit
     div
         each comment in comments
-          div(id=`commentbox-${comment.id}`)
+          div(id=`commentbox-${comment.id}` class="lowered")
             div(id=`post-content-${comment.id}` class="comments-section")= comment.content
             if user && comment.userId === user.id
                 div.comments-section.lowered
                     button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
                     button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
-                div.comments-section
+                div.comments-section.lowered
                     form(class="hidden" id=`edit-form-${comment.id}`)
                         label(for="content") Content:
                         textarea(name="content" id=`content-field-${comment.id}` value=comment.content)

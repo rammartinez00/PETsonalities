@@ -1,23 +1,25 @@
 extends layout
 include utils
+append head
+  link(rel="stylesheet" href="/stylesheets/sign-up.css")
 block content
   +validationErrorSummary(errors)
   form(action="/users/signup" method="post")
     input(type="hidden" name="_csrf" value=csrfToken)
     div
-      label(for="fullName") Full Name:
-      input(type="text" name="fullName" value=user.fullName)
+    label(for="fullName" class="padding") Full Name:
+    input(type="text" name="fullName" value=user.fullName)
     div
-      label(for="userName") Username:
-      input(type="text" name="userName" value=user.userName)
+    label(for="userName" class="padding") Username:
+    input(type="text" name="userName" value=user.userName)
     div
-      label(for="email") Email:
-      input(type="text" name="email" value=user.email)
+    label(for="email" class="padding") Email:
+    input(type="text" name="email" value=user.email)
     div
-      label(for="password") Password:
-      input(type="password" name="password" value=user.password)
+    label(for="password" class="padding") Password:
+    input(type="password" name="password" value=user.password)
     div
-      label(for="confirmPassword") Confirm Password:
-      input(type="password" name="confirmPassword")
-    div
-      button(type="submit") Submit
+    label(for="confirmPassword" class="padding") Confirm Password:
+    input(type="password" name="confirmPassword")
+    div.lowered
+    button(type="submit" class="padding") Submit
