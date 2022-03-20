@@ -21,7 +21,7 @@ h2 {
 }
 
 .profileInfoBox {
-  background-color: #4552ce;
+  background-color: #C55D52;
   display: flex;
   padding: 20px;
   height: 400px;
@@ -46,7 +46,7 @@ h2 {
   justify-content: space-evenly;
   padding-left: 20px;
   background-color: #dabcb2;
-  border: 2px solid black;
+
 }
 
 .userTable {
@@ -98,6 +98,7 @@ button {
   font-family: "Luckiest Guy";
   font-weight: normal;
   width: 100px;
+  height: 30px
 }
 
 button:hover {
@@ -133,7 +134,7 @@ button:hover {
   border: solid black;
   border-radius: 25px;
   margin: 10px;
-  background-color: #fff8dc;
+  background-color: #E3A680;
   box-shadow: 5px 10px 8px #888888;
 }
 .content {
@@ -188,7 +189,7 @@ a.comments {
 a.pets:hover,
 a.likes:hover,
 a.comments:hover {
-  background-color: #ff9800;
+  background-color: #B16B5E;
   color: white;
 }
 .cancel {
