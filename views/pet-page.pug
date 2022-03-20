@@ -5,25 +5,29 @@ append head
     link(rel="stylesheet" href="/stylesheets/pet-page.css")
     script(src='/javascripts/pet-page.js' type='module')
 block content
-    div(class="firstContainer")
-    div
-        h1=pet.name
-        image(src=`${pet.image}` style="height:300px; width:300px")
-    div
-        p=`Description: ${pet.description}`
-    div
-        //displays profiles that likes pet page
-    div.ownerInfoBox(style="display:flex; justify-content:flex-end;")
-        h2=`${pet.name}'s Hooman`
-        a(href=`/users/${pet.User.id}`)
-         h2=`Pet Owner: ${pet.User.fullName}`
+    div(class="outside")
+        div(class="firstContainer")
+            div(class="picture")
+                div
+                    h1=pet.name
+                    image(src=`${pet.image}` style="height:300px; width:300px")
+            div(class="words")
+            div
+                button(type="submit") Like
+            div
+                p(class= "description")=`Description: ${pet.description}`
+            div
+                //displays profiles that likes pet page
+            div.ownerInfoBox()
+                h2=`${pet.name}'s Hooman`
+                a(href=`/users/${pet.User.id}`)
+                    h2=`Pet Owner: ${pet.User.fullName}`
 
-    div.petInfoBox(style="display:flex; justify-content:flex-end; align-items:center")
-        h2=`${pet.name}'s Inpawmation`
-        div
-            p=`Birthday: ${pet.birthday}`
-            p=`Pet Type: ${pet.PetType.type}`
-            //p= tags
+            div.petInfoBox()
+                h2=`${pet.name}'s Inpawmation`
+                div
+                    p=`Birthday: ${pet.birthday}`
+                    p=`Pet Type: ${pet.PetType.type}`
     if (user)
         if (user.id === pet.userId)
             div

@@ -31,6 +31,7 @@ h1 {
     color: black;
     display: flex;
     justify-content: center;
+    margin: 20px;
 }
 
 
@@ -159,9 +160,7 @@ a {
 }
 
 
-h1{
-    margin: 20px; 
-}
+
 
 .petImage {
     margin: 8px;
@@ -199,6 +198,8 @@ h1{
     font-size: 16px;
 
 }
+
+
 
 
 
