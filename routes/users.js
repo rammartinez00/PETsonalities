@@ -149,7 +149,7 @@ router.get(
           userId: userProfile.id,
         },
       });
-      console.log(likes);
+      // console.log(likes);
       res.render("user-profile", {
         title: "Profile",
         user,

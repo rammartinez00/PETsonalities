@@ -97,9 +97,6 @@ const profileValidators = [
         }
       });
     }),
-  check("websiteLink")
-    .isURL({ require_protocol: true })
-    .withMessage("Website Link must be a valid url with http:// or https://"),
 
   check("email")
     .exists({ checkFalsy: true })
