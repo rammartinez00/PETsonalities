@@ -76,15 +76,26 @@ router.get(
     const user = res.locals.user
     const id = parseInt(req.params.id);
     const pet = await db.Pet.findByPk(id, { include: [db.PetType, db.User] });
+    const petLikes = await db.PetLike.findAll({
+      where: { petId: id }
+    })
     const comments = await db.Comment.findAll({
       where: { petId: id },
       order: [["createdAt", "DESC"]],
     });
 
+    console.log(petLikes)
+    let petLike
+    if (user) {
+      petLike = petLikes.find(petLike => petLike.userId === user.id)
+    }
+
+
     res.render("pet-page", {
       user,
       comments,
       pet,
+      petLike,
       csrfToken: req.csrfToken(),
     });
   })
