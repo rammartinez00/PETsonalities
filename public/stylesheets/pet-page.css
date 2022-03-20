@@ -1,0 +1,40 @@
+
+h1 {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.firstContainer {
+    border: solid #fff;
+    border-width: 6px 6px 20px 6px;
+    box-shadow: 1px 1px 5px #333;
+    -webkit-box-shadow: 1px 1px 5px #333;
+    -moz-box-shadow: 1px 1px 5px #333;
+    height:750px;
+    width:800px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+
+.outside {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.picture {
+    border: 2px solid black;
+    width: 700px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
