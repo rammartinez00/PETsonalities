@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   background-color: #DABCB2;
-  padding: 15px;
+  /* padding: 5px; */
   text-decoration: none;
   text-align: center;
 }
@@ -10,12 +10,12 @@
 .navbar a {
   text-decoration: none;
   position: relative;
-  bottom: 5px;
+  bottom: 0px;
 }
 
 .searchbar{
   position: relative;
-  top: 7px;
+  top: 10px;
 }
 
 .navbarWelcome{
