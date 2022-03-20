@@ -149,7 +149,7 @@ router.get(
           userId: userProfile.id,
         },
       });
-      console.log(likes);
+      // console.log(likes);
       res.render("user-profile", {
         title: "Profile",
         user,
@@ -193,15 +193,7 @@ router.post(
   csrfProtection,
   profileValidators,
   asyncHandler(async (req, res) => {
-    const {
-      fullName,
-      userName,
-      email,
-      profilePicture,
-      banner,
-      websiteLink,
-      bio,
-    } = req.body;
+    const { fullName, userName, email, profilePicture, banner, bio } = req.body;
     const id = parseInt(req.params.id);
     const userProfile = await db.User.findByPk(id);
     const user = res.locals.user;
@@ -209,7 +201,6 @@ router.post(
 
     userProfile.profilePicture = profilePicture;
     userProfile.banner = banner;
-    userProfile.websiteLink = websiteLink;
     userProfile.fullName = fullName;
     userProfile.userName = userName;
     userProfile.email = email;

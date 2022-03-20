@@ -8,3 +8,7 @@ npx sequelize model:generate --name PetType --attributes type:string
 npx sequelize model:generate --name CommentLike --attributes commentId:integer,userId:integer
 npx sequelize model:generate --name Pet --attributes name:string,description:text,image:string,petTypeId:integer,birthday:dateonly,userId:integer
 npx sequelize model:generate --name Comment --attributes title:string,content:text,petId:integer,userId:integer
+
+npx sequelize-cli seed:generate --name PetSeeder
+npx sequelize-cli seed:generate --name PetLikeSeeder
+npx sequelize-cli seed:generate --name CommentSeeder

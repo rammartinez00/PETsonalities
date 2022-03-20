@@ -2,18 +2,18 @@ const express = require("express");
 const { validationResult } = require("express-validator");
 
 const db = require("../db/models");
-const { requireAuth } = require('../auth');
+const { requireAuth } = require("../auth");
 const { asyncHandler, csrfProtection, commentValidator } = require("./utils");
 
 const router = express.Router();
 
 const checkPermissions = (comment, currentUser) => {
   if (comment.userId !== currentUser.id) {
-    const err = new Error('Illegal Operation')
+    const err = new Error("Illegal Operation");
     err.status = 403;
     throw err;
   }
-}
+};
 
 router.post(
   "/",
@@ -25,7 +25,7 @@ router.post(
     const pet = await db.Pet.findByPk(petId, {
       include: [db.PetType, db.User],
     });
-    const user = await db.User.findByPk(userId);
+    const user = res.locals.user;
     const comments = await db.Comment.findAll({
       where: { petId },
       order: [["createdAt", "DESC"]],
@@ -55,39 +55,47 @@ router.post(
   })
 );
 
-router.patch("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
-  const id = parseInt(req.params.id);
-  const currentUser = res.locals.user
-  const comment = await db.Comment.findByPk(id);
+router.patch(
+  "/:id(\\d+)",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const currentUser = res.locals.user;
+    const comment = await db.Comment.findByPk(id);
 
-  checkPermissions(comment, currentUser)
+    checkPermissions(comment, currentUser);
 
-  if (!(req.body.content.length > 1)) {
-    res.json({ message: "Failure" });
-  }
+    if (!(req.body.content.length > 1)) {
+      res.json({ message: "Failure" });
+    }
 
-  if (comment) {
-    comment.content = req.body.content;
-    await comment.save();
-    res.json({ message: "Success", comment });
-  } else {
-    res.json({ message: "Could not find comment" });
-  }
-}));
+    if (comment) {
+      comment.content = req.body.content;
+      await comment.save();
+      res.json({ message: "Success", comment });
+    } else {
+      res.json({ message: "Could not find comment" });
+    }
+  })
+);
 
-router.delete("/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
-  const id = parseInt(req.params.id);
-  const currentUser = res.locals.user
-  const comment = await db.Comment.findByPk(id);
+router.delete(
+  "/:id(\\d+)",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const currentUser = res.locals.user;
+    const comment = await db.Comment.findByPk(id);
 
-  checkPermissions(comment, currentUser)
+    checkPermissions(comment, currentUser);
 
-  if (comment) {
-    await comment.destroy();
-    res.json({ message: "Success" });
-  } else {
-    res.json({ message: "Failure" });
-  }
-}));
+    if (comment) {
+      await comment.destroy();
+      res.json({ message: "Success" });
+    } else {
+      res.json({ message: "Failure" });
+    }
+  })
+);
 
 module.exports = router;

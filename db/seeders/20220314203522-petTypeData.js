@@ -26,6 +26,7 @@ module.exports = {
         { type: "Frog", createdAt: new Date(), updatedAt: new Date() },
         { type: "Mice", createdAt: new Date(), updatedAt: new Date() },
         { type: "Horse", createdAt: new Date(), updatedAt: new Date() },
+        { type: "Primate", createdAt: new Date(), updatedAt: new Date() },
       ],
       {}
     );
