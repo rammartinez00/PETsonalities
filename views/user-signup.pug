@@ -2,11 +2,13 @@ extends layout
 include utils
 append head
   link(rel="stylesheet" href="/stylesheets/sign-up.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
 block content
   +validationErrorSummary(errors)
-  form(action="/users/signup" method="post")
+  form(id="signinForm" action="/users/signup" method="post")
     input(type="hidden" name="_csrf" value=csrfToken)
     div
+    h4 Hello Friend!
     label(for="fullName" class="padding") Full Name:
     input(type="text" name="fullName" value=user.fullName)
     div
