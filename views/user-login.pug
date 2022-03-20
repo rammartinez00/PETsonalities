@@ -2,12 +2,14 @@ extends layout
 include utils
 append head
   link(rel="stylesheet" href="/stylesheets/user-login.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
 block content
   script(src='/javascripts/demo.js' type='module')
   +validationErrorSummary(errors)
   form(id='loginForm' action="/users/login" method="post")
     input(type="hidden" name="_csrf" value=csrfToken)
     div
+    h3 Welcome Back Friend!
     label(for="email" class="padding") Email:
     input(type="email" id='emailInput' name="email")
     div

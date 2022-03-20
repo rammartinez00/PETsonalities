@@ -4,6 +4,7 @@ append head
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy")
     link(rel="stylesheet" href="/stylesheets/pet-page.css")
     script(src='/javascripts/pet-page.js' type='module')
+    script(src='/javascripts/petLikes.js' type='module')
 block content
     div(class="outside")
         div(class="firstContainer")
@@ -12,9 +13,13 @@ block content
                     h1=pet.name
                     image(src=`${pet.image}` style="height:300px; width:300px")
             div(class="words")
-            div
-                button(type="submit") Like
-            div
+            if (user)
+                div
+                    if petLike
+                        button(class='like-button' petid=pet.id petlikeid= petLike.id style='color:red' type="submit" ) Like
+                    else 
+                        button(class='like-button' petid=pet.id style='color:white' type="submit" ) Like
+                div
                 p(class= "description")=`Description: ${pet.description}`
             div
                 //displays profiles that likes pet page

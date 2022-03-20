@@ -1,14 +1,46 @@
-form{
+#signinForm{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px;
+    padding: 10px;
+    position: relative;
+    /* top: 10px; */
+    margin: 200px;
 }
+
 
 .padding{
     padding: 20px;
+    padding: 10px;
+    font-family: 'Luckiest Guy';
 }
 
 .lowered{
     margin-top: 20px;
 }
+
+form{
+    margin-top: 13px;
+}
+
+a{
+    margin-top: 13px;
+}
+
+h4{
+    font-family: 'Luckiest Guy';
+    font-size: 100px;
+    font-weight: bold;
+    animation: color-change 2s infinite;
+    -moz-animation: color-change 2s infinite;
+    -o-animation: color-change 2s infinite;
+    -ms-animation: color-change 2s infinite;
+    animation: color-change 2s infinite;
+
+}
+
+@keyframes color-change {
+    0% { color: #bcdbcb; }
+    50% { color: #7bb597; }
+    100% { color: #bcdbcb; }
+  }

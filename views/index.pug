@@ -10,7 +10,7 @@ append head
   script(src="/javascripts/petLikes.js" type="module")
 
 block content
-  h1 CHECK OUT THESE CUTE PETS
+  h1 CHECK OUT THESE CUTIES!
   div(id="firstContainer" class="element")
     div(id="petsContainer" class="element")
       each pet, index in pets
@@ -31,7 +31,7 @@ block content
             //-     span(id="likes-value")= `Like: ${pet.PetLikes.length}`
   div(class="footer")
     div(id="add")
-      span(id="contributors") Connect with the developers: 
+      span(id="contributors") Connect with the developers:
       a(href= "https://github.com/huyennguuyen") Huyen
     div(id="add")
       label(for='add')
