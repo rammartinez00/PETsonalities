@@ -16,14 +16,17 @@ PETsonalities, inspired by [Product Hunt](https://www.producthunt.com/), is an o
 ## Technologies
 Frontend
 * JavaScript
-* HTML(rendering through PUG templating)
+* PUGjs
 * CSS
 
 Backend
-* PostgresSQL database
+* Sequelize(PostgresQL)
+* Express
 * cookie-parser/csurf
 * bcrypt.js
-* Heroku deployment
+
+Deployed on
+* Heroku
 
 
 #### Overview of application architecture
