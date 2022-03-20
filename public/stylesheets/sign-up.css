@@ -1,18 +1,22 @@
 #signinForm{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     padding: 10px;
-    position: relative;
-    /* top: 10px; */
+    position: absolute;
+    top: 10px;
     margin: 200px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 500px;
+    width: 500px;
 }
-
 
 .padding{
     padding: 20px;
     padding: 10px;
     font-family: 'Luckiest Guy';
+
 }
 
 .lowered{
@@ -27,8 +31,9 @@ a{
     margin-top: 13px;
 }
 
-/* h4{
+h4{
     font-family: 'Luckiest Guy';
-    font-size: 100px;
-    font-weight: bold;
-} */
+    font-size: 50px;
+    font-weight: normal;
+    padding: 20px;
+}
