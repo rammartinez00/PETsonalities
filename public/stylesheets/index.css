@@ -120,11 +120,15 @@ a {
 
 }
 
-.footer {
+footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     background-color: #DABCB2;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 #description {
