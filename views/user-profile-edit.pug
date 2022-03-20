@@ -8,11 +8,11 @@ block content
     form(action=`/users/${user.id}/edit` method="post" id="form")
         input(type="hidden" name="_csrf" value=csrfToken)
         label(for="fullName" class="font") Full Name:
-        input(type="text" name="fullName" value=user.fullName required)
+        input(type="text" name="fullName" value=user.fullName)
         label(for="userName" class="font") Username:
-        input(type="text" name="userName" value=user.userName required)
+        input(type="text" name="userName" value=user.userName)
         label(for="email" class="font") Email:
-        input(type="text" name="email" value=user.email required)
+        input(type="text" name="email" value=user.email)
         label(for="profilePicture" class="font") Profile Picture:
         input(type="text" name="profilePicture" value=user.profilePicture)
         label(for="banner" class="font") Banner:

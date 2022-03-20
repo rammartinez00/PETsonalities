@@ -58,10 +58,15 @@ router.post(
 router.patch(
   "/:id(\\d+)",
   requireAuth,
+  commentValidator,
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const currentUser = res.locals.user;
     const comment = await db.Comment.findByPk(id);
+    const comments = await db.Comment.findAll({
+      where: { petId },
+      order: [["createdAt", "DESC"]],
+    });
 
     checkPermissions(comment, currentUser);
 
@@ -70,11 +75,16 @@ router.patch(
     }
 
     if (comment) {
-      comment.content = req.body.content;
-      await comment.save();
-      res.json({ message: "Success", comment });
-    } else {
-      res.json({ message: "Could not find comment" });
+      const validationErrors = validationResult(req);
+      if (validationErrors.isEmpty()) {
+        comment.content = req.body.content;
+        await comment.save();
+        res.json({ message: "Success", comment });
+      } else {
+        const errors = validationErrors.array().map((error) => error.msg);
+        let err = errors[0];
+        res.json({ message: "Could not find comment", err });
+      }
     }
   })
 );

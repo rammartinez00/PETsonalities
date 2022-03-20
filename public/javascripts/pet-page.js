@@ -19,7 +19,7 @@ for (let i = 0; i < delBtns.length; i++) {
 const editBtns = document.querySelectorAll(".editbtn");
 for (let i = 0; i < editBtns.length; i++) {
   const btn = editBtns[i];
-  btn.addEventListener("click", async (e) => {
+  btn.addEventListener("click", (e) => {
     const commentId = e.target.id.split("-")[2];
     const form = document.getElementById(`edit-form-${commentId}`);
     if (form.classList.contains("hidden")) {
@@ -29,8 +29,8 @@ for (let i = 0; i < editBtns.length; i++) {
     }
 
     const submitBtn = document.getElementById(`edit-btn-${commentId}`);
-    submitBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
+    submitBtn.addEventListener("click", async (subEvent) => {
+      subEvent.preventDefault();
       const contentData = document.getElementById(
         `content-field-${commentId}`
       ).value;
@@ -46,6 +46,11 @@ for (let i = 0; i < editBtns.length; i++) {
         const comment = document.getElementById(`post-content-${commentId}`);
         comment.innerHTML = data.comment.content;
         form.classList.add("hidden");
+      } else {
+        const section = document.getElementById(`section-${commentId}`);
+        const errormsg = document.createElement("p");
+        errormsg.innerHTML = err;
+        section.appendChild(errormsg);
       }
     });
   });
