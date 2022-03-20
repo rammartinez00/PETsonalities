@@ -48,7 +48,7 @@ block content
                 button(type="submit" class="lowered") Submit
     div
         each comment in comments
-          div(id=`commentbox-${comment.id}`)
+          div(id=`commentbox-${comment.id}` class="lowered")
             div(id=`post-content-${comment.id}` class="comments-section")= comment.content
             if user && comment.userId === user.id
                 div.comments-section.lowered
