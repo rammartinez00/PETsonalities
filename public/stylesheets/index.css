@@ -32,8 +32,26 @@ h1 {
     display: flex;
     justify-content: center;
     margin: 20px;
+    font-size: 5em;
+    font-family: 'Luckiest Guy';
+    color: transparent;
+    text-align: center;
+    animation: effect 2s linear infinite;
 }
 
+@keyframes effect {
+    0% {
+        background: linear-gradient(
+                #008000, #00FF00);
+        -webkit-background-clip: text;
+    }
+
+    100% {
+        background: linear-gradient(
+                #3CE7D7, #000FFF);
+        -webkit-background-clip: text;
+    }
+}
 
 #comments-box{
     width: 200px;
