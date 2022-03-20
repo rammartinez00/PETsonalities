@@ -1,13 +1,17 @@
 
-form{
+#loginForm{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px;
+    padding: 10px;
+    position: relative;
+    top: 12px;
+    margin: 200px;
 }
 
 .padding {
-    padding: 20px;
+    padding: 10px;
+    font-family: 'Luckiest Guy';
 }
 
 .lowered{
@@ -16,4 +20,19 @@ form{
 
 .down{
     margin-top: 10px;
+}
+
+form{
+    margin-top: 13px;
+}
+
+a{
+    margin-top: 13px;
+}
+
+h3{
+    font-family: 'Luckiest Guy';
+    font-size: 120px;
+    font-weight: bold;
+
 }

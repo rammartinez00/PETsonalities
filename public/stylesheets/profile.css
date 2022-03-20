@@ -1,5 +1,5 @@
 body{
-  background-color: #cc6984;
+  background-color: white;
 
 }
 h1 {
@@ -8,9 +8,6 @@ h1 {
 h2 {
   font-weight: bold;
 }
-/* h4{
-
-} */
 
 .petLikes {
   display: none;
@@ -25,7 +22,7 @@ h2 {
 }
 
 .profileInfoBox {
-  background-color: #cc6984;
+  background-color: white;
   display: flex;
   padding: 20px;
   height: 400px;
@@ -121,15 +118,18 @@ button:hover {
 .hidden {
   display: none;
 }
+
 .tabledata {
   border: solid black;
 }
+
 .allComments {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .commentDiv {
   width: 60%;
   font-weight: bold;
@@ -141,22 +141,26 @@ button:hover {
   background-color: #DCB6;
   box-shadow: 5px 10px 8px rgb(216, 209, 209);
 }
+
 .content {
   inline-size: 60%;
   overflow-wrap: break-word;
   hyphens: auto;
   text-align: left;
 }
+
 .inner {
   margin-left: 40px;
   display: flex;
   flex-direction: column;
 }
+
 /* .pet {
   padding: 10px;
   display: flex;
   flex-direction: column;
 } */
+
 .pic {
   padding: 10px;
   display: flex;
@@ -164,6 +168,7 @@ button:hover {
   justify-items: center;
   border-radius: 25px;
 }
+
 a {
   text-decoration: none;
   border: none;
@@ -173,12 +178,14 @@ a {
   cursor: pointer;
   display: inline-block;
 }
+
 #editProfileBtn {
   font-size: 16px;
   transition-duration: 0.4s;
   background-color: #797575;
   color: black;
 }
+
 #editProfileBtn:hover {
   background-color: #1579ac;
   color: white;
@@ -191,12 +198,14 @@ a.likes,
 a.comments {
   color: black;
 }
+
 a.pets:hover,
 a.likes:hover,
 a.comments:hover {
   background-color: #B16B5E;
   color: white;
 }
+
 .cancel {
   border: none;
   border-radius: 5px;
@@ -207,6 +216,7 @@ a.comments:hover {
   font-weight: normal;
   width: 100px;
 }
+
 .cancel:hover {
   background-color: #9dba94;
   color: black;
