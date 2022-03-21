@@ -64,6 +64,7 @@ h2 {
   flex-direction: column-reverse;
 }
 
+
 .words {
   margin-top: 20px;
 }
@@ -112,7 +113,7 @@ button {
   }
 
   textarea{
-    width: 30%;
+    width: 400px;
     height: 100px;
     padding: 10px;
   }
