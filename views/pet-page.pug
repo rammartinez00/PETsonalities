@@ -48,7 +48,7 @@ block content
                 input(type="hidden" name="_csrf" value=csrfToken)
                 input(type="hidden" name="userId" value=user.id)
                 input(type="hidden" name="petId" value=pet.id)
-                textarea(name="content" placeholder="add a comment")
+                textarea(class="commentPost" name="content" placeholder="add a comment" )
                 button(type="submit" class="lowered") Submit
     div
         each comment in comments
