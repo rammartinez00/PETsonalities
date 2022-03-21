@@ -17,6 +17,14 @@ PETsonalities, inspired by [Product Hunt](https://www.producthunt.com/), is an o
 ## Key Features
 * Utilizes API routes to render elements, such as, updating and removing a user's comment asynchronously. 
 
+### Search by PetType or Pet
+The search feature was particularly challenging for me to debug, I had difficulty configuring the search feature so it allowed the search of
+two different tables in our database.
+
+
+<img width="432" alt="image" src="https://user-images.githubusercontent.com/40069890/159202312-0c0c1360-7656-44ed-b528-644365f8fb09.png">
+
+
 ## Technologies
 Frontend
 * JavaScript
