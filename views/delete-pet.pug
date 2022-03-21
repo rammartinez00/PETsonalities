@@ -1,9 +1,9 @@
-extends layout 
+extends layout
 
-block content 
-    h1= `Are you sure you want to delete ${pet.name} :'( ?`
-    div 
-        form(action=`/pets/${pet.id}/delete`, method="post") 
-            button(id = 'delete-btn') Delete 
-        a(href='/')
-            button(id = 'edit-btn') Cancel
+block content
+    h1(style="text-align: center;")= `Are you sure you want to delete ${pet.name} :'( ?`
+    div(style="display:flex; justify-content:center;")
+        form(action=`/pets/${pet.id}/delete`, method="post")
+            button(id= 'delete-btn' style="padding: 5px; margin-top:7px;") Delete
+        a(href='/' style="padding: 5px; margin-top:2px; margin-left: 20px")
+            button(id= 'edit-btn') Cancel

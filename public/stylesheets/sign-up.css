@@ -5,7 +5,7 @@
     padding: 10px;
     position: absolute;
     top: 10px;
-    margin: 200px;
+    margin: 250px 200px 0px 700px;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     height: 500px;
@@ -33,7 +33,7 @@ a{
 
 h4{
     font-family: 'Luckiest Guy';
-    font-size: 50px;
+    font-size: 30px;
     font-weight: normal;
     padding: 20px;
 }
