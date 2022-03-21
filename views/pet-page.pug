@@ -56,7 +56,7 @@ block content
             div(id=`post-content-${comment.id}` class="comments-section")= comment.content
             if user && comment.userId === user.id
                 div.comments-section.lowered
-                    button(type="submit" id=`delete-post-${comment.id}`).deletebtn Delete
+                    button(type="submit" id=`delete-post-${comment.id}` style="margin-right:25px;").deletebtn Delete
                     button(type="submit" id=`edit-post-${comment.id}`).editbtn Edit
                 div(id=`section-${comment.id}`).comments-section.lowered.edit
                     +validationErrorSummary(errors1)
