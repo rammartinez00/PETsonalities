@@ -40,7 +40,6 @@ router.get("/", async (req, res) => {
     });
     if (results.length) {
       const pets = results[0].Pets;
-      //console.log(results);
       res.render("search", { pets });
     } else {
       res.render("no-results");
@@ -61,7 +60,6 @@ router.get("/", async (req, res) => {
     });
     if (results.length) {
       const pets = results;
-      //console.log(pets);
       res.render("search", { pets });
     } else {
       res.render("no-results");

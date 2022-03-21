@@ -50,8 +50,8 @@ router.get(
             //console.log('------------------------------------------------')
             return petLike.userId === user.id
           })
-          console.log('found pet like', petLike)
-          console.log('----------------')
+          // console.log('found pet like', petLike)
+          // console.log('----------------')
           if (petLike) {
             //console.log('HERRRRRRRRRRRRRRRRRRE')
             return { exists: petLike.id }
@@ -67,7 +67,7 @@ router.get(
       petArr = [{ exists: false }]
     }
 
-    console.log('=============petArr', petArr)
+    // console.log('=============petArr', petArr)
 
 
     res.render("index", {
