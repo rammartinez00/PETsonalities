@@ -4,11 +4,15 @@
 
 PETsonalities, inspired by [Product Hunt](https://www.producthunt.com/), is an online application that allows users to create pet pages as well as view and comment other users' created pet pages.
 
+[Explore the Wiki](https://github.com/rammartinez00/Product_Hunt_AaGr06/wiki)
+
+
 ## Table of contents
 
 - [Key Features](#Key-Features)
 - [Technologies](#technologies)
 - [Overview of application architecture](#overview-of-application-architecture)
+
 
 ## Key Features
 * Utilizes API routes to render elements, such as, updating and removing a user's comment asynchronously. 
