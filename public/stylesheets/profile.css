@@ -1,9 +1,11 @@
 body {
   background-color: white;
 }
+
 h1 {
   color: #555555;
 }
+
 h2 {
   font-weight: bold;
 }
@@ -66,23 +68,29 @@ form {
   display: flex;
   flex-direction: column;
 }
+
 input {
   width: 200px;
 }
+
 textarea {
   width: 200px;
 }
+
 select {
   width: 200px;
   margin: 10px;
 }
+
 .searchbar {
   width: 20%;
 }
+
 .search {
   width: 60%;
   transition: width 0.4s ease-in-out;
 }
+
 .search:focus {
   width: 100%;
 }
@@ -170,7 +178,7 @@ button:hover {
 a {
   text-decoration: none;
   border: none;
-  background-color: inherit;
+  /* background-color: inherit; */
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;

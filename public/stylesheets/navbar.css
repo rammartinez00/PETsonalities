@@ -1,34 +1,37 @@
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #DABCB2;
   /* padding: 5px; */
   text-decoration: none;
-  text-align: center;
+  /* text-align: center; */
+  height: 45px;
+  align-items: center;
 }
 
-.navbar a {
+/* .navbar a {
   text-decoration: none;
   position: relative;
   bottom: 0px;
-}
+} */
 
-.searchbar{
+/* .searchbar {
   position: relative;
   top: 10px;
-}
+} */
 
-.navbarWelcome{
+.navbarWelcome {
   position: relative;
   top: 8px;
 }
+
 .logo-image {
-  vertical-align: left;
+  /* vertical-align: left; */
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  position: relative;
-  bottom: 12px;
+  /* position: relative; */
+  /* bottom: 12px; */
 }
 
 .addPet {
@@ -45,7 +48,8 @@
   color: black;
   position: relative;
   top: 5px;
-  font-size: 16px;;
+  font-size: 16px;
+  ;
 }
 
 #logoutBtn:hover {
@@ -56,6 +60,6 @@
 
 }
 
-a{
+a {
   font-family: "Luckiest Guy";
 }

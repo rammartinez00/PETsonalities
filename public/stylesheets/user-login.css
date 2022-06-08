@@ -1,5 +1,4 @@
-
-#loginForm{
+#loginForm {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,23 +18,15 @@
     font-family: 'Luckiest Guy';
 }
 
-.lowered{
+.lowered {
     margin-top: 20px;
 }
 
-.down{
+.down {
     margin-top: 10px;
 }
 
-form{
-    margin-top: 13px;
-}
-
-a{
-    margin-top: 13px;
-}
-
-h3{
+h3 {
     font-family: 'Luckiest Guy';
     font-size: 30px;
     font-weight: bold;

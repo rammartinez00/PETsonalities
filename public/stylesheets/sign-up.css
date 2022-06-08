@@ -1,4 +1,4 @@
-#signinForm{
+#signinForm {
     /* display: flex; */
     align-items: center;
     justify-content: center;
@@ -12,26 +12,18 @@
     width: 500px;
 }
 
-.padding{
+.padding {
     padding: 20px;
     padding: 10px;
     font-family: 'Luckiest Guy';
 
 }
 
-.lowered{
+.lowered {
     margin-top: 20px;
 }
 
-form{
-    margin-top: 13px;
-}
-
-a{
-    margin-top: 13px;
-}
-
-h4{
+h4 {
     font-family: 'Luckiest Guy';
     font-size: 30px;
     font-weight: normal;

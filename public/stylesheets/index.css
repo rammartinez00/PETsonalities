@@ -1,15 +1,14 @@
-
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: space-between;
     background-color: rgba(255, 255, 255, .6);
     padding: 10px;
     text-decoration: none;
-  }
+} */
 
 .prof {
     list-style-type: none;
-  }
+}
 
 
 /* .scrollbar {
@@ -38,7 +37,7 @@ h1 {
 }
 
 
-#comments-box{
+#comments-box {
     width: 200px;
     height: 50px;
     position: relative;
@@ -46,7 +45,7 @@ h1 {
     right: 15px;
 }
 
-#comments-label{
+#comments-label {
     font-size: 10px;
 
 }
@@ -58,7 +57,7 @@ h1 {
     height: 15px;
 }
 
-.like-button{
+.like-button {
     width: 70px;
     height: 20px;
     position: relative;
@@ -69,7 +68,7 @@ h1 {
     background-color: #9dba94;
     color: black;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
 
 }
 
@@ -110,7 +109,7 @@ h1 {
 
 } */
 
-.element{
+.element {
     border: 50px;
 }
 
@@ -122,8 +121,8 @@ a {
 
 footer {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    /* flex-direction: row; */
+    justify-content: center;
     background-color: #DABCB2;
     position: relative;
     bottom: 0;
@@ -151,7 +150,7 @@ footer {
     box-sizing: content-box;
 }
 
-#description-label{
+#description-label {
     margin-top: 10px;
     display: flex;
     justify-content: flex-start;
@@ -175,6 +174,6 @@ footer {
 
 }
 
-#name{
-    font-family:"Luckiest Guy";
+#name {
+    font-family: "Luckiest Guy";
 }
