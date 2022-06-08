@@ -27,7 +27,7 @@ html
         //- select(name= "dropdown" id="filter")
         //-   option(value="users") Users
         //-   option(value="pets") Pets
-        ul()
+        //- ul()
       if locals.authenticated
         a.prof( href=`/users/${user.id}` style="font-family:'Luckiest Guy'; font-size: 20px" ) Profile
         //- div(): a(href='/pets/new') Create Pet Page
@@ -37,7 +37,8 @@ html
         form(action='/users/logout' method='post')
           button(id='logoutBtn' type='submit') Logout
       else
-        span()
-        a( href='/users/login') Login
-        a( href='/users/signup') Sign Up
+        //- span()
+        div()
+          a( href='/users/login') Login
+          a( href='/users/signup') Sign Up
     block content
